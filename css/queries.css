@@ -7,15 +7,27 @@ Insted 1rem = 1em = 16px
 /* ********* */
 
 @media (max-width: 84em) {
-  .hero {
-    max-width: 120rem;
-  }
-  .heading-primary {
-    font-size: 4.4rem;
+  .about-image {
+    width: 80%;
   }
 
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
+  .about-text-span,
+  .about-text-title {
+    font-size: 3.7svw;
+  }
+
+  .meeting-box {
+    grid-column: 4/5;
+  }
+
+  .ready-text {
+    grid-column: 1/4;
+  }
+  .footer-phone {
+    grid-column: 1/3;
+  }
+  .footer-email {
+    grid-column: 3/5;
   }
 }
 
@@ -28,7 +40,9 @@ Insted 1rem = 1em = 16px
   html {
     font-size: 56.25%;
   }
-
+  .footer-logo {
+    display: none;
+  }
   .grid {
     column-gap: 4.8rem;
     row-gap: 6.4rem;
@@ -57,11 +71,15 @@ Insted 1rem = 1em = 16px
   .testimonials-container {
     padding: 9.6rem 3.2rem;
   }
+
+  .grid {
+    column-gap: 2.4rem;
+  }
 }
 /* ************ */
-/* BELOW 1060px Tabletes */
+/* BELOW 892px Tabletes */
 /* ************ */
-@media (max-width: 66.25em) {
+@media (max-width: 55.75em) {
   html {
     /* 8px / 16 = 0.5*/
     font-size: 50%;
@@ -73,32 +91,14 @@ Insted 1rem = 1em = 16px
     gap: 6.4rem;
     align-items: center;
   }
-  .hero-text-box,
-  .hero-img-box {
-    text-align: center;
-  }
-  .hero-img {
-    width: 60%;
-  }
-  .delivered-meals {
-    justify-content: center;
-    margin-top: 3.2rem;
-  }
 
-  .step-number {
-    font-size: 7.4rem;
-  }
-  .meal-content {
-    padding: 3.2rem;
-    padding-top: 2.4rem;
-  }
-
-  .section-testimonials {
+  .grid--2--cols {
     grid-template-columns: 1fr;
   }
 
-  .gallery {
-    grid-template-columns: repeat(6, 1fr);
+  .hero-text-box,
+  .hero-img-box {
+    text-align: center;
   }
 
   .cta {
@@ -111,6 +111,27 @@ Insted 1rem = 1em = 16px
   /* add some margin */
   .btn--form {
     margin-top: 1.2rem;
+  }
+
+  .about-image {
+    width: 40%;
+  }
+
+  .skyline-box::after {
+    width: 30%;
+  }
+
+  /* .project-warrper:hover {
+    height: 107rem;
+  } */
+
+  .opened {
+    height: 107rem;
+  }
+
+  .project-text-content {
+    padding: 2.4rem;
+    padding-top: 0;
   }
 
   /* MOBILE NAVIGATION */
@@ -176,11 +197,23 @@ Insted 1rem = 1em = 16px
 }
 
 /* ************ */
-/* BELOW 702px (Smaller tablets) */
+/* BELOW 776px (Smaller tablets) */
 /* ************ */
 
-@media (max-width: 44em) {
+@media (max-width: 48.5em) {
   /* replace it to 2 cols */
+  .preloader-counter {
+    font-size: 8rem;
+  }
+  .about-image-box {
+    padding: 1.8rem 3.2rem;
+    width: 60%;
+    justify-self: center;
+  }
+
+  .copy-rights {
+    grid-column: 1/6;
+  }
 
   .grid--3--cols,
   .grid--4--cols {
@@ -211,6 +244,17 @@ Insted 1rem = 1em = 16px
   .address-col {
     grid-column: span 3;
   }
+
+  #wrapper {
+    margin-left: 50px !important;
+  }
+
+  .yellow-sticky {
+    width: 50px;
+  }
+  .nav-icon-side {
+    padding: 0 1rem;
+  }
 }
 
 /* ************ */
@@ -230,7 +274,7 @@ Insted 1rem = 1em = 16px
   .btn,
   .btn:link,
   .btn:visited {
-    padding: 2.4rem 1.6rem;
+    padding: 1rem 1.4rem;
   }
 
   .hero {
@@ -244,25 +288,6 @@ Insted 1rem = 1em = 16px
     width: 80%;
   }
 
-  /* it is the first to use the class .step-img-box but the second child of the .container grid grid--2-cols */
-
-  .step-img-box:nth-child(2) {
-    grid-row: 1;
-  }
-  .step-img-box:nth-child(6) {
-    grid-row: 5;
-  }
-
-  .step-img-box {
-    transform: translateY(2.4rem);
-  }
-  .testimonials {
-    grid-template-columns: 1fr;
-  }
-  .gallery {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
-  }
   .cta {
     grid-template-columns: 1fr;
   }
@@ -275,11 +300,3 @@ Insted 1rem = 1em = 16px
     grid-row: 1;
   }
 }
-
-/* 
-- Spacing system (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
-
-- Font sizes (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
-*/

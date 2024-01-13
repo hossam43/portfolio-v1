@@ -42,6 +42,8 @@ Text:
 #0d0d0d text
 #212121 text
 
+
+
 --- 05 SHADOWS
 
 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
@@ -77,6 +79,12 @@ None
   --secondaryColorBLight: #212121;
   --secondaryColorWhite: #f7f7f7f7;
   --accentColor: #fe7b52;
+  --tag1: #9b5de5;
+  --tag2: #f15bb5;
+  --tag3: #fee440;
+  --tag4: #00bbf9;
+  --tag5: #00f5d4;
+  --def-transition-duration: 0.4s;
 }
 
 * {
