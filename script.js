@@ -261,15 +261,17 @@ let tl3 = gsap.timeline({
 });
 
 tl3
-  .fromTo(
-    ".wheels",
-    { opacity: 0, y: -5 },
-    { opacity: 0.5, y: 0, duration: 0.5, ease: "power3.out", delay: 2 }
-  )
+
   .fromTo(
     "#complete-airplan",
     { x: -460 },
-    { x: 180, duration: 2.5, ease: "power3.out" }
+    { x: 180, duration: 0.5, ease: "power3.out" }
+  )
+  .fromTo(
+    ".wheels",
+    { opacity: 0, y: -5 },
+    { opacity: 0.5, y: 0, duration: 0.5, ease: "power3.out" },
+    "<"
   );
 
 // the project hover
@@ -284,4 +286,236 @@ projectsList.forEach((project) => {
     // add the open class for the current project
     project.classList.add("opened");
   });
+});
+
+// Create the project dynamically
+
+// const PROJECTS = [
+//   // Tags for each project
+//   [
+//     ["Web Development", "React", "Responsive Design"],
+//     ["E-commerce", "JavaScript", "Node.js", "Express"],
+//     ["Portfolio", "HTML", "CSS", "Design"],
+//     ["Mobile App", "React Native", "iOS", "Android"],
+//   ],
+
+//   // Deliverables for each project
+//   [
+//     ["Implemented responsive UI", "Integrated payment gateway"],
+//     ["Developed server-side logic", "Designed user authentication"],
+//     ["Created visually appealing layout", "Optimized for speed"],
+//     ["Built cross-platform mobile app", "Integrated push notifications"],
+//   ],
+
+//   // Skills for each project
+//   [
+//     ["HTML", "CSS", "JavaScript", "React"],
+//     ["JavaScript", "Node.js", "Express", "MongoDB"],
+//     ["HTML", "CSS", "Design", "Photoshop"],
+//     ["React Native", "iOS Development", "Android Development"],
+//   ],
+
+//   // Links for each project
+//   [
+//     { site: "https://example1.com", github: "https://github.com/example1" },
+//     { site: "https://example2.com", github: "https://github.com/example2" },
+//     { site: "https://example3.com", github: "https://github.com/example3" },
+//     { site: "https://example4.com", github: "https://github.com/example4" },
+//   ],
+// ];
+
+const PROJECTS = [
+  // Project 1
+
+  [
+    ["project Title one"],
+    ["Web Development", "React", "Responsive Design"],
+    [
+      "Implemented responsive UI",
+      "Integrated payment gateway",
+      "Created visually appealing layout",
+    ],
+    ["logo-github", "logo-react", "logo-instagram", "logo-react"],
+
+    { site: "https://example1.com", github: "https://github.com/example1" },
+  ],
+
+  // Project 2
+
+  [
+    ["project Title two"],
+    ["E-commerce", "JavaScript", "Node.js", "Express"],
+    [
+      "Developed server-side logic",
+      "Designed user authentication",
+      "Created visually appealing layout",
+    ],
+    ["logo-github", "logo-react", "logo-instagram", "logo-react"],
+    { site: "https://example2.com", github: "https://github.com/example2" },
+  ],
+
+  // Project 3
+
+  [
+    ["project Title three"],
+    ["Portfolio", "HTML", "CSS", "Design"],
+    [
+      "Created visually appealing layout",
+      "Optimized for speed",
+      "Created visually appealing layout",
+    ],
+    ["logo-github", "logo-react", "logo-instagram", "logo-react"],
+    { site: "https://example3.com", github: "https://github.com/example3" },
+  ],
+
+  // Project 4
+
+  [
+    ["project Title four"],
+    ["Mobile App", "React Native", "iOS", "Android"],
+    [
+      "Built cross-platform mobile app",
+      "Integrated push notifications",
+      "Created visually appealing layout",
+    ],
+    ["logo-github", "logo-react", "logo-instagram", "logo-react"],
+    { site: "https://example4.com", github: "https://github.com/example4" },
+  ],
+];
+
+// Container element in HTML to append project elements
+const projectContainer = document.getElementById("projectContainer");
+
+// Loop through each project
+PROJECTS.forEach((project, index) => {
+  const projectItemList = document.createElement("div");
+  projectItemList.classList.add("works-collection-item", "w-dyn-item");
+
+  // Create a project element for each project
+  const projectElement = document.createElement("div");
+  projectElement.classList.add("project", "project-text-content");
+  // append the project element to the project item list
+  projectItemList.appendChild(projectElement);
+
+  // Loop through titles and create tag elements
+
+  const titlesElement = document.createElement("div");
+  titlesElement.classList.add("titles");
+  project[0].forEach((title) => {
+    const titleElement = document.createElement("p");
+    titleElement.classList.add("title");
+    titleElement.textContent = title;
+    titlesElement.appendChild(titleElement);
+  });
+  projectElement.appendChild(titlesElement); //! it is just one title (s) to keep it consistent
+
+  // Loop through tags and create tag elements
+  const tagsElement = document.createElement("div");
+  tagsElement.classList.add("tags");
+  const tagsBgColor = ["#9b5de5", "#f15bb5", "#fee440", "#00bbf9", "#00f5d4"];
+  project[1].forEach((tag, colorIndex) => {
+    const tagElement = document.createElement("span");
+    tagElement.classList.add("tag");
+    tagElement.style.backgroundColor = tagsBgColor[colorIndex];
+    tagElement.textContent = tag;
+    tagsElement.appendChild(tagElement);
+  });
+  projectElement.appendChild(tagsElement);
+
+  // Loop through deliverables and create deliverables elements
+  const deliverablesBox = document.createElement("div");
+  const deliverablesTitleStatic = document.createElement("p");
+  deliverablesTitleStatic.classList.add("projects-titles");
+  deliverablesTitleStatic.textContent = "Deliverables:";
+  const deliverablesElement = document.createElement("ul");
+  deliverablesElement.classList.add("deliverables", "list");
+  project[2].forEach((deliverable) => {
+    const deliverableElement = document.createElement("li");
+    deliverableElement.classList.add("deliverable", "list-item");
+    const deliverableElmText = document.createElement("span");
+    deliverableElmText.textContent = deliverable;
+    const deliverableElmIcon = document.createElement("ion-icon");
+    deliverableElmIcon.setAttribute("name", "checkmark-circle-outline");
+
+    deliverableElement.appendChild(deliverableElmIcon);
+    deliverableElement.appendChild(deliverableElmText);
+    deliverablesElement.appendChild(deliverableElement);
+  });
+
+  deliverablesBox.appendChild(deliverablesTitleStatic);
+  deliverablesBox.appendChild(deliverablesElement);
+  projectElement.appendChild(deliverablesBox);
+
+  // Loop through skills and create skills elements
+  const skillsBox = document.createElement("div");
+  const skillsTitleStatic = document.createElement("p");
+  skillsTitleStatic.classList.add("projects-titles");
+  skillsTitleStatic.textContent = "Skills:";
+  const skillsElement = document.createElement("ul");
+  skillsElement.classList.add("skills");
+  project[3].forEach((skill) => {
+    const skillElement = document.createElement("li");
+    const skillElmSpan = document.createElement("span");
+    const skillElmIcon = document.createElement("ion-icon");
+    skillElmIcon.classList.add("skill-icon");
+    skillElmIcon.setAttribute("name", skill);
+
+    skillElmSpan.appendChild(skillElmIcon);
+    skillElement.appendChild(skillElmSpan);
+    skillsElement.appendChild(skillElement);
+  });
+  skillsBox.appendChild(skillsTitleStatic);
+  skillsBox.appendChild(skillsElement);
+  projectElement.appendChild(skillsBox);
+
+  // Create links elements
+  //  <ion-icon name="logo-github" class="code-icon md hydrated" role="img">…</ion-icon>
+  const linksElement = document.createElement("div");
+  linksElement.classList.add("links");
+  const elementBtnSite = document.createElement("button");
+  elementBtnSite.classList.add("btn", "project-btn-box", "cursor");
+  const siteLinkElement = document.createElement("a");
+  siteLinkElement.classList.add("link", "demo-link");
+  siteLinkElement.href = project[4].site;
+  siteLinkElement.textContent = "Visit Site";
+  const htmlStructure = `
+    <div class="digital-ball">
+        <div class="overlay"></div>
+        <div class="globe" style="transform: translate(-50%, -50%)">
+            <div class="globe-wrap">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle-hor"></div>
+                <div class="circle-hor-middle"></div>
+            </div>
+        </div>
+    </div>
+`;
+
+  elementBtnSite.appendChild(siteLinkElement);
+  elementBtnSite.insertAdjacentHTML("beforeend", htmlStructure);
+  linksElement.appendChild(elementBtnSite);
+
+  const elementBtnGit = document.createElement("button");
+  elementBtnGit.classList.add("btn", "project-btn-box", "cursor");
+  const githubElmIcon = document.createElement("ion-icon");
+  githubElmIcon.classList.add("code-icon");
+  githubElmIcon.setAttribute("name", "logo-github");
+  const githubLinkElement = document.createElement("a");
+  githubLinkElement.classList.add("link", "code-link");
+  githubLinkElement.href = project[4].github;
+  githubLinkElement.textContent = "Show Code";
+
+  elementBtnGit.appendChild(githubLinkElement);
+  elementBtnGit.appendChild(githubElmIcon);
+  linksElement.appendChild(elementBtnGit);
+
+  projectElement.appendChild(linksElement);
+
+  // Append the project element to the project item list
+  projectItemList.appendChild(projectElement);
+
+  // Append the project element to the container
+  projectContainer.appendChild(projectItemList);
 });
