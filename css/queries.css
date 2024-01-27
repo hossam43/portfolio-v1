@@ -3,12 +3,50 @@ Insted 1rem = 1em = 16px
 */
 
 /* ********** */
-/* BELOW 1344px (Smaller Ddesktop) */
+/* BELOW 1366px (Smaller Ddesktop) */
 /* ********* */
+@media (max-width: 85.4em) {
+  html {
+    font-size: 56.25%;
+  }
 
-@media (max-width: 84em) {
+  .skyline-box {
+    height: 165px;
+  }
   .about-image {
-    width: 80%;
+    width: 70%;
+  }
+
+  .airplan {
+    bottom: 16%;
+    height: 44px;
+  }
+
+  .home-header_subheading-5 {
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+    font-size: 1.8vw;
+  }
+
+  .yellow-sticky {
+    width: 60px;
+  }
+  #wrapper {
+    margin-left: 60px;
+  }
+  .home-header {
+    margin-top: -2rem;
+  }
+  .about-image-box {
+    align-self: start;
+  }
+
+  .about-me {
+    width: 90%;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    line-height: 1.6;
   }
 
   .about-text-span,
@@ -23,6 +61,11 @@ Insted 1rem = 1em = 16px
   .ready-text {
     grid-column: 1/4;
   }
+
+  .mob-social-container {
+    grid-column: 1/3;
+  }
+
   .footer-phone {
     grid-column: 1/3;
   }
@@ -37,12 +80,7 @@ Insted 1rem = 1em = 16px
 
 @media (max-width: 75em) {
   /* 9px / 16px = 0.5625 = 56.25% */
-  html {
-    font-size: 56.25%;
-  }
-  .footer-logo {
-    display: none;
-  }
+
   .grid {
     column-gap: 4.8rem;
     row-gap: 6.4rem;
@@ -68,12 +106,30 @@ Insted 1rem = 1em = 16px
     gap: 3.2rem;
   }
 
-  .testimonials-container {
-    padding: 9.6rem 3.2rem;
+  .about-image-box {
+    align-self: center;
+  }
+  .project-warrper {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+  }
+
+  .opened {
+    height: 106rem;
+  }
+  .slider {
+    order: 1;
+  }
+  .project-text-content {
+    order: 2;
   }
 
   .grid {
     column-gap: 2.4rem;
+  }
+
+  .about-section {
+    padding: 6rem 0 4rem 0;
   }
 }
 /* ************ */
@@ -84,6 +140,17 @@ Insted 1rem = 1em = 16px
     /* 8px / 16 = 0.5*/
     font-size: 50%;
   }
+  #wrapper {
+    margin-left: 50px !important;
+  }
+
+  .yellow-sticky {
+    width: 50px;
+  }
+  .home-header-heading::before {
+    top: -3%;
+  }
+  /* ! */
   .hero {
     padding: 0 8rem;
     display: grid;
@@ -92,8 +159,16 @@ Insted 1rem = 1em = 16px
     align-items: center;
   }
 
+  .airplan {
+    bottom: 20%;
+    left: 50%;
+  }
+
   .grid--2--cols {
     grid-template-columns: 1fr;
+  }
+  .home-header {
+    margin-top: 0;
   }
 
   .hero-text-box,
@@ -113,6 +188,9 @@ Insted 1rem = 1em = 16px
     margin-top: 1.2rem;
   }
 
+  .about-image-box {
+    width: 100%;
+  }
   .about-image {
     width: 40%;
   }
@@ -126,12 +204,11 @@ Insted 1rem = 1em = 16px
   } */
 
   .opened {
-    height: 107rem;
+    height: 140rem;
   }
 
   .project-text-content {
     padding: 2.4rem;
-    padding-top: 0;
   }
 
   /* MOBILE NAVIGATION */
@@ -176,16 +253,6 @@ Insted 1rem = 1em = 16px
     transform: translateX(0);
   }
 
-  /* only when .nav-open exist */
-  .nav-open .icon-mobile-nav[name="close-outline"] {
-    display: block;
-  }
-
-  .nav-open .icon-mobile-nav[name="menu-outline"] {
-    display: none;
-    /* animation not nessasry */
-  }
-
   .main-nav-list {
     flex-direction: column;
     gap: 4.8rem;
@@ -193,6 +260,10 @@ Insted 1rem = 1em = 16px
   .main-nav-link:link,
   .main-nav-link:visited {
     font-size: 3rem;
+  }
+
+  .nav-link {
+    font-size: 4.4rem;
   }
 }
 
@@ -202,15 +273,116 @@ Insted 1rem = 1em = 16px
 
 @media (max-width: 48.5em) {
   /* replace it to 2 cols */
+
   .preloader-counter {
     font-size: 8rem;
   }
-  .about-image-box {
+  .nav-btn {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .yellow-sticky {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+  #wrapper {
+    margin-left: 0px !important;
+  }
+
+  /* Mobil navigation */
+  /* animated icon */
+
+  .mobile-nav-header {
+    position: fixed;
+    width: 100%;
+    height: 8rem;
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3.2rem;
+    background-color: var(--secondaryColorBLight);
+    /* box-shadow: 0 1.2rem 3.2rem rgb(0, 0, 0, 0.06); */
+    z-index: 999;
+  }
+
+  .mobile-nav-header .logo-box-mobile {
+    width: 25px;
+    height: 25px;
+  }
+
+  #menu-button {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5px;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    /* margin: 0 auto; */
+  }
+
+  #menu-button span {
+    width: 25px;
+    height: 2.5px;
+    border-radius: 1px;
+    background-color: var(--secondaryColorWhite);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  :root[menu-open] #menu-button span:nth-child(1) {
+    transform: translate3d(0, 6px, 0) rotate(45deg);
+  }
+  :root[menu-open] #menu-button span:nth-child(2) {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  :root[menu-open] #menu-button span:nth-child(3) {
+    transform: translate3d(0, -6px, 0) rotate(-45deg);
+  }
+
+  .home-header-heading {
+    font-size: 10vw;
+  }
+  .bold-text-6 {
+    font-size: 2.8vw;
+  }
+  .home-header_subheading-5 {
+    font-size: 1.8vw;
+  }
+
+  .skyline-box {
+    height: 180px;
+  }
+  /* .about-image-box {
     padding: 1.8rem 3.2rem;
     width: 60%;
     justify-self: center;
+  } */
+
+  /* project */
+
+  .slider {
+    position: relative;
+    width: 496px;
+    height: 380px;
+  }
+  .footer-socials-box {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
+  .mob-social-container {
+    grid-column: 1/5;
+  }
   .copy-rights {
     grid-column: 1/6;
   }
@@ -219,16 +391,9 @@ Insted 1rem = 1em = 16px
   .grid--4--cols {
     grid-template-columns: repeat(2, 1fr);
   }
-  .diets {
-    grid-column: 1/-1;
-    justify-self: center;
-  }
+
   .heading-secondary {
     margin-bottom: 4.8em;
-  }
-
-  .pricing-plan {
-    width: 100%;
   }
 
   .grid--footer {
@@ -245,13 +410,6 @@ Insted 1rem = 1em = 16px
     grid-column: span 3;
   }
 
-  #wrapper {
-    margin-left: 50px !important;
-  }
-
-  .yellow-sticky {
-    width: 50px;
-  }
   .nav-icon-side {
     padding: 0 1rem;
   }
@@ -277,6 +435,11 @@ Insted 1rem = 1em = 16px
     padding: 1rem 1.4rem;
   }
 
+  .home-header-heading::before {
+    top: -7%;
+    right: 0%;
+  }
+
   .hero {
     padding: 0 3.2rem;
   }
@@ -288,15 +451,71 @@ Insted 1rem = 1em = 16px
     width: 80%;
   }
 
-  .cta {
-    grid-template-columns: 1fr;
+  .skills-list {
+    gap: 0rem;
   }
-  .cta-text-box {
-    padding: 3.2rem;
+  .skill-list-item {
+    font-size: 1.4rem;
   }
-  /* you need to give it manuly a h-w */
-  .cta-image-box {
-    height: 32rem;
-    grid-row: 1;
+  .container {
+    padding: 0 1.4rem;
+  }
+
+  .about-image-box {
+    width: 100%;
+  }
+
+  .about-image {
+    width: 70%;
+  }
+
+  .slider {
+    max-width: 397px;
+    min-height: 285px;
+    justify-self: center;
+  }
+
+  .links {
+    gap: 1.8rem;
+  }
+  .ready-text {
+    grid-column: 1/-1;
+  }
+  .footer-phone {
+    grid-column: 1/-1;
+  }
+
+  .footer-email {
+    grid-column: 1/-1;
+  }
+}
+/* ************ */
+/* BELOW 375px phone */
+/* ************ */
+
+@media (max-width: 23.5em) {
+  .slider {
+    max-width: 310px;
+    min-height: 237px;
+  }
+
+  .home-header-heading::before {
+    top: -15%;
+    right: 0%;
+    font-size: 1rem;
+  }
+
+  .home-header-heading {
+    font-size: 10.5vw;
+  }
+  .bold-text-6 {
+    font-size: 4.1vw;
+  }
+  .home-header_subheading-5 {
+    font-size: 3.2vw;
+  }
+
+  .home-header-btn {
+    justify-content: center;
   }
 }

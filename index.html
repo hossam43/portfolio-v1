@@ -46,6 +46,15 @@
       <button class="nav-btn cursor">
         <ion-icon name="close-outline" class="nav-icon"></ion-icon>
       </button>
+      <div class="nav-top">
+        <p class="p-small-nav">Navigation</p>
+        <div class="line" style="width: 86.8381%"></div>
+        <!-- NAV AirPlain -->
+        <div class="container-nav-airPlain">
+          <div class="stroke"></div>
+        </div>
+      </div>
+
       <div class="nav-container">
         <nav class="nav-menu">
           <ul class="nav-list">
@@ -95,13 +104,18 @@
     </div> -->
     <!-- ! -->
     <div class="custom-cursor"></div>
+
     <!-- ASIDE NAV -->
     <aside id="aside-element">
       <div class="yellow-sticky">
         <div class="full-content-container">
           <div class="flex-social-content-container">
             <div class="logo-box">
-              <img src="./assets/logo-side.png" class="logo-side" alt="" />
+              <img
+                src="./assets/images/web-logo.svg"
+                class="logo-side"
+                alt=""
+              />
             </div>
             <div class="nav-icon-side">
               <ion-icon
@@ -109,8 +123,9 @@
                 class="aside-icon cursor"
               ></ion-icon>
             </div>
+
             <div class="aside-socials-box">
-              <a href="">
+              <a href="https://www.linkedin.com/in/hossam-ayman-">
                 <ion-icon
                   name="logo-linkedin"
                   class="aside-socail-icon cursor"
@@ -138,14 +153,24 @@
       <!-- MAIN CONTENT -->
       <div id="wrapper">
         <main id="main-content">
+          <!-- Mobile nav -->
+          <nav class="mobile-nav-header">
+            <div class="logo-box-mobile">
+              <img
+                src="./assets/images/web-logo.svg"
+                class="logo-side"
+                alt=""
+              />
+            </div>
+
+            <button class="nav-icon-side cursor" id="menu-button">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </nav>
           <!-- HERO SECTION -->
           <section class="hero-section">
-            <!-- Versions -->
-            <div class="container">
-              <div class="v">
-                <h2>/V1</h2>
-              </div>
-            </div>
             <!-- Hero Text Content -->
             <div class="home-header">
               <h1 class="home-header-heading">HOSSAM AYMAN</h1>
@@ -160,10 +185,14 @@
               </p>
               <!-- Hero Buttons -->
               <div class="home-header-btn">
-                <button class="btn cv-btn cursor">
+                <a
+                  class="btn contact-btn cursor"
+                  href="https://drive.google.com/uc?export=download&id=1CBSXgMphhHq02Fsm0yIoubw9f337O6oC"
+                >
                   <span>Download CV</span>
                   <ion-icon name="cloud-download-outline"></ion-icon>
-                </button>
+                </a>
+
                 <a href="#footer" class="btn contact-btn cursor">
                   <span>Contact me</span>
                   <ion-icon name="call-outline"></ion-icon>
@@ -179,20 +208,37 @@
           <!-- SKILLES LIST -->
           <div class="skills-section">
             <div class="page-padding">
-              <div class="container-large-top">
-                <div class="padding-vertical-3 padding-custom2">
-                  <div class="home-awards_component">
-                    <h2 class="awards_heading">
-                      ARTIFICIAL INTELLIGENCE + WEB MAPPING + ANIMATION +
-                      AUGMENTED REALITY + E-COMMERCE + 3D RENDERING
-                    </h2>
-                  </div>
-                </div>
-              </div>
+              <ul class="skills-list">
+                <li class="skill-list-item">
+                  <span> ARTIFICIAL INTELLIGENCE </span>
+                </li>
+
+                <li class="skill-list-item">
+                  <ion-icon name="add-outline"></ion-icon>
+                  <span> WEB MAPPING </span>
+                </li>
+
+                <li class="skill-list-item">
+                  <ion-icon name="add-outline"></ion-icon>
+                  <span> ANIMATION </span>
+                </li>
+
+                <li class="skill-list-item">
+                  <ion-icon name="add-outline"></ion-icon>
+                  <span> AUGMENTED REALITY</span>
+                </li>
+                <li class="skill-list-item">
+                  <ion-icon name="add-outline"></ion-icon>
+                  <span> E-COMMERCE </span>
+                </li>
+                <li class="skill-list-item">
+                  <ion-icon name="add-outline"></ion-icon>
+                  <span> 3D RENDERING </span>
+                </li>
+              </ul>
             </div>
           </div>
           <!-- ABOUT SECTION -->
-
           <section class="about-section">
             <div class="container margin-bottom-md">
               <span class="sub-heading">/about me</span>
@@ -202,7 +248,7 @@
             <!-- <button class="btn" id="start-about">Start</button> -->
             <div class="container grid about-box">
               <div
-                class="container grid grid--2--cols about-container grid-center-v"
+                class="container grid grid--2--cols grid-center-v content-section"
               >
                 <div class="about-text-content">
                   <h3 class="about-text-title">
@@ -237,7 +283,7 @@
             </div>
 
             <!-- Airplan about SVG  -->
-            <div class="airplan-container-about">
+            <!-- <div class="airplan-container-about">
               <svg
                 width="121"
                 height="36"
@@ -246,7 +292,6 @@
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <g id="complete-airplan">
-                  <!-- Wheel -->
                   <g id="wheel4" class="wheels">
                     <path
                       id="Vector"
@@ -264,7 +309,6 @@
                       fill="white"
                     />
                   </g>
-                  <!-- Wheel -->
                   <g id="wheel3" class="wheels">
                     <path
                       id="Vector_4"
@@ -282,8 +326,6 @@
                       fill="white"
                     />
                   </g>
-                  <!-- Wheel -->
-
                   <g id="wheel2" class="wheels">
                     <path
                       id="Vector_7"
@@ -301,7 +343,7 @@
                       fill="#EBEBEB"
                     />
                   </g>
-                  <!-- Wheel -->
+              
                   <g id="wheel1" class="wheels">
                     <path
                       id="Vector_10"
@@ -375,641 +417,43 @@
                   </g>
                 </g>
               </svg>
-            </div>
+            </div> -->
           </section>
-
           <!-- PROJECTS SECTION -->
           <section class="projects-section">
-            <!-- divder project -->
-            <div class="container margin-bottom-md">
-              <span class="sub-heading">/ recent work </span>
-              <div class="separator-border"></div>
-            </div>
-
             <!-- Projects contaienr -->
-            <div
-              role="list"
-              class="works-collection-list w-dyn-items"
-              id="projects-container"
-            >
-              <!-- Project num 1 -->
-              <div role="listitem" class="works-collection-item w-dyn-item">
-                <div class="container is-home-work project-warrper opened">
-                  <a
-                    href=""
-                    class="work-collection-link w-inline-block project-header"
-                  >
-                    <h3 class="works-list-title">KPMG CCM</h3>
-                    <p class="p-small">UI/UX &amp; Strategy</p>
-                  </a>
-
-                  <!-- put it here -->
-
-                  <!--  Project deitales  1 -->
-                  <div
-                    class="container grid grid--2--cols project-container padding-zero"
-                    id="project-one"
-                  >
-                    <!--  Project deitales  Photo-container 1 -->
-                    <div class="slider">
-                      <!--  Project deitales  photos 1 -->
-                      <div class="slides">
-                        <input type="radio" name="radio-btn" id="radio1" />
-                        <input type="radio" name="radio-btn" id="radio2" />
-                        <input type="radio" name="radio-btn" id="radio3" />
-                        <!-- slide images start -->
-                        <div class="slid first">
-                          <img src="./assets/1h.jpg" alt="" />
-                        </div>
-                        <div class="slid">
-                          <img src="./assets/2h.jpg" alt="" />
-                        </div>
-                        <div class="slid">
-                          <img src="./assets/test.png" alt="" />
-                        </div>
-
-                        <!-- slide images end -->
-
-                        <!-- automatic navigation start -->
-                        <div class="navigation-auto">
-                          <div class="auto-btn1"></div>
-                          <div class="auto-btn2"></div>
-                          <div class="auto-btn3"></div>
-
-                          <!-- automatic navigation end-->
-                        </div>
-                        <!-- manual nativation start -->
-                        <div class="navigation-manual cursor">
-                          <label for="radio1" class="manual-btn"></label>
-                          <label for="radio2" class="manual-btn"></label>
-                          <label for="radio3" class="manual-btn"></label>
-                        </div>
-                        <!-- manual nativation end-->
-                      </div>
-                    </div>
-                    <!--  Project text content 1 -->
-                    <div class="project-text-content">
-                      <header class="project-header">
-                        <p class="project-title">
-                          <strong> Web Development</strong>
-                        </p>
-                        <!-- replace it with tags -->
-                        <div class="project-tags">
-                          <span class="tag tag--paleo">Vegan</span>
-                          <span class="tag tag--paleo">paleo</span>
-                          <span class="tag tag--paleo">paleo</span>
-                        </div>
-                      </header>
-                      <!-- Project body -->
-                      <div class="project-body">
-                        <!-- Deliverables -->
-                        <p class="deliverables-titel">
-                          <strong>Deliverables:</strong>
-                        </p>
-                        <ul class="list">
-                          <li class="list-item">
-                            <ion-icon
-                              name="checkmark-circle-outline"
-                            ></ion-icon>
-                            <span> Integration with payment gateways </span>
-                          </li>
-
-                          <li class="list-item">
-                            <ion-icon
-                              name="checkmark-circle-outline"
-                            ></ion-icon>
-                            <span> Integration with payment gateways </span>
-                          </li>
-
-                          <li class="list-item">
-                            <ion-icon
-                              name="checkmark-circle-outline"
-                            ></ion-icon>
-                            <span> Integration with payment gateways </span>
-                          </li>
-
-                          <li class="list-item">
-                            <ion-icon
-                              name="checkmark-circle-outline"
-                            ></ion-icon>
-                            <span> Integration with payment gateways </span>
-                          </li>
-                        </ul>
-                        <!--Skills used -->
-                        <p class="skills-title">
-                          <strong>Skills Used:</strong>
-                        </p>
-                        <ul class="skills-list">
-                          <li class="skill-item">
-                            <span>
-                              <ion-icon
-                                name="logo-instagram"
-                                class="skill-icon"
-                              ></ion-icon>
-                            </span>
-                          </li>
-                          <li class="skill-item">
-                            <span>
-                              <ion-icon
-                                name="logo-react"
-                                class="skill-icon"
-                              ></ion-icon>
-                            </span>
-                          </li>
-                          <li class="skill-item">
-                            <span>
-                              <ion-icon
-                                name="logo-github"
-                                class="skill-icon"
-                              ></ion-icon>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                      <!-- Project btn -->
-                      <div class="view-project">
-                        <button class="btn project-btn-box cursor">
-                          <a href="" class="link demo-link">Live site</a>
-                          <!-- <ion-icon name="globe-outline" class="demo-icon"></ion-icon> -->
-                          <div class="digital-ball">
-                            <div class="overlay"></div>
-                            <div
-                              class="globe"
-                              style="transform: translate(-50%, -50%)"
-                            >
-                              <div class="globe-wrap">
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                                <div class="circle-hor"></div>
-                                <div class="circle-hor-middle"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                        <button class="btn project-btn-box cursor">
-                          <a href="" class="link code-link">Show Code</a>
-                          <ion-icon
-                            name="logo-github"
-                            class="code-icon"
-                          ></ion-icon>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <section class="projects-section">
+              <div class="container margin-bottom-md">
+                <span class="sub-heading">/ recent work </span>
+                <div class="separator-border"></div>
               </div>
 
-              <!-- Project header num 2 -->
-              <div role="listitem" class="works-collection-item w-dyn-item">
-                <div class="container is-home-work project-warrper">
-                  <a href="" class="work-collection-link w-inline-block">
-                    <h3 class="works-list-title">KPMG CCM</h3>
-                    <p class="p-small">UI/UX &amp; Strategy</p>
-                  </a>
-
-                  <div
-                    class="container grid grid--2--cols project-container padding-zero"
-                    id="project-one"
-                  >
-                    <!--  Project deitales  Photo-container 1 -->
-                    <div class="slider">
-                      <!--  Project deitales  photos 1 -->
-                      <div class="slides">
-                        <input type="radio" name="radio-btn" id="radio7" />
-                        <input type="radio" name="radio-btn" id="radio8" />
-                        <input type="radio" name="radio-btn" id="radio9" />
-                        <!-- slide images start -->
-                        <div class="slid first">
-                          <img src="./assets/1h.jpg" alt="" />
-                        </div>
-                        <div class="slid">
-                          <img src="./assets/2h.jpg" alt="" />
-                        </div>
-                        <div class="slid">
-                          <img src="./assets/test.png" alt="" />
-                        </div>
-
-                        <!-- slide images end -->
-
-                        <!-- automatic navigation start -->
-                        <div class="navigation-auto">
-                          <div class="auto-btn1"></div>
-                          <div class="auto-btn2"></div>
-                          <div class="auto-btn3"></div>
-
-                          <!-- automatic navigation end-->
-                        </div>
-                        <!-- manual nativation start -->
-                        <div class="navigation-manual cursor">
-                          <label for="radio7" class="manual-btn"></label>
-                          <label for="radio8" class="manual-btn"></label>
-                          <label for="radio9" class="manual-btn"></label>
-                        </div>
-                        <!-- manual nativation end-->
-                      </div>
-                    </div>
-                    <!--  Project text content 1 -->
-                    <div class="project-text-content">
-                      <p class="project-title">
-                        <strong> Web Development</strong>
-                      </p>
-                      <!-- replace it with tags -->
-                      <div class="project-tags">
-                        <span class="tag tag--paleo">Vegan</span>
-                        <span class="tag tag--paleo">paleo</span>
-                        <span class="tag tag--paleo">paleo</span>
-                      </div>
-                      <!-- Deliverables -->
-                      <p class="deliverables-titel">
-                        <strong>Deliverables:</strong>
-                      </p>
-                      <ul class="list">
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-                      </ul>
-                      <!--Skills used -->
-                      <p class="skills-title"><strong>Skills Used:</strong></p>
-                      <ul class="skills-list">
-                        <li class="skill-item">
-                          <span>
-                            <ion-icon
-                              name="logo-instagram"
-                              class="skill-icon"
-                            ></ion-icon>
-                          </span>
-                        </li>
-                        <li class="skill-item">
-                          <span>
-                            <ion-icon
-                              name="logo-react"
-                              class="skill-icon"
-                            ></ion-icon>
-                          </span>
-                        </li>
-                        <li class="skill-item">
-                          <span>
-                            <ion-icon
-                              name="logo-github"
-                              class="skill-icon"
-                            ></ion-icon>
-                          </span>
-                        </li>
-                      </ul>
-                      <div class="view-project">
-                        <button class="btn project-btn-box cursor">
-                          <a href="" class="link demo-link">Live site</a>
-                          <!-- <ion-icon name="globe-outline" class="demo-icon"></ion-icon> -->
-                          <div class="digital-ball">
-                            <div class="overlay"></div>
-                            <div
-                              class="globe"
-                              style="transform: translate(-50%, -50%)"
-                            >
-                              <div class="globe-wrap">
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                                <div class="circle-hor"></div>
-                                <div class="circle-hor-middle"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                        <button class="btn project-btn-box cursor">
-                          <a href="" class="link code-link">Show Code</a>
-                          <ion-icon
-                            name="logo-github"
-                            class="code-icon"
-                          ></ion-icon>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div
+                role="list"
+                class="works-collection-list w-dyn-items content-section"
+                id="projectContainer"
+              >
+                <!-- 1- listItem -->
+                <!-- 2- proejct -->
               </div>
-
-              <!-- Project header num 3 -->
-              <div role="listitem" class="works-collection-item w-dyn-item">
-                <div class="container is-home-work project-warrper">
-                  <a href="" class="work-collection-link w-inline-block">
-                    <h3 class="works-list-title">KPMG CCM</h3>
-                    <p class="p-small">UI/UX &amp; Strategy</p>
-                  </a>
-
-                  <div
-                    class="container grid grid--2--cols project-container padding-zero"
-                    id="project-one"
-                  >
-                    <!--  Project deitales  Photo-container 1 -->
-                    <div class="slider">
-                      <!--  Project deitales  photos 1 -->
-                      <div class="slides">
-                        <input type="radio" name="radio-btn" id="radio7" />
-                        <input type="radio" name="radio-btn" id="radio8" />
-                        <input type="radio" name="radio-btn" id="radio9" />
-                        <!-- slide images start -->
-                        <div class="slid first">
-                          <img src="./assets/1h.jpg" alt="" />
-                        </div>
-                        <div class="slid">
-                          <img src="./assets/2h.jpg" alt="" />
-                        </div>
-                        <div class="slid">
-                          <img src="./assets/test.png" alt="" />
-                        </div>
-
-                        <!-- slide images end -->
-
-                        <!-- automatic navigation start -->
-                        <div class="navigation-auto">
-                          <div class="auto-btn1"></div>
-                          <div class="auto-btn2"></div>
-                          <div class="auto-btn3"></div>
-
-                          <!-- automatic navigation end-->
-                        </div>
-                        <!-- manual nativation start -->
-                        <div class="navigation-manual cursor">
-                          <label for="radio7" class="manual-btn"></label>
-                          <label for="radio8" class="manual-btn"></label>
-                          <label for="radio9" class="manual-btn"></label>
-                        </div>
-                        <!-- manual nativation end-->
-                      </div>
-                    </div>
-                    <!--  Project text content 1 -->
-                    <div class="project-text-content">
-                      <p class="project-title">
-                        <strong> Web Development</strong>
-                      </p>
-                      <!-- replace it with tags -->
-                      <div class="project-tags">
-                        <span class="tag tag--paleo">Vegan</span>
-                        <span class="tag tag--paleo">paleo</span>
-                        <span class="tag tag--paleo">paleo</span>
-                      </div>
-                      <!-- Deliverables -->
-                      <p class="deliverables-titel">
-                        <strong>Deliverables:</strong>
-                      </p>
-                      <ul class="list">
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-                      </ul>
-                      <!--Skills used -->
-                      <p class="skills-title"><strong>Skills Used:</strong></p>
-                      <ul class="skills-list">
-                        <li class="skill-item">
-                          <span>
-                            <ion-icon
-                              name="logo-instagram"
-                              class="skill-icon"
-                            ></ion-icon>
-                          </span>
-                        </li>
-                        <li class="skill-item">
-                          <span>
-                            <ion-icon
-                              name="logo-react"
-                              class="skill-icon"
-                            ></ion-icon>
-                          </span>
-                        </li>
-                        <li class="skill-item">
-                          <span>
-                            <ion-icon
-                              name="logo-github"
-                              class="skill-icon"
-                            ></ion-icon>
-                          </span>
-                        </li>
-                      </ul>
-                      <div class="view-project">
-                        <button class="btn project-btn-box cursor">
-                          <a href="" class="link demo-link">Live site</a>
-                          <!-- <ion-icon name="globe-outline" class="demo-icon"></ion-icon> -->
-                          <div class="digital-ball">
-                            <div class="overlay"></div>
-                            <div
-                              class="globe"
-                              style="transform: translate(-50%, -50%)"
-                            >
-                              <div class="globe-wrap">
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                                <div class="circle-hor"></div>
-                                <div class="circle-hor-middle"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                        <button class="btn project-btn-box cursor">
-                          <a href="" class="link code-link">Show Code</a>
-                          <ion-icon
-                            name="logo-github"
-                            class="code-icon"
-                          ></ion-icon>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Project header num 4 -->
-              <div role="listitem" class="works-collection-item w-dyn-item">
-                <div class="container is-home-work project-warrper">
-                  <a
-                    href=""
-                    class="work-collection-link w-inline-block project-header"
-                  >
-                    <h3 class="works-list-title">KPMG CCM</h3>
-                    <p class="p-small">UI/UX &amp; Strategy</p>
-                  </a>
-
-                  <!-- put it here -->
-
-                  <!--  Project deitales  1 -->
-                  <div
-                    class="container grid grid--2--cols project-container padding-zero"
-                    id="project-one"
-                  >
-                    <!--  Project deitales  Photo-container 1 -->
-                    <div class="slider">
-                      <!--  Project deitales  photos 1 -->
-                      <div class="slides">
-                        <input type="radio" name="radio-btn" id="radio1" />
-                        <input type="radio" name="radio-btn" id="radio2" />
-                        <input type="radio" name="radio-btn" id="radio3" />
-                        <!-- slide images start -->
-                        <div class="slid first">
-                          <img src="./assets/1h.jpg" alt="" />
-                        </div>
-                        <div class="slid">
-                          <img src="./assets/2h.jpg" alt="" />
-                        </div>
-                        <div class="slid">
-                          <img src="./assets/test.png" alt="" />
-                        </div>
-
-                        <!-- slide images end -->
-
-                        <!-- automatic navigation start -->
-                        <div class="navigation-auto">
-                          <div class="auto-btn1"></div>
-                          <div class="auto-btn2"></div>
-                          <div class="auto-btn3"></div>
-
-                          <!-- automatic navigation end-->
-                        </div>
-                        <!-- manual nativation start -->
-                        <div class="navigation-manual cursor">
-                          <label for="radio1" class="manual-btn"></label>
-                          <label for="radio2" class="manual-btn"></label>
-                          <label for="radio3" class="manual-btn"></label>
-                        </div>
-                        <!-- manual nativation end-->
-                      </div>
-                    </div>
-                    <!--  Project text content 1 -->
-                    <div class="project-text-content">
-                      <p class="project-title">
-                        <strong> Web Development</strong>
-                      </p>
-
-                      <!-- replace it with tags -->
-
-                      <div class="project-tags">
-                        <span class="tag tag--paleo">Vegan</span>
-                        <span class="tag tag--paleo">paleo</span>
-                        <span class="tag tag--paleo">paleo</span>
-                      </div>
-                      <!-- Deliverables -->
-                      <p class="deliverables-titel">
-                        <strong>Deliverables:</strong>
-                      </p>
-                      <ul class="list">
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-
-                        <li class="list-item">
-                          <ion-icon name="checkmark-circle-outline"></ion-icon>
-                          <span> Integration with payment gateways </span>
-                        </li>
-                      </ul>
-                      <!--Skills used -->
-                      <p class="skills-title"><strong>Skills Used:</strong></p>
-                      <ul class="skills-list">
-                        <li class="skill-item">
-                          <span>
-                            <ion-icon
-                              name="logo-instagram"
-                              class="skill-icon"
-                            ></ion-icon>
-                          </span>
-                        </li>
-                        <li class="skill-item">
-                          <span>
-                            <ion-icon
-                              name="logo-react"
-                              class="skill-icon"
-                            ></ion-icon>
-                          </span>
-                        </li>
-                        <li class="skill-item">
-                          <span>
-                            <ion-icon
-                              name="logo-github"
-                              class="skill-icon"
-                            ></ion-icon>
-                          </span>
-                        </li>
-                      </ul>
-                      <div class="view-project">
-                        <button class="btn project-btn-box cursor">
-                          <a href="" class="link demo-link">Live site</a>
-                          <!-- <ion-icon name="globe-outline" class="demo-icon"></ion-icon> -->
-                          <div class="digital-ball">
-                            <div class="overlay"></div>
-                            <div
-                              class="globe"
-                              style="transform: translate(-50%, -50%)"
-                            >
-                              <div class="globe-wrap">
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                                <div class="circle-hor"></div>
-                                <div class="circle-hor-middle"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                        <button class="btn project-btn-box cursor">
-                          <a href="" class="link code-link">Show Code</a>
-                          <ion-icon
-                            name="logo-github"
-                            class="code-icon"
-                          ></ion-icon>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </section>
+            <div class="container flex-h-center">
+              <a href="" class="link">
+                <button class="btn show-more">
+                  <p class="p-small">
+                    More Work
+                    <span>
+                      <sup class="work-number">10</sup>
+                    </span>
+                  </p>
+                </button>
+              </a>
             </div>
           </section>
         </main>
 
         <!-- MARQUEE EFFECT -->
-        <div class="scroller" data-direction="right" style="display: none">
+        <div class="scroller" data-direction="right">
           <ul class="tag-list scroller__inner">
             <li>PRODUCT DESIGNER +</li>
             <li>ATHLETE +</li>
@@ -1022,19 +466,6 @@
             <li>HOOPER +</li>
             <li>GRAPHIC DESIGNER +</li>
             <li>FUTURIS +T</li>
-            <!-- <h2 class="awards_heading">
-              ARTIFICIAL INTELLIGENCE + BLOCKCHAIN + SPORTS + AUGMENTED REALITY
-              + E-COMMERCE + PHYSICAL PRODUCT DESIGN
-            </h2>
-  
-            <h2 class="awards_heading">
-              ARTIFICIAL INTELLIGENCE + BLOCKCHAIN + SPORTS + AUGMENTED REALITY
-              + E-COMMERCE + PHYSICAL PRODUCT DESIGN
-            </h2>
-            <h2 class="awards_heading">
-              ARTIFICIAL INTELLIGENCE + BLOCKCHAIN + SPORTS + AUGMENTED REALITY
-              + E-COMMERCE + PHYSICAL PRODUCT DESIGN
-            </h2> -->
           </ul>
         </div>
         <!-- FOOTER SECTION -->
@@ -1048,20 +479,16 @@
             <div class="meeting-box">
               <div class="meeting-link-box">
                 <div class="meeting-link-c cursor">
+                  <!-- ZOOM MEETING SCAULA -->
                   <a href="" class="meeting-link"></a>
                 </div>
               </div>
             </div>
-            <div class="empty-row"></div>
+            <div class="mob-social-container">
+              <!-- here when it is in small screen -->
+            </div>
             <div class="footer-logo">
-              <div class="logo-warrper">
-                <div class="logo-box">
-                  <span>
-                    <!-- <img class="logo-footer" src="" alt="website logo" /> -->
-                  </span>
-                  <!-- <span>OSSAM</span> -->
-                </div>
-              </div>
+              <span class="wave">👋</span>
             </div>
             <div class="footer-phone">
               <div class="phone-flex-container">
@@ -1070,7 +497,7 @@
                 </div>
                 <div class="phone-link-box">
                   <a href="https://wa.me/1113210972" class="phone cursor"
-                    >01113210972</a
+                    >+201113210972</a
                   >
                 </div>
               </div>

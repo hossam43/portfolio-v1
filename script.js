@@ -1,42 +1,11 @@
 "use strict";
+
 const opacityOne = (...targetElements) => {
   targetElements.forEach((targetElm) => {
     targetElm.style.opacity = 1;
   });
   // targetElement.style.opacity = 1;
 };
-
-// Custom cursor
-let mouseCursor = document.querySelector(".custom-cursor");
-
-window.addEventListener("mousemove", customCursor);
-
-function customCursor(e) {
-  const posX = e.pageX;
-  const posY = e.pageY;
-
-  mouseCursor.animate(
-    {
-      left: `${posX}px`,
-      top: `${posY}px`,
-    },
-    {
-      duration: 1200,
-      fill: "forwards",
-    }
-  );
-}
-
-const cursorLink = document.querySelectorAll(".cursor");
-
-cursorLink.forEach((link) => {
-  link.addEventListener("mouseleave", () => {
-    mouseCursor.classList.remove("cursorGrow");
-  });
-  link.addEventListener("mouseover", () => {
-    mouseCursor.classList.add("cursorGrow");
-  });
-});
 
 // scroller
 const scrollers = document.querySelectorAll(".scroller");
@@ -57,17 +26,6 @@ function addAnimation() {
     });
   });
 }
-
-// slider project
-let counter = 1;
-
-setInterval(() => {
-  document.getElementById("radio" + counter).checked = true;
-
-  counter++;
-
-  if (counter > 3) counter = 1;
-}, 5000);
 
 // Preloader
 const page = document.getElementById("page-contet");
@@ -177,64 +135,36 @@ opacityOne(aside, page);
 
 // work with navigation
 const asideIcon = document.querySelector(".aside-icon");
+const navDesktopBtn = document.querySelector(".nav-btn");
 const navHeader = document.querySelector(".nav-header");
-const navBtn = document.querySelector(".nav-btn");
+// create the root element and the mobile nav
+const menuButtonMob = document.getElementById("menu-button");
+const rootElement = document.documentElement;
 
 asideIcon.addEventListener("click", () => {
+  rootElement.classList.add("is-open");
   navHeader.style.transform = "translateX(0)";
 });
 
-navBtn.addEventListener("click", () => {
+navDesktopBtn.addEventListener("click", () => {
+  rootElement.classList.remove("is-open");
   navHeader.style.transform = "translateX(-100%)";
 });
 
-// test
-
-// const showBtn = document.querySelector("#start-about");
-// showBtn.addEventListener("click", () => {
-//   document
-//     .querySelector(".about-container")
-//     .classList.add("show-about-container");
-// });
-
-// showBtn.addEventListener("dblclick", () => {
-//   document
-//     .querySelector(".about-container")
-//     .classList.remove("show-about-container");
-// });
-
+// Mobile navbtn
+menuButtonMob.addEventListener("click", () => {
+  rootElement.toggleAttribute("menu-open");
+  if (rootElement.classList.contains("is-open")) {
+    rootElement.classList.remove("is-open");
+    navHeader.style.transform = "translateX(-100%)";
+  } else {
+    rootElement.classList.add("is-open");
+    navHeader.style.transform = "translateX(0)";
+  }
+});
 // OnScroll effect
 
 //  using the scrollTrigger, the start and end values control when the animation begins and ends in relation to the scroll position, but they don't directly affect the timing of the animation.
-
-// the 80% will happen faster than 20%
-let tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".about-section",
-    start: "top 80%",
-    end: "center 50%",
-    scrub: true,
-    markers: false,
-  },
-});
-
-tl.to(".about-text-content", {
-  y: 0,
-  opacity: 1,
-  zIndex: 1,
-  visibility: "visible",
-  ease: Power0.easeNone,
-  duration: 0.3,
-});
-
-tl.to(".about-image-box", {
-  y: 0,
-  opacity: 1,
-  zIndex: 1,
-  visibility: "visible",
-  ease: Power0.easeNone,
-  duration: 0.5,
-});
 
 // The airplan animation
 
@@ -250,186 +180,255 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // The airplan about section
 
-let tl3 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".about-section",
-    start: "bottom-=300 80%",
-    end: "bottom 50%",
-    scrub: true,
-    markers: true,
-  },
-});
-
-tl3
-
-  .fromTo(
-    "#complete-airplan",
-    { x: -460 },
-    { x: 180, duration: 0.5, ease: "power3.out" }
-  )
-  .fromTo(
-    ".wheels",
-    { opacity: 0, y: -5 },
-    { opacity: 0.5, y: 0, duration: 0.5, ease: "power3.out" },
-    "<"
-  );
-
-// the project hover
-
-const projectsList = document.querySelectorAll(".project-warrper");
-
-projectsList.forEach((project) => {
-  project.addEventListener("click", (e) => {
-    e.preventDefault();
-    // remove the opens classes from all projects
-    projectsList.forEach((project) => project.classList.remove("opened"));
-    // add the open class for the current project
-    project.classList.add("opened");
-  });
-});
+// tl3
+//   .fromTo(
+//     "#complete-airplan",
+//     { x: -460 },
+//     { x: 180, duration: 0.5, ease: "power3.out" }
+//   )
+//   .fromTo(
+//     ".wheels",
+//     { opacity: 0, y: -5 },
+//     { opacity: 0.5, y: 0, duration: 0.5, ease: "power3.out" },
+//     "<"
+//   );
 
 // Create the project dynamically
-
-// const PROJECTS = [
-//   // Tags for each project
-//   [
-//     ["Web Development", "React", "Responsive Design"],
-//     ["E-commerce", "JavaScript", "Node.js", "Express"],
-//     ["Portfolio", "HTML", "CSS", "Design"],
-//     ["Mobile App", "React Native", "iOS", "Android"],
-//   ],
-
-//   // Deliverables for each project
-//   [
-//     ["Implemented responsive UI", "Integrated payment gateway"],
-//     ["Developed server-side logic", "Designed user authentication"],
-//     ["Created visually appealing layout", "Optimized for speed"],
-//     ["Built cross-platform mobile app", "Integrated push notifications"],
-//   ],
-
-//   // Skills for each project
-//   [
-//     ["HTML", "CSS", "JavaScript", "React"],
-//     ["JavaScript", "Node.js", "Express", "MongoDB"],
-//     ["HTML", "CSS", "Design", "Photoshop"],
-//     ["React Native", "iOS Development", "Android Development"],
-//   ],
-
-//   // Links for each project
-//   [
-//     { site: "https://example1.com", github: "https://github.com/example1" },
-//     { site: "https://example2.com", github: "https://github.com/example2" },
-//     { site: "https://example3.com", github: "https://github.com/example3" },
-//     { site: "https://example4.com", github: "https://github.com/example4" },
-//   ],
-// ];
 
 const PROJECTS = [
   // Project 1
 
   [
-    ["project Title one"],
-    ["Web Development", "React", "Responsive Design"],
     [
-      "Implemented responsive UI",
-      "Integrated payment gateway",
-      "Created visually appealing layout",
+      "/assets/images/websit-ui-4.png.jpg",
+      "/assets/images/websit-ui-5.jpg",
+      "/assets/images/color-asl-d.jpg",
     ],
-    ["logo-github", "logo-react", "logo-instagram", "logo-react"],
+    ["ASL-Academy"],
+    ["Mobile App", "React Native", "iOS", "Android"],
+    [
+      "Design website UI/UX and add animated preloader.",
+      "Optimize images for web use and ensure fast loading times.",
+      "Code frontend using HTML, CSS, and JavaScript.",
+      "Ensure cross-device compatibility with responsive design.",
+      "Deploy website to a hosting server.",
+      "Register a domain name relevant to the website's purpose.",
+      "Optimize website for search engine visibility (SEO).",
+    ],
+    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
+    {
+      site: "https://aslacademy.online",
+      github: "https://github.com/hossam43/Asl-academy.git",
+    },
+  ],
+  [
+    [
+      "/assets/images/websit-ui2.jpg",
+      "/assets/images/websit-ui-2.png",
+      "/assets/images/crybto-larg.jpg",
+    ],
+    ["Crybtobrecison"],
+    ["HTML/Css", "Adobe Photoshop", "Figma", "UI/UX"],
+    [
+      "Created visually appealing landing page",
+      "Code frontend using HTML, CSS, and JavaScript.",
+      "Ensure cross-device compatibility with responsive design.",
+      "Deploy website to a hosting server.",
+    ],
+    ["logo-html5", "logo-css3", "logo-figma", "logo-github"],
+    {
+      site: "https://hossam43.github.io/crybtobrecison-project/",
+      github: "https://github.com/example3",
+    },
+  ],
 
-    { site: "https://example1.com", github: "https://github.com/example1" },
+  [
+    [
+      1 == "1" ? "/assets/images/websit-ui.jpg" : "/assets/images/DLTM-img.png",
+      "/assets/images/DLTM-img.png",
+      "/assets/images/omni-colors.jpg",
+    ],
+    ["Omnifood"],
+    ["Html/Css", "Responsiveness", "SEO", "Image Optimization"],
+    [
+      "Develop and deploy a sophisticated landing page website",
+      "Design the UI/UX for the website.",
+      "Create quality mockups and prototypes.",
+      "Create a brand guide style sheet for easy customization",
+      "Image Optimization using Adobe Photoshop and Squoosh",
+    ],
+    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
+    {
+      site: "https://hossam43.github.io/Omnifood-Project/",
+      github: "https://github.com/hossam43/Omnifood-Project",
+    },
   ],
 
   // Project 2
 
-  [
-    ["project Title two"],
-    ["E-commerce", "JavaScript", "Node.js", "Express"],
-    [
-      "Developed server-side logic",
-      "Designed user authentication",
-      "Created visually appealing layout",
-    ],
-    ["logo-github", "logo-react", "logo-instagram", "logo-react"],
-    { site: "https://example2.com", github: "https://github.com/example2" },
-  ],
-
   // Project 3
-
-  [
-    ["project Title three"],
-    ["Portfolio", "HTML", "CSS", "Design"],
-    [
-      "Created visually appealing layout",
-      "Optimized for speed",
-      "Created visually appealing layout",
-    ],
-    ["logo-github", "logo-react", "logo-instagram", "logo-react"],
-    { site: "https://example3.com", github: "https://github.com/example3" },
-  ],
 
   // Project 4
 
+  // Project 5
+
   [
-    ["project Title four"],
-    ["Mobile App", "React Native", "iOS", "Android"],
     [
-      "Built cross-platform mobile app",
-      "Integrated push notifications",
-      "Created visually appealing layout",
+      "/assets/images/websit-ui-4.jpg",
+      "/assets/images/websit-ui-3.png.jpg",
+      "/assets/images/color-d-red.jpg",
     ],
-    ["logo-github", "logo-react", "logo-instagram", "logo-react"],
+    ["Red Builder"],
+    ["Html/Css", "Javascript", "Responsiveness", "Image Optimization"],
+    [
+      "Develop and deploy a real estate landing page website",
+      "Design the UI/UX for the website.",
+      "Create a brand guide style sheet for easy customization",
+      "Image Optimization using Adobe Photoshop and Squoosh",
+    ],
+    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
+
     { site: "https://example4.com", github: "https://github.com/example4" },
   ],
+  // Project 6
+
+  [
+    [
+      "/assets/images/final-ui-image.png",
+      "/assets/images/om-mobile.jpg",
+      "/assets/images/3h.jpg",
+    ],
+    ["FitFlex Gym"],
+    ["Web Development", "HTML/Css", "JavaScript", "UI/UX", "Responsive Design"],
+    [
+      "Implement responsive design using HTML, CSS, and JavaScript.",
+      "Optimize images and graphics for fast loading times.",
+      "Incorporate user-friendly navigation elements for easy exploration.",
+    ],
+    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
+
+    { site: "https://example1.com", github: "https://github.com/example1" },
+  ],
+
+  [
+    [
+      "/assets/images/med.jpg",
+      "/assets/images/final-ui-image.png",
+      "/assets/images/om-mobile.jpg",
+    ],
+    ["Med Gym"],
+    ["Web Development", "HTML/Css", "JavaScript", "UI/UX", "Responsive Design"],
+    [
+      "Implemented responsive UI",
+      "Integrated payment gateway",
+      "Created visually appealing layout",
+      "Implementing user authentication",
+    ],
+    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
+
+    { site: "https://example1.com", github: "https://github.com/example1" },
+  ],
 ];
+//! create a staragey for each header in a p tag and append it individually
 
 // Container element in HTML to append project elements
 const projectContainer = document.getElementById("projectContainer");
 
 // Loop through each project
-PROJECTS.forEach((project, index) => {
+PROJECTS.forEach((project, projectIndex) => {
   const projectItemList = document.createElement("div");
-  projectItemList.classList.add("works-collection-item", "w-dyn-item");
+  projectItemList.classList.add(
+    "works-collection-item",
+    "w-dyn-item",
+    "container"
+  );
 
-  // Create a project element for each project
-  const projectElement = document.createElement("div");
-  projectElement.classList.add("project", "project-text-content");
-  // append the project element to the project item list
-  projectItemList.appendChild(projectElement);
+  // Create a project element header (a like with title and a tag ) for each project
+  const projectElemenHeader = document.createElement("a");
+  projectElemenHeader.classList.add("work-collection-link");
+  // Create a project element (Warrpe Slides and Text content Projects) for each project
+  const openState = projectIndex === 0 ? "opened" : "closed";
+  const projectElementBox = document.createElement("div");
+  projectElementBox.classList.add(
+    "grid",
+    "grid--2--cols",
+    "small-col-gap",
+    "padding-zero",
+    "project-warrper",
+    openState
+  );
+
+  // Create a project element Slider for each project
+  const projectElementSlider = document.createElement("div");
+  projectElementSlider.classList.add("slider");
+
+  // Loop through images and create slides HTML elements
+  const projectElementSlides = document.createElement("div");
+  projectElementSlides.classList.add("slides");
+  projectElementSlider.appendChild(projectElementSlides);
+  // ! Maby loop with a condation on PROJECT ARRAY
+  const sliderControloer = `
+  ${project[0]
+    .map(
+      (imageSrc, imageIndex) =>
+        `<img src="${imageSrc}" class="imageSlider${projectIndex + 1} ${
+          imageIndex === 0 ? "active" : ""
+        }" alt="" />`
+    )
+    .join("")}`;
+  projectElementSlides.innerHTML += sliderControloer;
+  // Add the Next and Prev buttons
+  const sliderBtn = `
+  <div class="button">
+    <span class="next${projectIndex + 1}">&#10095;</span>
+    <span class="prev${projectIndex + 1}">&#10094;</span>
+  </div>`;
+  projectElementSlides.innerHTML += sliderBtn;
+
+  // Create a project element (Text content) for each project
+  const projectElementText = document.createElement("div");
+  projectElementText.classList.add("project-text-content");
 
   // Loop through titles and create tag elements
 
   const titlesElement = document.createElement("div");
   titlesElement.classList.add("titles");
-  project[0].forEach((title) => {
+
+  project[1].forEach((title) => {
     const titleElement = document.createElement("p");
     titleElement.classList.add("title");
     titleElement.textContent = title;
     titlesElement.appendChild(titleElement);
+    // Element for the header element a
+    const titleElementHeader = document.createElement("h2");
+    titleElementHeader.classList.add("works-list-title");
+    titleElementHeader.textContent = title;
+    projectElemenHeader.appendChild(titleElementHeader);
   });
-  projectElement.appendChild(titlesElement); //! it is just one title (s) to keep it consistent
+  projectElementText.appendChild(titlesElement); //! it is just one title (s) to keep it consistent
 
   // Loop through tags and create tag elements
   const tagsElement = document.createElement("div");
   tagsElement.classList.add("tags");
   const tagsBgColor = ["#9b5de5", "#f15bb5", "#fee440", "#00bbf9", "#00f5d4"];
-  project[1].forEach((tag, colorIndex) => {
+  project[2].forEach((tag, colorIndex) => {
     const tagElement = document.createElement("span");
     tagElement.classList.add("tag");
     tagElement.style.backgroundColor = tagsBgColor[colorIndex];
     tagElement.textContent = tag;
     tagsElement.appendChild(tagElement);
   });
-  projectElement.appendChild(tagsElement);
+  projectElementText.appendChild(tagsElement);
 
   // Loop through deliverables and create deliverables elements
   const deliverablesBox = document.createElement("div");
+  deliverablesBox.classList.add("deliverables-box");
   const deliverablesTitleStatic = document.createElement("p");
   deliverablesTitleStatic.classList.add("projects-titles");
   deliverablesTitleStatic.textContent = "Deliverables:";
   const deliverablesElement = document.createElement("ul");
   deliverablesElement.classList.add("deliverables", "list");
-  project[2].forEach((deliverable) => {
+  project[3].forEach((deliverable) => {
     const deliverableElement = document.createElement("li");
     deliverableElement.classList.add("deliverable", "list-item");
     const deliverableElmText = document.createElement("span");
@@ -444,16 +443,17 @@ PROJECTS.forEach((project, index) => {
 
   deliverablesBox.appendChild(deliverablesTitleStatic);
   deliverablesBox.appendChild(deliverablesElement);
-  projectElement.appendChild(deliverablesBox);
+  projectElementText.appendChild(deliverablesBox);
 
   // Loop through skills and create skills elements
   const skillsBox = document.createElement("div");
+  skillsBox.classList.add("skills-box");
   const skillsTitleStatic = document.createElement("p");
   skillsTitleStatic.classList.add("projects-titles");
-  skillsTitleStatic.textContent = "Skills:";
+  skillsTitleStatic.textContent = "Used Techs:";
   const skillsElement = document.createElement("ul");
   skillsElement.classList.add("skills");
-  project[3].forEach((skill) => {
+  project[4].forEach((skill) => {
     const skillElement = document.createElement("li");
     const skillElmSpan = document.createElement("span");
     const skillElmIcon = document.createElement("ion-icon");
@@ -466,17 +466,16 @@ PROJECTS.forEach((project, index) => {
   });
   skillsBox.appendChild(skillsTitleStatic);
   skillsBox.appendChild(skillsElement);
-  projectElement.appendChild(skillsBox);
+  projectElementText.appendChild(skillsBox);
 
   // Create links elements
-  //  <ion-icon name="logo-github" class="code-icon md hydrated" role="img">…</ion-icon>
   const linksElement = document.createElement("div");
   linksElement.classList.add("links");
   const elementBtnSite = document.createElement("button");
   elementBtnSite.classList.add("btn", "project-btn-box", "cursor");
   const siteLinkElement = document.createElement("a");
   siteLinkElement.classList.add("link", "demo-link");
-  siteLinkElement.href = project[4].site;
+  siteLinkElement.href = project[5].site;
   siteLinkElement.textContent = "Visit Site";
   const htmlStructure = `
     <div class="digital-ball">
@@ -504,18 +503,294 @@ PROJECTS.forEach((project, index) => {
   githubElmIcon.setAttribute("name", "logo-github");
   const githubLinkElement = document.createElement("a");
   githubLinkElement.classList.add("link", "code-link");
-  githubLinkElement.href = project[4].github;
+  githubLinkElement.href = project[5].github;
   githubLinkElement.textContent = "Show Code";
 
   elementBtnGit.appendChild(githubLinkElement);
   elementBtnGit.appendChild(githubElmIcon);
   linksElement.appendChild(elementBtnGit);
 
-  projectElement.appendChild(linksElement);
+  projectElementText.appendChild(linksElement);
 
-  // Append the project element to the project item list
-  projectItemList.appendChild(projectElement);
+  // Append the project text element to the project box element
+  projectElementBox.appendChild(projectElementText);
+
+  // Append the project slide element to the project box element
+  projectElementBox.appendChild(projectElementSlider);
+
+  // Append the project header element to the project item list
+  projectItemList.appendChild(projectElemenHeader);
+  // Append the project box element to the project item list
+  projectItemList.appendChild(projectElementBox);
 
   // Append the project element to the container
   projectContainer.appendChild(projectItemList);
+});
+
+// The slider active
+// Access the Images
+
+// let slideImages = document.querySelectorAll("img");
+let slideImagesOne = document.querySelectorAll(".imageSlider1");
+let slideImagesTwo = document.querySelectorAll(".imageSlider2");
+let slideImagesThree = document.querySelectorAll(".imageSlider3");
+let slideImagesFour = document.querySelectorAll(".imageSlider4");
+console.log(slideImagesOne, slideImagesTwo, slideImagesThree, slideImagesFour);
+let deleteInterval; // Corrected the variable name
+let counter = 0;
+
+// Access the next and prev buttons
+let next1 = document.querySelector(".next1");
+let next2 = document.querySelector(".next2");
+let next3 = document.querySelector(".next3");
+let next4 = document.querySelector(".next4");
+// prev btns
+let prev1 = document.querySelector(".prev1");
+let prev2 = document.querySelector(".prev2");
+let prev3 = document.querySelector(".prev3");
+let prev4 = document.querySelector(".prev4");
+// Access the indicators
+// let dots = document.querySelectorAll(".dot");
+
+next1.addEventListener("click", slideNext1);
+next2.addEventListener("click", slideNext2);
+next3.addEventListener("click", slideNext3);
+next4.addEventListener("click", slideNext4);
+
+function slideNext1() {
+  slideImagesOne[counter].style.animation = "nextA 0.5s ease-in forwards";
+  if (counter >= slideImagesOne.length - 1) {
+    counter = 0;
+  } else {
+    counter++;
+  }
+  slideImagesOne[counter].style.animation = "prevA 0.5s ease-in forwards";
+  //   indicators();
+}
+
+function slideNext2() {
+  slideImagesTwo[counter].style.animation = "nextA 0.5s ease-in forwards";
+  if (counter >= slideImagesTwo.length - 1) {
+    counter = 0;
+  } else {
+    counter++;
+  }
+  slideImagesTwo[counter].style.animation = "prevA 0.5s ease-in forwards";
+  //   indicators();
+}
+
+function slideNext3() {
+  slideImagesThree[counter].style.animation = "nextA 0.5s ease-in forwards";
+  if (counter >= slideImagesThree.length - 1) {
+    counter = 0;
+  } else {
+    counter++;
+  }
+  slideImagesThree[counter].style.animation = "prevA 0.5s ease-in forwards";
+  //   indicators();
+}
+
+function slideNext4() {
+  slideImagesFour[counter].style.animation = "nextA 0.5s ease-in forwards";
+  if (counter >= slideImagesFour.length - 1) {
+    counter = 0;
+  } else {
+    counter++;
+  }
+  slideImagesFour[counter].style.animation = "prevA 0.5s ease-in forwards";
+  //   indicators();
+}
+
+// Code for prev button
+prev1.addEventListener("click", slidePrev1);
+prev2.addEventListener("click", slidePrev2);
+prev3.addEventListener("click", slidePrev3);
+prev4.addEventListener("click", slidePrev4);
+
+function slidePrev1() {
+  slideImagesOne[counter].style.animation = "nextB 0.5s ease-in forwards";
+  if (counter == 0) {
+    counter = slideImagesOne.length - 1;
+  } else {
+    counter--;
+  }
+  slideImagesOne[counter].style.animation = "prevB 0.5s ease-in forwards";
+  //   indicators();
+}
+
+function slidePrev2() {
+  slideImagesTwo[counter].style.animation = "nextB 0.5s ease-in forwards";
+  if (counter == 0) {
+    counter = slideImagesTwo.length - 1;
+  } else {
+    counter--;
+  }
+  slideImagesTwo[counter].style.animation = "prevB 0.5s ease-in forwards";
+  //   indicators();
+}
+
+function slidePrev3() {
+  slideImagesThree[counter].style.animation = "nextB 0.5s ease-in forwards";
+  if (counter == 0) {
+    counter = slideImagesThree.length - 1;
+  } else {
+    counter--;
+  }
+  slideImagesThree[counter].style.animation = "prevB 0.5s ease-in forwards";
+  //   indicators();
+}
+
+function slidePrev4() {
+  slideImagesFour[counter].style.animation = "nextB 0.5s ease-in forwards";
+  if (counter == 0) {
+    counter = slideImagesFour.length - 1;
+  } else {
+    counter--;
+  }
+  slideImagesFour[counter].style.animation = "prevB 0.5s ease-in forwards";
+  //   indicators();
+}
+
+// Auto slideing
+// function autoSliding() {
+//   deleteInterval = setInterval(timer, 3000);
+//   function timer() {
+//     slideNext();
+//     // indicators();
+//   }
+// }
+// autoSliding();
+
+// // // Stop auto sliding when mouse is over
+// const containers = document.querySelectorAll(".slider");
+
+// containers.forEach((sliderContainer) => {
+//   sliderContainer.addEventListener("mouseover", function () {
+//     clearInterval(deleteInterval);
+//   });
+
+//   sliderContainer.addEventListener("mouseout", autoSliding);
+// });
+
+// // Resume sliding when mouse is out
+
+const ProjectsLink = document.querySelectorAll(".work-collection-link");
+const projectsWarp = document.querySelectorAll(".project-warrper");
+
+ProjectsLink.forEach((projectItem, projectIndex) => {
+  projectItem.addEventListener("click", () => {
+    // Remove the "opened" class from all projects
+    projectsWarp.forEach((project, index) => {
+      project.classList.remove("opened");
+
+      // Add the "opened" class for the clicked project
+      if (projectIndex === index) {
+        project.classList.add("opened");
+      }
+    });
+  });
+});
+
+// ***************************
+// Custom cursor
+let mouseCursor = document.querySelector(".custom-cursor");
+window.addEventListener("mousemove", customCursor);
+
+function customCursor(e) {
+  const posX = e.pageX;
+  const posY = e.pageY;
+
+  mouseCursor.animate(
+    {
+      left: `${posX}px`,
+      top: `${posY}px`,
+    },
+    {
+      duration: 1200,
+      fill: "forwards",
+    }
+  );
+}
+
+// slider project
+let sliderCounter = 1;
+
+// setInterval(() => {
+//   document.getElementById("radio" + sliderCounter).checked = true;
+//   sliderCounter++;
+
+//   if (sliderCounter > 3) sliderCounter = 1;
+// }, 5000);
+
+// ! move the icons using javascript
+
+const footerMobileSocial = document.querySelector(".mob-social-container");
+let isMobile = false;
+
+function showFooterIcons() {
+  const clientWidth =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+  isMobile = clientWidth <= 776;
+
+  const footerSocial = `<div class="footer-socials-box">
+<a href="https://www.linkedin.com/in/hossam-ayman-">
+  <ion-icon name="logo-linkedin" class="aside-socail-icon cursor md hydrated" role="img"></ion-icon>
+</a>
+<a href="mailto:hossamayman2399@gmail.com">
+  <ion-icon name="mail-outline" class="aside-socail-icon cursor md hydrated" role="img"></ion-icon>
+</a>
+<a href="https://wa.me/1015882767">
+  <ion-icon name="logo-whatsapp" class="aside-socail-icon cursor md hydrated" role="img"></ion-icon>
+</a>
+</div>`;
+
+  if (isMobile) {
+    footerMobileSocial.innerHTML = footerSocial;
+    isMobile = false;
+  } else {
+    footerMobileSocial.innerHTML = "";
+  }
+}
+
+// Call the function on page load and on window resize
+window.addEventListener("load", showFooterIcons);
+window.addEventListener("resize", showFooterIcons);
+
+// if(screen size is 40em)
+//   show the html tag for it
+//   and  switch isMobile to true
+// else
+//   show an empty html and append it to the
+//   and  switch isMobile to false
+
+const cursorLink = document.querySelectorAll(".cursor");
+cursorLink.forEach((link) => {
+  link.addEventListener("mouseleave", () => {
+    mouseCursor.classList.remove("cursorShrink");
+  });
+  link.addEventListener("mouseover", () => {
+    mouseCursor.classList.add("cursorShrink");
+  });
+});
+
+// Reveling contetn-section
+const allSectionsContent = document.querySelectorAll(".content-section");
+const revelContent = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove("content-hidden");
+  // unobseriing
+  observer.unobserve(entry.target);
+};
+const sectionObserver = new IntersectionObserver(revelContent, {
+  root: null,
+  threshold: 0.15,
+});
+// observe the two sections
+allSectionsContent.forEach((section) => {
+  sectionObserver.observe(section);
+  section.classList.add("content-hidden");
 });
