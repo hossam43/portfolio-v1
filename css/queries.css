@@ -34,9 +34,6 @@ Insted 1rem = 1em = 16px
   #wrapper {
     margin-left: 60px;
   }
-  .home-header {
-    margin-top: -2rem;
-  }
   .about-image-box {
     align-self: start;
   }
@@ -167,9 +164,6 @@ Insted 1rem = 1em = 16px
   .grid--2--cols {
     grid-template-columns: 1fr;
   }
-  .home-header {
-    margin-top: 0;
-  }
 
   .hero-text-box,
   .hero-img-box {
@@ -187,12 +181,12 @@ Insted 1rem = 1em = 16px
   .btn--form {
     margin-top: 1.2rem;
   }
-
+  /* 
   .about-image-box {
     width: 100%;
-  }
+  } */
   .about-image {
-    width: 40%;
+    width: 30%;
   }
 
   .skyline-box::after {
@@ -289,6 +283,10 @@ Insted 1rem = 1em = 16px
   }
   #wrapper {
     margin-left: 0px !important;
+  }
+
+  .home-header {
+    padding-top: 30rem;
   }
 
   /* Mobil navigation */
@@ -443,9 +441,6 @@ Insted 1rem = 1em = 16px
   .hero {
     padding: 0 3.2rem;
   }
-  .hero-section {
-    padding: 2.4rem 0 6.4rem 0;
-  }
 
   .hero-img {
     width: 80%;
@@ -461,13 +456,13 @@ Insted 1rem = 1em = 16px
     padding: 0 1.4rem;
   }
 
-  .about-image-box {
+  /* .about-image-box {
     width: 100%;
-  }
+  } */
 
-  .about-image {
+  /* .about-image {
     width: 70%;
-  }
+  } */
 
   .slider {
     max-width: 397px;
@@ -517,5 +512,12 @@ Insted 1rem = 1em = 16px
 
   .home-header-btn {
     justify-content: center;
+  }
+
+  .home-header {
+    padding: 8rem 0;
+  }
+  .home-header {
+    padding-top: 20rem;
   }
 }
