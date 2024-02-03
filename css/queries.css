@@ -271,6 +271,10 @@ Insted 1rem = 1em = 16px
   .preloader-counter {
     font-size: 8rem;
   }
+  .container {
+    padding: 0 1.2rem;
+  }
+
   .nav-btn {
     display: none;
     visibility: hidden;
@@ -417,10 +421,10 @@ Insted 1rem = 1em = 16px
 }
 
 /* ************ */
-/* BELOW 550pxpx phone */
+/* BELOW 500pxpx phone */
 /* ************ */
 
-@media (max-width: 34em) {
+@media (max-width: 31.25em) {
   .grid {
     row-gap: 4.8rem;
   }
@@ -459,14 +463,6 @@ Insted 1rem = 1em = 16px
     padding: 0 1.4rem;
   }
 
-  /* .about-image-box {
-    width: 100%;
-  } */
-
-  /* .about-image {
-    width: 70%;
-  } */
-
   .slider {
     max-width: 397px;
     min-height: 285px;
@@ -492,10 +488,10 @@ Insted 1rem = 1em = 16px
 /* ************ */
 
 @media (max-width: 23.5em) {
-  .slider {
+  /* .slider {
     max-width: 310px;
     min-height: 237px;
-  }
+  } */
 
   .home-header-heading::before {
     top: -15%;

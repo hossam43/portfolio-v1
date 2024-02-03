@@ -209,9 +209,7 @@ const PROJECTS = [
   // Project 3
   [
     [
-      1 == "1"
-        ? "/assets/images/website-ui-5.webp"
-        : "/assets/images/DLTM-img.png",
+      "/assets/images/test.jpg",
       "/assets/images/website-mock-5.webp",
       "/assets/images/w-color5.webp",
     ],
