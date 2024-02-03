@@ -116,7 +116,7 @@ Insted 1rem = 1em = 16px
   }
 
   .opened {
-    height: 106rem;
+    height: 115rem;
   }
   .slider {
     order: 1;
@@ -198,7 +198,7 @@ Insted 1rem = 1em = 16px
   }
 
   .opened {
-    height: 140rem;
+    height: 124rem;
   }
 
   .project-text-content {
@@ -356,7 +356,7 @@ Insted 1rem = 1em = 16px
     font-size: 2.8vw;
   }
   .home-header_subheading-5 {
-    font-size: 1.8vw;
+    font-size: 2.4vw;
   }
 
   .airplan {
@@ -459,14 +459,19 @@ Insted 1rem = 1em = 16px
   .skill-list-item {
     font-size: 1.4rem;
   }
-  .container {
-    padding: 0 1.4rem;
-  }
 
   .slider {
-    max-width: 397px;
-    min-height: 285px;
+    max-width: 350px;
+    height: 350px;
     justify-self: center;
+  }
+
+  .work-collection-link {
+    padding-inline: 2rem;
+  }
+
+  .project-text-content {
+    padding: 1.4rem;
   }
 
   .links {
@@ -487,11 +492,18 @@ Insted 1rem = 1em = 16px
 /* BELOW 375px phone */
 /* ************ */
 
-@media (max-width: 23.5em) {
-  /* .slider {
-    max-width: 310px;
-    min-height: 237px;
-  } */
+@media (max-width: 23em) {
+  .slider {
+    max-width: 300px;
+    height: 300px;
+  }
+  .container {
+    padding: 0 0.8rem;
+  }
+
+  .project-text-content {
+    padding: 0;
+  }
 
   .home-header-heading::before {
     top: -15%;

@@ -160,14 +160,20 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+const isMobileIMG = window.innerWidth <= 500;
+
 const PROJECTS = [
   // Project 1
   [
     [
+      `/assets/images/${
+        isMobileIMG ? "website-mobile-ui-1.webp" : "website-ui-1.webp"
+      }`,
       "/assets/images/website-mock-1.webp",
-      "/assets/images/websit-ui-5.jpg",
-      "/assets/images/w-color1.webp",
+
+      `/assets/images/${isMobileIMG ? "w-m-color1.webp" : "w-color1.webp"}`,
     ],
+
     ["ASL-Academy"],
     ["Mobile App", "React Native", "iOS", "Android"],
     [
@@ -188,10 +194,14 @@ const PROJECTS = [
   // Project 2
   [
     [
-      "/assets/images/website-ui-2.webp",
+      `/assets/images/${
+        isMobileIMG ? "website-mobile-ui-2.webp" : "website-ui-2.webp"
+      }`,
       "/assets/images/website-mock-2.webp",
-      "/assets/images/w-color2.webp",
+
+      `/assets/images/${isMobileIMG ? "w-m-color2.webp" : "w-color2.webp"}`,
     ],
+
     ["Crybtobrecison"],
     ["HTML/Css", "Adobe Photoshop", "Figma", "UI/UX"],
     [
@@ -209,9 +219,11 @@ const PROJECTS = [
   // Project 3
   [
     [
-      "/assets/images/test.jpg",
+      `/assets/images/${
+        isMobileIMG ? "website-mobile-ui-5.webp" : "website-ui-5.webp"
+      }`,
       "/assets/images/website-mock-5.webp",
-      "/assets/images/w-color5.webp",
+      `/assets/images/${isMobileIMG ? "w-m-color5.webp" : "w-color5.webp"}`,
     ],
     ["Omnifood"],
     ["Html/Css", "Responsiveness", "SEO", "Image Optimization"],
@@ -232,10 +244,13 @@ const PROJECTS = [
   // Project 4
   [
     [
-      "/assets/images/website-ui-4.webp",
+      `/assets/images/${
+        isMobileIMG ? "website-mobile-ui-4.webp" : "website-ui-4.webp"
+      }`,
       "/assets/images/website-mock-4.webp",
-      "/assets/images/w-color4.webp",
+      `/assets/images/${isMobileIMG ? "w-m-color4.webp" : "w-color4.webp"}`,
     ],
+
     ["Red Builder"],
     ["Html/Css", "Javascript", "Responsiveness", "Image Optimization"],
     [
