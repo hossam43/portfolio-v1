@@ -35,90 +35,90 @@ const preloaderContent = document.querySelector(".preloader-wrapper");
 let counterPre = 0;
 const counterElement = document.getElementById("preloader-counter");
 // // !
-// document.addEventListener("DOMContentLoaded", function () {
-//   // Simulate loading with a setTimeout
-//   // Hide the preloader and show the main content
+document.addEventListener("DOMContentLoaded", function () {
+  // Simulate loading with a setTimeout
+  // Hide the preloader and show the main content
 
-//   // STAGE ONE
-//   // Show the preloader initially without the text content
-//   preloader.style.display = "block";
+  // STAGE ONE
+  // Show the preloader initially without the text content
+  preloader.style.display = "block";
 
-//   // STAGE TWO
-//   // Fade in the Preloader text content
-//   setTimeout(function () {
-//     preloaderContent.style.opacity = 1;
-//   }, 500); // Adjust the time as needed
+  // STAGE TWO
+  // Fade in the Preloader text content
+  setTimeout(function () {
+    preloaderContent.style.opacity = 1;
+  }, 500); // Adjust the time as needed
 
-//   // STAGE THREE
-//   //! start the counter animation
-//   setTimeout(function () {
-//     // Simulate progress updates
-//     const progressInterval = setInterval(function () {
-//       if (counterPre < 1999) {
-//         updateCounter();
-//         counterPre++;
-//       } else {
-//         clearInterval(progressInterval);
-//       }
-//     }, 30); // Adjust the interval as needed
-//     function updateCounter() {
-//       // Check if the counter has reached the final value
-//       if (counterPre < 1999) {
-//         // Use a cubic easing function for a smooth start and slow finish
-//         const easedValue = customEasing(counterPre / 1999);
-//         const displayValue = Math.ceil(easedValue * 1999);
-//         counterElement.innerText = `23 / 09 / ${displayValue}`;
-//         console.log("display", displayValue);
-//         // Check if the displayValue has reached 1999
-//         if (displayValue >= 1999) {
-//           // STAGE FOUR
-//           // add bluer effect to the Preloader text content
-//           setTimeout(function () {
-//             ["preloader-counter", "preloader_bottom", "preloader_top"].forEach(
-//               (value) => {
-//                 document.querySelector(`.${value}`).style.filter =
-//                   "blur(60rem)";
-//               }
-//             );
-//           }, 500);
-//           // STAGE FIVE
-//           // remove the preloader
-//           setTimeout(function () {
-//             preloader.style.transform = "translateY(-100%)";
-//             // preloader.style.display = "none";
+  // STAGE THREE
+  //! start the counter animation
+  setTimeout(function () {
+    // Simulate progress updates
+    const progressInterval = setInterval(function () {
+      if (counterPre < 1999) {
+        updateCounter();
+        counterPre++;
+      } else {
+        clearInterval(progressInterval);
+      }
+    }, 30); // Adjust the interval as needed
+    function updateCounter() {
+      // Check if the counter has reached the final value
+      if (counterPre < 1999) {
+        // Use a cubic easing function for a smooth start and slow finish
+        const easedValue = customEasing(counterPre / 1999);
+        const displayValue = Math.ceil(easedValue * 1999);
+        counterElement.innerText = `23 / 09 / ${displayValue}`;
+        console.log("display", displayValue);
+        // Check if the displayValue has reached 1999
+        if (displayValue >= 1999) {
+          // STAGE FOUR
+          // add bluer effect to the Preloader text content
+          setTimeout(function () {
+            ["preloader-counter", "preloader_bottom", "preloader_top"].forEach(
+              (value) => {
+                document.querySelector(`.${value}`).style.filter =
+                  "blur(60rem)";
+              }
+            );
+          }, 500);
+          // STAGE FIVE
+          // remove the preloader
+          setTimeout(function () {
+            preloader.style.transform = "translateY(-100%)";
+            // preloader.style.display = "none";
 
-//             console.log("end");
-//           }, 2000);
+            console.log("end");
+          }, 2000);
 
-//           clearInterval(progressInterval); // Stop the interval
-//         }
-//       }
-//     }
-//     // Custom easing function for initial fast start and gradual slowdown
-//     function customEasing(t) {
-//       console.log(t);
-//       console.log(counterPre);
-//       // Stop evaluating when t reaches or exceeds 1
-//       if (t >= 0.1) {
-//         return 1;
-//       }
-//       return 1 - Math.pow(1 - t, 300);
-//     }
+          clearInterval(progressInterval); // Stop the interval
+        }
+      }
+    }
+    // Custom easing function for initial fast start and gradual slowdown
+    function customEasing(t) {
+      console.log(t);
+      console.log(counterPre);
+      // Stop evaluating when t reaches or exceeds 1
+      if (t >= 0.1) {
+        return 1;
+      }
+      return 1 - Math.pow(1 - t, 300);
+    }
 
-//     // preloader.style.display = "none";
+    // preloader.style.display = "none";
 
-//     // show aside, page
-//     // preloader.style.display = "none";
-//   }, 1500); // Adjust the time as needed
+    // show aside, page
+    // preloader.style.display = "none";
+  }, 1500); // Adjust the time as needed
 
-//   setTimeout(() => {
-//     // STAGE Six
-//     // display the page content
-//     opacityOne(aside, page);
-//   }, 2400);
+  setTimeout(() => {
+    // STAGE Six
+    // display the page content
+    opacityOne(aside, page);
+  }, 2400);
 
-//   // Update the counter during the loading process
-// });
+  // Update the counter during the loading process
+});
 opacityOne(aside, page);
 // !
 
@@ -162,10 +162,21 @@ menuButtonMob.addEventListener("click", () => {
     navHeader.style.transform = "translateX(0)";
   }
 });
+
+// Smooth scrolling
+
+const parentClass = document.querySelector(".nav-menu");
+parentClass.addEventListener("click", (e) => {
+  e.preventDefault();
+  const id = e.target.getAttribute("href");
+  // Matching
+  if (!e.target.classList.contains("nav-link")) return;
+  document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  rootElement.classList.remove("is-open");
+  navHeader.style.transform = "translateX(-100%)";
+});
+
 // OnScroll effect
-
-//  using the scrollTrigger, the start and end values control when the animation begins and ends in relation to the scroll position, but they don't directly affect the timing of the animation.
-
 // The airplan animation
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -200,9 +211,9 @@ const PROJECTS = [
 
   [
     [
-      "/assets/images/websit-ui-4.png.jpg",
+      "/assets/images/website-mock-1.webp",
       "/assets/images/websit-ui-5.jpg",
-      "/assets/images/color-asl-d.jpg",
+      "/assets/images/w-color1.webp",
     ],
     ["ASL-Academy"],
     ["Mobile App", "React Native", "iOS", "Android"],
@@ -223,9 +234,9 @@ const PROJECTS = [
   ],
   [
     [
-      "/assets/images/websit-ui2.jpg",
-      "/assets/images/websit-ui-2.png",
-      "/assets/images/crybto-larg.jpg",
+      "/assets/images/website-ui-2.webp",
+      "/assets/images/website-mock-2.webp",
+      "/assets/images/w-color2.webp",
     ],
     ["Crybtobrecison"],
     ["HTML/Css", "Adobe Photoshop", "Figma", "UI/UX"],
@@ -244,9 +255,11 @@ const PROJECTS = [
 
   [
     [
-      1 == "1" ? "/assets/images/websit-ui.jpg" : "/assets/images/DLTM-img.png",
-      "/assets/images/DLTM-img.png",
-      "/assets/images/omni-colors.jpg",
+      1 == "1"
+        ? "/assets/images/website-ui-5.webp"
+        : "/assets/images/DLTM-img.png",
+      "/assets/images/website-mock-5.webp",
+      "/assets/images/w-color5.webp",
     ],
     ["Omnifood"],
     ["Html/Css", "Responsiveness", "SEO", "Image Optimization"],
@@ -274,9 +287,9 @@ const PROJECTS = [
 
   [
     [
-      "/assets/images/websit-ui-4.jpg",
-      "/assets/images/websit-ui-3.png.jpg",
-      "/assets/images/color-d-red.jpg",
+      "/assets/images/website-ui-4.webp",
+      "/assets/images/website-mock-4.webp",
+      "/assets/images/w-color4.webp",
     ],
     ["Red Builder"],
     ["Html/Css", "Javascript", "Responsiveness", "Image Optimization"],
@@ -294,9 +307,9 @@ const PROJECTS = [
 
   [
     [
-      "/assets/images/final-ui-image.png",
-      "/assets/images/om-mobile.jpg",
-      "/assets/images/3h.jpg",
+      "/assets/images/website-ui-6.webp",
+      "/assets/images/website-ui-6.webp",
+      "/assets/images/website-ui-6.webp",
     ],
     ["FitFlex Gym"],
     ["Web Development", "HTML/Css", "JavaScript", "UI/UX", "Responsive Design"],
@@ -312,11 +325,11 @@ const PROJECTS = [
 
   [
     [
-      "/assets/images/med.jpg",
-      "/assets/images/final-ui-image.png",
-      "/assets/images/om-mobile.jpg",
+      "/assets/images/website-mock-3.webp",
+      "/assets/images/website-mock-3.webp",
+      "/assets/images/website-mock-3.webp",
     ],
-    ["Med Gym"],
+    ["MedSolutions"],
     ["Web Development", "HTML/Css", "JavaScript", "UI/UX", "Responsive Design"],
     [
       "Implemented responsive UI",
@@ -349,6 +362,7 @@ PROJECTS.forEach((project, projectIndex) => {
   // Create a project element (Warrpe Slides and Text content Projects) for each project
   const openState = projectIndex === 0 ? "opened" : "closed";
   const projectElementBox = document.createElement("div");
+
   projectElementBox.classList.add(
     "grid",
     "grid--2--cols",
@@ -404,6 +418,11 @@ PROJECTS.forEach((project, projectIndex) => {
     titleElementHeader.classList.add("works-list-title");
     titleElementHeader.textContent = title;
     projectElemenHeader.appendChild(titleElementHeader);
+
+    const ionIconElement = document.createElement("ion-icon");
+    ionIconElement.setAttribute("name", "chevron-down-sharp");
+
+    projectElemenHeader.appendChild(ionIconElement);
   });
   projectElementText.appendChild(titlesElement); //! it is just one title (s) to keep it consistent
 
@@ -794,3 +813,51 @@ allSectionsContent.forEach((section) => {
   sectionObserver.observe(section);
   section.classList.add("content-hidden");
 });
+
+// TypeWriter
+const words = ["Javascript", "React.js", "Three.js", "GIS."];
+
+// main timeline
+let mainTimeLine = gsap.timeline({
+  repeat: -1,
+});
+// For each word create a new timeline use the Text plugin, then append that to the thimeline to the main one
+
+words.forEach((word) => {
+  let textTimeline = gsap.timeline({
+    repeat: 1,
+    yoyo: true,
+    repeatDelay: 4,
+  });
+
+  textTimeline.to("#typewriter", {
+    text: word,
+    duration: 1,
+    onUpdate: () => {
+      cursorTimeline.restart();
+      cursorTimeline.pause();
+    },
+    onComplete: () => {
+      cursorTimeline.play();
+    },
+  });
+  mainTimeLine.add(textTimeline);
+});
+
+// Blinking Cursor
+
+let cursorTimeline = gsap.timeline({
+  repeat: -1,
+  repeatDelay: 0.8,
+});
+
+cursorTimeline
+  .to("#typewriter-cursor", {
+    opacity: 1,
+    duration: 0,
+  })
+  .to("#typewriter-cursor", {
+    opacity: 0,
+    duration: 0,
+    delay: 0.8,
+  });
