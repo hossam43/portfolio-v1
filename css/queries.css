@@ -303,8 +303,7 @@ Insted 1rem = 1em = 16px
     justify-content: space-between;
     padding: 0 3.2rem;
     background-color: var(--secondaryColorBLight);
-    /* box-shadow: 0 1.2rem 3.2rem rgb(0, 0, 0, 0.06); */
-    z-index: 999;
+    z-index: 99;
   }
 
   .mobile-nav-header .logo-box-mobile {
@@ -508,7 +507,7 @@ Insted 1rem = 1em = 16px
     font-size: 10.5vw;
   }
   .bold-text-6 {
-    font-size: 4.1vw;
+    font-size: 3vw;
   }
   .home-header_subheading-5 {
     font-size: 3.2vw;

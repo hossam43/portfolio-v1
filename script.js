@@ -7,26 +7,6 @@ const opacityOne = (...targetElements) => {
   // targetElement.style.opacity = 1;
 };
 
-// scroller
-const scrollers = document.querySelectorAll(".scroller");
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  addAnimation();
-}
-
-function addAnimation() {
-  scrollers.forEach((scroller) => {
-    scroller.setAttribute("data-animated", true);
-    const scrollerInner = scroller.querySelector(".scroller__inner");
-    const scrollerContent = Array.from(scrollerInner.children);
-    scrollerContent.forEach((item) => {
-      const duplicatedItem = item.cloneNode(true);
-      // screen reader
-      duplicatedItem.setAttribute("aria-hidden", true);
-      scrollerInner.appendChild(duplicatedItem);
-    });
-  });
-}
-
 // Preloader
 const page = document.getElementById("page-contet");
 const preloader = document.getElementById("preloader");
@@ -122,16 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 opacityOne(aside, page);
 // !
 
-// const project2 = document.getElementById("project2");
-
-// project2.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   document.getElementById("projectHover2").classList.toggle("project-reveal");
-// });
-
-// project2.addEventListener("mouseleave", () =>
-//   document.getElementById("projectHover2").classList.add("project-reveal")
-// );
+// Desktop and Mobile navigation
 
 // work with navigation
 const asideIcon = document.querySelector(".aside-icon");
@@ -163,8 +134,9 @@ menuButtonMob.addEventListener("click", () => {
   }
 });
 
+// *****************
 // Smooth scrolling
-
+// *****************
 const parentClass = document.querySelector(".nav-menu");
 parentClass.addEventListener("click", (e) => {
   e.preventDefault();
@@ -178,7 +150,6 @@ parentClass.addEventListener("click", (e) => {
 
 // OnScroll effect
 // The airplan animation
-
 document.addEventListener("DOMContentLoaded", function () {
   const airplan = document.querySelector(".airplan");
 
@@ -189,26 +160,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// The airplan about section
-
-// tl3
-//   .fromTo(
-//     "#complete-airplan",
-//     { x: -460 },
-//     { x: 180, duration: 0.5, ease: "power3.out" }
-//   )
-//   .fromTo(
-//     ".wheels",
-//     { opacity: 0, y: -5 },
-//     { opacity: 0.5, y: 0, duration: 0.5, ease: "power3.out" },
-//     "<"
-//   );
-
-// Create the project dynamically
-
 const PROJECTS = [
   // Project 1
-
   [
     [
       "/assets/images/website-mock-1.webp",
@@ -232,6 +185,7 @@ const PROJECTS = [
       github: "https://github.com/hossam43/Asl-academy.git",
     },
   ],
+  // Project 2
   [
     [
       "/assets/images/website-ui-2.webp",
@@ -252,7 +206,7 @@ const PROJECTS = [
       github: "https://github.com/example3",
     },
   ],
-
+  // Project 3
   [
     [
       1 == "1"
@@ -277,14 +231,7 @@ const PROJECTS = [
     },
   ],
 
-  // Project 2
-
-  // Project 3
-
   // Project 4
-
-  // Project 5
-
   [
     [
       "/assets/images/website-ui-4.webp",
@@ -303,8 +250,8 @@ const PROJECTS = [
 
     { site: "https://example4.com", github: "https://github.com/example4" },
   ],
-  // Project 6
 
+  // Project 5
   [
     [
       "/assets/images/website-ui-6.webp",
@@ -323,6 +270,7 @@ const PROJECTS = [
     { site: "https://example1.com", github: "https://github.com/example1" },
   ],
 
+  // Project 6
   [
     [
       "/assets/images/website-mock-3.webp",
@@ -710,27 +658,6 @@ ProjectsLink.forEach((projectItem, projectIndex) => {
   });
 });
 
-// ***************************
-// Custom cursor
-let mouseCursor = document.querySelector(".custom-cursor");
-window.addEventListener("mousemove", customCursor);
-
-function customCursor(e) {
-  const posX = e.pageX;
-  const posY = e.pageY;
-
-  mouseCursor.animate(
-    {
-      left: `${posX}px`,
-      top: `${posY}px`,
-    },
-    {
-      duration: 1200,
-      fill: "forwards",
-    }
-  );
-}
-
 // slider project
 let sliderCounter = 1;
 
@@ -767,6 +694,7 @@ function showFooterIcons() {
 
   if (isMobile) {
     footerMobileSocial.innerHTML = footerSocial;
+
     isMobile = false;
   } else {
     footerMobileSocial.innerHTML = "";
@@ -776,7 +704,6 @@ function showFooterIcons() {
 // Call the function on page load and on window resize
 window.addEventListener("load", showFooterIcons);
 window.addEventListener("resize", showFooterIcons);
-
 // if(screen size is 40em)
 //   show the html tag for it
 //   and  switch isMobile to true
@@ -784,6 +711,28 @@ window.addEventListener("resize", showFooterIcons);
 //   show an empty html and append it to the
 //   and  switch isMobile to false
 
+// ***************************
+// Mouse following using the Web Animations API
+// ***************************
+let mouseCursor = document.querySelector(".custom-cursor");
+window.addEventListener("mousemove", customCursor);
+function customCursor(e) {
+  const posX = e.pageX;
+  const posY = e.pageY;
+
+  mouseCursor.animate(
+    {
+      left: `${posX}px`,
+      top: `${posY}px`,
+    },
+    {
+      duration: 1200,
+      fill: "forwards",
+    }
+  );
+}
+
+// shrink the cursor on links
 const cursorLink = document.querySelectorAll(".cursor");
 cursorLink.forEach((link) => {
   link.addEventListener("mouseleave", () => {
@@ -794,7 +743,9 @@ cursorLink.forEach((link) => {
   });
 });
 
+// **********************
 // Reveling contetn-section
+// **********************
 const allSectionsContent = document.querySelectorAll(".content-section");
 const revelContent = function (entries, observer) {
   const [entry] = entries;
@@ -814,7 +765,33 @@ allSectionsContent.forEach((section) => {
   section.classList.add("content-hidden");
 });
 
-// TypeWriter
+// ********************
+// Marquee effect scroller
+// ********************
+
+const scrollers = document.querySelectorAll(".scroller");
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  addAnimation();
+}
+
+function addAnimation() {
+  scrollers.forEach((scroller) => {
+    scroller.setAttribute("data-animated", true);
+    const scrollerInner = scroller.querySelector(".scroller__inner");
+    const scrollerContent = Array.from(scrollerInner.children);
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      // screen reader
+      duplicatedItem.setAttribute("aria-hidden", true);
+      scrollerInner.appendChild(duplicatedItem);
+    });
+  });
+}
+
+// *****************//
+// TypeWriter Effect
+// *****************//
+
 const words = ["Javascript", "React.js", "Three.js", "GIS."];
 
 // main timeline
@@ -845,7 +822,6 @@ words.forEach((word) => {
 });
 
 // Blinking Cursor
-
 let cursorTimeline = gsap.timeline({
   repeat: -1,
   repeatDelay: 0.8,
