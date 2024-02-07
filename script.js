@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // preloader.style.display = "none";
 
             console.log("end");
-          }, 2000);
+          }, 1300);
 
           clearInterval(progressInterval); // Stop the interval
         }
@@ -707,7 +707,7 @@ function showFooterIcons() {
 
   if (isMobile) {
     footerMobileSocial.innerHTML = footerSocial;
-
+    mouseCursor.classList.remove("custom-cursor");
     isMobile = false;
   } else {
     footerMobileSocial.innerHTML = "";
@@ -717,12 +717,6 @@ function showFooterIcons() {
 // Call the function on page load and on window resize
 window.addEventListener("load", showFooterIcons);
 window.addEventListener("resize", showFooterIcons);
-// if(screen size is 40em)
-//   show the html tag for it
-//   and  switch isMobile to true
-// else
-//   show an empty html and append it to the
-//   and  switch isMobile to false
 
 // ***************************
 // Mouse following using the Web Animations API
@@ -781,7 +775,6 @@ allSectionsContent.forEach((section) => {
 // ********************
 // Marquee effect scroller
 // ********************
-
 const scrollers = document.querySelectorAll(".scroller");
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   addAnimation();
@@ -801,10 +794,9 @@ function addAnimation() {
   });
 }
 
-// *****************//
+// *****************
 // TypeWriter Effect
-// *****************//
-
+// *****************
 const words = ["Javascript", "React.js", "Three.js", "GIS."];
 
 // main timeline
@@ -850,3 +842,33 @@ cursorTimeline
     duration: 0,
     delay: 0.8,
   });
+
+// The FadeOn Hover effect
+const listOfWorks = document.querySelector(".works-collection-list");
+
+const handleProjectHover = function (e, opacity) {
+  const targetLink = e.target.closest(".work-collection-link");
+  if (targetLink) {
+    const link = targetLink;
+    const siblings = link
+      .closest(".works-collection-list")
+      .querySelectorAll(".work-collection-link");
+
+    siblings.forEach((el) => {
+      if (el !== link) el.style.opacity = opacity;
+    });
+  }
+};
+
+// passing argument and e
+listOfWorks.addEventListener("mouseover", (e) => {
+  handleProjectHover(e, 0.5);
+});
+
+listOfWorks.addEventListener(
+  "mouseout",
+
+  (e) => {
+    handleProjectHover(e, 1);
+  }
+);

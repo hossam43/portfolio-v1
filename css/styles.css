@@ -502,8 +502,7 @@
   transition-duration: var(--def-transition-duration);
 }
 .opened {
-  height: 70rem;
-  transition: height 0.5s ease-in-out;
+  height: 65rem;
 }
 ion-icon[name="chevron-down-sharp"] {
   font-size: 3.2rem;
@@ -552,6 +551,9 @@ ion-icon[name="chevron-down-sharp"] {
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
+/* .work-collection-link:hover {
+  color: red;
+} */
 
 .w-inline-block {
   max-width: 100%;
@@ -1377,6 +1379,7 @@ footer {
   position: relative;
   width: 620px;
   height: 475px;
+  margin-top: 2.4rem;
   /* border: 3px solid #ede6d6; */
   box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
 }
