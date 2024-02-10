@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fade in the Preloader text content
   setTimeout(function () {
     preloaderContent.style.opacity = 1;
-  }, 500); // Adjust the time as needed
+  }, 400); // Adjust the time as needed
 
   // STAGE THREE
   //! start the counter animation
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         clearInterval(progressInterval);
       }
-    }, 30); // Adjust the interval as needed
+    }, 40); // Adjust the interval as needed
     function updateCounter() {
       // Check if the counter has reached the final value
       if (counterPre < 1999) {
@@ -290,7 +290,7 @@ const PROJECTS = [
       "/assets/images/website-mock-3.webp",
       "/assets/images/website-mock-3.webp",
     ],
-    ["MedSolutions"],
+    ["Medicine Market"],
     ["Web Development", "HTML/Css", "JavaScript", "UI/UX", "Responsive Design"],
     [
       "Implemented responsive UI",
