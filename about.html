@@ -10,22 +10,13 @@
       href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="about.css" />
+    <link rel="stylesheet" href="./css/about.css" />
+
     <title>Meta Project</title>
   </head>
   <body>
     <header>
-      <section id="hero">
-        <div id="layers-warrapper">
-          <div id="layers-bg-1" data-speed="0.2"></div>
-          <div id="layers-bg-2" data-speed="1"></div>
-          <div id="layers-bg-3" data-speed="3"></div>
-          <div id="layers-bg-4" data-speed="4"></div>
-          <div id="layers-bg-5" data-speed="5"></div>
-          <div id="layers-bg-6" data-speed="7"></div>
-        </div>
-      </section>
-      <nav class="navbar">
+      <!-- <nav class="navbar">
         <div class="navbar__logo">
           <img src="assets/images/logo.png" alt="Logo" />
         </div>
@@ -33,15 +24,139 @@
           <button class="btn">Sign Up</button>
           <button class="btn" id="login">Login</button>
         </div>
-      </nav>
+      </nav> -->
+      <section id="hero">
+        <div id="layers-warrapper">
+          <div id="layers-bg-1" data-speed="0.2"></div>
+          <div id="layers-bg-2" data-speed="0.4"></div>
+          <div id="layers-bg-3" data-speed="1"></div>
+          <div id="layers-bg-4" data-speed="2 "></div>
+          <div id="layers-bg-5" data-speed="2.5"></div>
+          <div id="layers-bg-6" data-speed="5.5">
+            <div class="before"></div>
+            <!-- Your existing content here -->
+            <div class="after"></div>
+          </div>
+        </div>
+      </section>
     </header>
     <main>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
+      <div class="container intro">
+        <h1>Find The Way In the cold Ice</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae rerum
+          esse dicta quidem at
+        </p>
+      </div>
+      <div class="center-h container-content section-odd">
+        <div class="text-content">
+          <h2>Title 1</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            convallis libero quis elit venenatis faucibus.
+          </p>
+        </div>
+        <div class="image">
+          <img src="./assets/images/1.jpg" alt="Image 1" />
+        </div>
+      </div>
+
+      <div class="center-h container-content section-even">
+        <div class="image">
+          <img src="./assets/images/2.jpg" alt="Image 2" />
+        </div>
+        <div class="text-content">
+          <h2>Title 2</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            convallis libero quis elit venenatis faucibus.
+          </p>
+        </div>
+      </div>
+
+      <div class="center-h container-content section-odd">
+        <div class="text-content">
+          <h2>Title 3</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            convallis libero quis elit venenatis faucibus.
+          </p>
+        </div>
+        <div class="image">
+          <img src="./assets/images/3.jpg" alt="Image 3" />
+        </div>
+      </div>
+
+      <div class="center-h container-content section-even">
+        <div class="person">
+          <div class="person-container">
+            <img src="./1.jpg" class="person-circle" alt="" />
+            <img src="./1010-l.png" alt="" class="person-img" />
+          </div>
+        </div>
+        <div class="text-content">
+          <h2>Title 4</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            convallis libero quis elit venenatis faucibus.
+          </p>
+        </div>
+      </div>
     </main>
+    <!-- FOOTER SECTION -->
+    <footer id="section--4">
+      <div class="container grid--footer">
+        <div class="container contact-section">
+          <span class="sub-heading">/Contact Section</span>
+          <div class="separator-border"></div>
+        </div>
+        <div class="ready-text">Ready to Get Started?</div>
+        <div class="meeting-box">
+          <div class="meeting-link-box">
+            <div class="meeting-link-c cursor">
+              <!-- ZOOM MEETING SCAULA -->
+              <a href="" class="meeting-link"></a>
+            </div>
+          </div>
+        </div>
+        <div class="mob-social-container">
+          <!-- here when it is in small screen -->
+        </div>
+        <div class="footer-logo">
+          <span class="wave">👋</span>
+        </div>
+        <div class="footer-phone">
+          <div class="phone-flex-container">
+            <div class="phone-title-box">
+              <p class="phone-title">/PHONE</p>
+            </div>
+            <div class="phone-link-box">
+              <a href="tel:+20111321972" class="phone cursor"
+                >(+20)111 321 972</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="footer-email">
+          <div class="email-flex-container">
+            <div class="email-title-box">
+              <p class="email-title">/EMAIL</p>
+            </div>
+            <div class="email-link-box">
+              <a href="mailto:hossamayman2399@gmail.com" class="email cursor"
+                >hossamayman2399@gmail.com</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="copy-rights">
+          <div class="copy-rights-inner">
+            Copyright © 2024 – Hossam Ayman. All Rights Reserved.
+          </div>
+        </div>
+        <div class="empty-right"></div>
+      </div>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -58,7 +173,7 @@
       requestAnimationFrame(raf);
 
       const layersWarrapper = document.querySelector("#layers-warrapper");
-
+      const iceLayer = document.querySelector("#layers-bg-6");
       const layersBG = layersWarrapper.querySelectorAll(
         `div[id*="layers-bg-"]`
       );
@@ -82,6 +197,17 @@
           0
         );
       });
+
+      tl.to(
+        "#layers-bg-6 .before",
+        { bottom: "5rem", opacity: 1, duration: 2, ease: "power1.inOut" },
+        0
+      );
+      tl.to(
+        "#layers-bg-6 .after",
+        { bottom: "10rem", opacity: 1, duration: 2, ease: "power1.inOut" },
+        0
+      );
     </script>
     <script src="./app.js"></script>
   </body>
