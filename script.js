@@ -872,3 +872,10 @@ listOfWorks.addEventListener(
     handleProjectHover(e, 1);
   }
 );
+
+// about
+
+const aboutBtn = document.querySelector(".about-btn");
+aboutBtn.addEventListener("click", () => {
+  window.location.href = "about.html";
+});

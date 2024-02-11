@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="./assets/icons/f-icon.ico" type="icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="about.css" />
+    <title>Meta Project</title>
+  </head>
+  <body>
+    <header>
+      <section id="hero">
+        <div id="layers-warrapper">
+          <div id="layers-bg-1" data-speed="0.2"></div>
+          <div id="layers-bg-2" data-speed="1"></div>
+          <div id="layers-bg-3" data-speed="3"></div>
+          <div id="layers-bg-4" data-speed="4"></div>
+          <div id="layers-bg-5" data-speed="5"></div>
+          <div id="layers-bg-6" data-speed="7"></div>
+        </div>
+      </section>
+      <nav class="navbar">
+        <div class="navbar__logo">
+          <img src="assets/images/logo.png" alt="Logo" />
+        </div>
+        <div class="navbar__signup">
+          <button class="btn">Sign Up</button>
+          <button class="btn" id="login">Login</button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1>hello</h1>
+      <h1>hello</h1>
+      <h1>hello</h1>
+      <h1>hello</h1>
+      <h1>hello</h1>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+
+    <script>
+      const lenis = new Lenis();
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      const layersWarrapper = document.querySelector("#layers-warrapper");
+
+      const layersBG = layersWarrapper.querySelectorAll(
+        `div[id*="layers-bg-"]`
+      );
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: layersWarrapper,
+          start: "top top",
+          scrub: true,
+        },
+      });
+
+      layersBG.forEach((bg) => {
+        const bgSpeed = bg.getAttribute("data-speed");
+        tl.to(
+          bg,
+          {
+            y: 60 * bgSpeed,
+            duration: 2,
+          },
+          0
+        );
+      });
+    </script>
+    <script src="./app.js"></script>
+  </body>
+</html>
