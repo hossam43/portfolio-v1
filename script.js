@@ -843,7 +843,10 @@ cursorTimeline
     delay: 0.8,
   });
 
+// ********************
 // The FadeOn Hover effect
+// ********************
+
 const listOfWorks = document.querySelector(".works-collection-list");
 
 const handleProjectHover = function (e, opacity) {
@@ -873,7 +876,9 @@ listOfWorks.addEventListener(
   }
 );
 
+// *******
 // about
+// *******
 
 const aboutBtn = document.querySelector(".about-btn");
 aboutBtn.addEventListener("click", () => {

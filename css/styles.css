@@ -1184,12 +1184,6 @@ footer {
   color: #242424;
 }
 
-/* .mob-social-container {
-  grid-column: 1/-1;
-  display: flex;
-  margin-left: 2.4rem;
-} */
-
 .footer-logo {
   grid-column: 1/3;
   margin: 2.4rem 0;

@@ -117,23 +117,6 @@ html {
   scroll-behavior: smooth;
 }
 
-.projects-section {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#page-contet {
-  opacity: 0;
-  transition: opacity 1s;
-}
-aside {
-  opacity: 0;
-  transition: opacity 1s;
-}
-.wrapper {
-  margin-left: 80px;
-}
 body {
   font-family: "Inter", sans-serif;
   line-height: 1;
@@ -151,6 +134,24 @@ body {
   justify-content: flex-start;
   align-items: stretch; */
   display: block;
+}
+
+.projects-section {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#page-contet {
+  opacity: 0;
+  transition: opacity 1s;
+}
+aside {
+  opacity: 0;
+  transition: opacity 1s;
+}
+.wrapper {
+  margin-left: 80px;
 }
 
 /**************************/
