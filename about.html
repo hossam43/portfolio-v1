@@ -201,6 +201,50 @@
           <img src="./assets/images/more-to-learn.webp" alt="Image 3" />
         </div>
       </div>
+      <div class="center-h container-content flex-center">
+        <div class="slider">
+          <div class="slide slide--1 grid grid--2--cols grid-center-v">
+            <div class="testimonial-img-box">
+              <div
+                class="testimonial-img-url-1"
+                role="img"
+                aria-label="a person saying his opinion about the website"
+              ></div>
+              <img
+                src="./assets/images/carto.webp"
+                alt="a word from one of our cleints"
+                class="testimonial-img"
+              />
+            </div>
+          </div>
+
+          <div class="slide slide--2 grid grid--2--cols grid-center-v">
+            <div class="testimonial-img-box">
+              <div
+                class="testimonial-img-url-2"
+                role="img"
+                aria-label="a person saying his opinion about the website"
+              ></div>
+              <img
+                src="./assets/images/carto.webp"
+                alt="a word from one of our cleints"
+                class="testimonial-img"
+              />
+            </div>
+          </div>
+
+          <div class="slide slide--3 grid grid--2--cols grid-center-v">
+            <div class="testimonial-img-box">
+              <img
+                src="./assets/images/carto.webp"
+                alt="a word from one of our cleints"
+                class="testimonial-img"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="center-h container-content section-even">
         <div class="person">
           <div class="person-container">
@@ -210,6 +254,7 @@
             <img src="./assets/images/person.webp" alt="" class="person-img" />
           </div>
         </div>
+
         <div class="text-content">
           <h2>Ready Now?</h2>
           <p>
@@ -233,63 +278,7 @@
       </div>
     </main>
     <!-- FOOTER SECTION -->
-    <footer class="bg-dark text-center text-white">
-      <!-- Grid container -->
-      <div class="container p-4 pb-0">
-        <!-- Section: Social media -->
-        <section class="mb-4">
-          <!-- Facebook -->
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-
-          <!-- Twitter -->
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-twitter"></i
-          ></a>
-
-          <!-- Google -->
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-google"></i
-          ></a>
-
-          <!-- Instagram -->
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-instagram"></i
-          ></a>
-
-          <!-- Linkedin -->
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-linkedin-in"></i
-          ></a>
-
-          <!-- Github -->
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-github"></i
-          ></a>
-        </section>
-        <!-- Section: Social media -->
-      </div>
-      <!-- Grid container -->
-
+    <footer>
       <!-- Copyright -->
       <div class="copy-rights">
         © 2024 Copyright:
@@ -297,7 +286,6 @@
           >Hossam Ayman</a
         >
       </div>
-      <!-- Copyright -->
     </footer>
 
     <button id="to-Top" title="Go to top">⮝</button>
@@ -381,6 +369,115 @@
           scrollTop.style.opacity = "0";
         }
       };
+
+      // slider
+      const sliderCreator = function () {
+        const slider = document.querySelector(".slider");
+        const slides = document.querySelectorAll(".slide");
+        const btnLeft = document.querySelector(".slider__btn--left");
+        const btnRight = document.querySelector(".slider__btn--right");
+        const dotContainer = document.querySelector(".dots");
+        let curSlide = 0;
+        const maxSlide = slides.length;
+        let startX;
+
+        // Functions
+        const createDots = function () {
+          slides.forEach((_, i) => {
+            dotContainer.insertAdjacentHTML(
+              "beforeend",
+              `<button class="dots__dot" data-slide="${i}"></button>`
+            );
+          });
+        };
+
+        const activateDot = function (slide) {
+          document
+            .querySelectorAll(".dots__dot")
+            .forEach((dot) => dot.classList.remove("dots__dot--active"));
+          document
+            .querySelector(`.dots__dot[data-slide="${slide}"]`)
+            .classList.add("dots__dot--active");
+        };
+
+        const goToSlide = function (slide) {
+          slides.forEach(
+            (s, i) =>
+              //-100%
+              (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+          );
+        };
+
+        // Next slide
+        const nextSlide = function () {
+          if (curSlide === maxSlide - 1) {
+            curSlide = 0;
+          } else {
+            // 1
+            curSlide++;
+          }
+          goToSlide(curSlide);
+          activateDot(curSlide);
+        };
+
+        const prevSlide = function () {
+          if (curSlide === 0) curSlide = maxSlide - 1;
+          else curSlide--;
+
+          goToSlide(curSlide);
+          activateDot(curSlide);
+        };
+
+        const init = function () {
+          createDots();
+          goToSlide(0);
+          activateDot(0);
+        };
+        init();
+
+        // Event Handlers
+        btnRight.addEventListener("click", nextSlide);
+        btnLeft.addEventListener("click", prevSlide);
+        // Swipe detection for touch devices
+        slider.addEventListener("touchstart", function (e) {
+          startX = e.touches[0].clientX;
+        });
+        slider.addEventListener("touchmove", function (e) {
+          if (!startX) return;
+          const currentX = e.touches[0].clientX;
+          const diff = startX - currentX;
+
+          if (diff > 0) {
+            // Swiped left
+            nextSlide();
+            activateDot(curSlide);
+          }
+          // Swiped right
+          else {
+            prevSlide();
+            activateDot(curSlide);
+          }
+          startX = null; // Reset startX
+        });
+
+        slider.addEventListener("touchend", function () {
+          startX = null; // Reset startX
+        });
+
+        document.addEventListener("keydown", function (e) {
+          e.key === "ArrowLeft" && prevSlide();
+          e.key === "ArrowRight" && nextSlide();
+        });
+
+        dotContainer.addEventListener("click", function (e) {
+          if (e.target.classList.contains("dots__dot")) {
+            const { slide } = e.target.dataset;
+            activateDot(slide);
+            goToSlide(slide);
+          }
+        });
+      };
+      sliderCreator();
     </script>
     <script src="./app.js"></script>
   </body>
