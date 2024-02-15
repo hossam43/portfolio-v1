@@ -935,22 +935,29 @@ ion-icon[name="chevron-down-sharp"] {
   }
 }
 
-.show-more {
-  margin: 0 auto;
+.work-number {
+  color: var(--accentColor);
 }
-
-.show-more:hover {
-  background-color: var(--secondaryColorWhite) !important;
+.project-btn:hover {
   color: var(--secondaryColorBlack);
-}
-
-.show-more:hover .work-number {
-  color: red;
 }
 
 /* ************/
 /* ASID */
 /* ************/
+
+#page-contet {
+  opacity: 0;
+  transition: opacity 1s;
+}
+aside {
+  opacity: 0;
+  transition: opacity 1s;
+}
+.wrapper {
+  margin-left: 80px;
+}
+
 #wrapper {
   margin-left: 80px;
 }

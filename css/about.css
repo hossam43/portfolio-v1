@@ -682,7 +682,7 @@ footer {
   position: relative;
 
   /* IN THE END */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .slide {

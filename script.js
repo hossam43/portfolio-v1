@@ -895,3 +895,9 @@ const aboutBtn = document.querySelector(".about-btn");
 aboutBtn.addEventListener("click", () => {
   window.location.href = "about.html";
 });
+
+const workBtn = document.querySelector(".project-btn");
+workBtn.addEventListener("click", () => {
+  console.log("he");
+  window.location.href = "project.html";
+});

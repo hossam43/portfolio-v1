@@ -164,18 +164,6 @@ body {
   background-position: center;
 }
 
-#page-contet {
-  opacity: 0;
-  transition: opacity 1s;
-}
-aside {
-  opacity: 0;
-  transition: opacity 1s;
-}
-.wrapper {
-  margin-left: 80px;
-}
-
 /**************************/
 /* GENRAL REUSABLE COMPONENTS */
 /**************************/
