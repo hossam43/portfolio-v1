@@ -330,7 +330,7 @@ PROJECTS.forEach((project, projectIndex) => {
 
   // Create a project element header (a like with title and a tag ) for each project
   const projectElemenHeader = document.createElement("a");
-  projectElemenHeader.classList.add("work-collection-link");
+  projectElemenHeader.classList.add("work-collection-link", "cursor");
   // Create a project element (Warrpe Slides and Text content Projects) for each project
   const openState = projectIndex === 0 ? "opened" : "closed";
   const projectElementBox = document.createElement("div");
@@ -808,7 +808,7 @@ function addAnimation() {
 // *****************
 // TypeWriter Effect
 // *****************
-const words = ["Javascript", "React.js", "Three.js", "GIS."];
+const words = ["GIS", "Javascript", "React.js", "Three.js"];
 
 // main timeline
 let mainTimeLine = gsap.timeline({

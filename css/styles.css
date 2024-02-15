@@ -1294,55 +1294,7 @@ footer {
   margin: 0 2.4rem;
 }
 
-/* THE NAV ANIMATION AIRPLAIN */
-
-/* .container-nav-airPlain {
-  position: relative;
-}
-.stroke {
-  width: 400px;
-  height: 2px;
-  background-color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
-.stroke:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  animation: animted 5s linear infinite;
-}
-
-.stroke:after {
-  content: "✈";
-  position: absolute;
-  top: -8px;
-  left: 0;
-  transform: translateY(-50%);
-  width: 100%;
-  height: 100%;
-  animation: animted 5s linear infinite;
-  font-size: 2rem;
-}
-
-@keyframes animted {
-  0% {
-    left: 0;
-    width: 0;
-  }
-  100% {
-    left: 100%;
-    width: 100%;
-  }
-} */
-
 /* wave animation */
-
 .wave {
   animation-name: wave-animation;
   animation-duration: 2.5s;
@@ -1388,7 +1340,6 @@ footer {
   width: 620px;
   height: 475px;
   margin-top: 2.4rem;
-  /* border: 3px solid #ede6d6; */
   box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
 }
 .slider .slides {
@@ -1423,10 +1374,11 @@ span.prev4 {
   font-size: 24px;
   font-weight: bold;
   transition: 0.5s;
-  border-radius: 3px;
+  border-radius: 11px;
   user-select: none;
   cursor: pointer;
   z-index: 1;
+  background-color: #cdcdcdb0;
 }
 span.next1,
 span.next2,
@@ -1453,7 +1405,7 @@ span.prev4:hover {
   opacity: 0.8;
   color: #222;
 }
-/* the current element when hitting next btn */
+
 @keyframes nextA {
   from {
     left: 0%;
@@ -1463,7 +1415,6 @@ span.prev4:hover {
   }
 }
 
-/* The desired element should be in view when hitting the next button  */
 @keyframes prevA {
   from {
     left: 100%;
@@ -1472,7 +1423,6 @@ span.prev4:hover {
     left: 0%;
   }
 }
-/* the current element when hitting next btn */
 @keyframes nextB {
   from {
     left: 0%;
@@ -1481,7 +1431,6 @@ span.prev4:hover {
     left: 100%;
   }
 }
-/* The desired element should be in view when hitting the prev button */
 @keyframes prevB {
   from {
     left: -100%;
@@ -1490,7 +1439,7 @@ span.prev4:hover {
     left: 0%;
   }
 }
-
+/* ! */
 /* /////////////////////// */
 /* SECTION ANIMATION */
 .content-section {
