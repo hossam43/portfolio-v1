@@ -105,10 +105,6 @@ aside {
 }
 /* test */
 
-.project {
-  height: 100dvh;
-}
-
 header {
   padding-top: calc(clamp(5em, 21vh, 12em) * 1.33);
   padding-bottom: calc(clamp(5em, 21vh, 12em) * 0.66);
@@ -117,6 +113,10 @@ header {
 .container-project {
   padding-left: calc(clamp(5em, 21vh, 12em) * 2);
   padding-right: calc(clamp(5em, 21vh, 12em) * 2);
+}
+
+h1 {
+  line-height: 1.2;
 }
 h1 span {
   display: block;
@@ -145,7 +145,7 @@ h5 {
   font-style: normal;
   font-size: 0.6em;
   line-height: 1.065;
-  margin-bottom: 1em;
+  padding-block: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   opacity: 0.5;
@@ -192,6 +192,10 @@ a .flex-col {
 
 .work-items li:last-child {
   border-bottom: none;
+}
+
+.row-filter {
+  padding-bottom: 8rem;
 }
 
 /* *********** */
