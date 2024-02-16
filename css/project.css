@@ -118,11 +118,15 @@ header {
 h1 {
   line-height: 1.2;
 }
+
 h1 span {
   display: block;
   font-family: "madeOuter-light";
   font-size: 8rem;
   color: #1c1d20;
+}
+h4 {
+  font-size: 4rem;
 }
 
 h5 {
