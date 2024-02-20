@@ -86,7 +86,6 @@ None
   --tag5: #00f5d4;
   --def-transition-duration: 0.4s;
 }
-
 ::selection {
   background-color: var(--primaryColor);
   color: var(--secondaryColorBlack);

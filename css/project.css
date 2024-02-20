@@ -1,3 +1,84 @@
+@font-face {
+  font-family: "Gotham-Black";
+  src: url("../assets/fonts/Gotham-Black.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "madeOuter";
+  src: url("../assets/fonts/madeoutersansmedium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "madeOuter-light";
+  src: url("../assets/fonts/MADE-Outer-Sans-Light-PERSONAL-USE.woff2")
+    format("woff2");
+}
+
+:root {
+  --primaryColor: #e7fe52;
+  --secondaryColorBlack: #0d0d0d;
+  --secondaryColorBLight: #212121;
+  --secondaryColorWhite: #f7f7f7f7;
+  --accentColor: #fe7b52;
+  --tag1: #9b5de5;
+  --tag2: #f15bb5;
+  --tag3: #fee440;
+  --tag4: #00bbf9;
+  --tag5: #00f5d4;
+  --def-transition-duration: 0.4s;
+}
+::selection {
+  background-color: var(--primaryColor);
+  color: var(--secondaryColorBlack);
+}
+
+::-moz-selection {
+  background-color: var(--primaryColor);
+  color: var(--secondaryColorBlack);
+}
+
+::webkit-selection {
+  background-color: var(--primaryColor);
+  color: var(--secondaryColorBlack);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 10px; */
+  /* 10px / 16px = 0.625 = 62.5% */
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* lenss */
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 body {
   background-image: none !important;
 }
@@ -126,7 +207,7 @@ h1 span {
   color: #1c1d20;
 }
 h4 {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 
 h5 {
@@ -135,7 +216,7 @@ h5 {
 
 .grid-sub-title {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   border-bottom: 1px solid #ccc;
   padding-bottom: 4rem;
   margin-bottom: 20px;
@@ -147,7 +228,7 @@ h5 {
   color: #1c1d20;
   font-weight: 450;
   font-style: normal;
-  font-size: 0.6em;
+  font-size: 0.5em;
   line-height: 1.065;
   padding-block: 1rem;
   text-transform: uppercase;
