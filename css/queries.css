@@ -17,11 +17,6 @@ Insted 1rem = 1em = 16px
     width: 70%;
   }
 
-  .airplan {
-    bottom: 16%;
-    height: 44px;
-  }
-
   .home-header_subheading-5 {
     margin-top: 2.4rem;
     margin-bottom: 2.4rem;
@@ -118,10 +113,6 @@ Insted 1rem = 1em = 16px
     row-gap: 0;
   }
 
-  .airplan {
-    scale: 0.8;
-  }
-
   .opened {
     height: 100%;
   }
@@ -166,11 +157,6 @@ Insted 1rem = 1em = 16px
     grid-template-columns: 1fr;
     gap: 6.4rem;
     align-items: center;
-  }
-
-  .airplan {
-    bottom: 20%;
-    left: 50%;
   }
 
   .grid--2--cols {
@@ -365,10 +351,6 @@ Insted 1rem = 1em = 16px
   }
   .home-header_subheading-5 {
     font-size: 2.4vw;
-  }
-
-  .airplan {
-    scale: 0.6;
   }
 
   .skyline-box {

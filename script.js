@@ -159,18 +159,6 @@ parentClass.addEventListener("click", (e) => {
   navHeader.style.transform = "translateX(-100%)";
 });
 
-// OnScroll effect
-// The airplan animation
-document.addEventListener("DOMContentLoaded", function () {
-  const airplan = document.querySelector(".airplan");
-
-  window.addEventListener("scroll", function () {
-    const scrollValue = window.scrollY;
-    const translateXValue = scrollValue * -0.5; // Adjust the scroll speed
-    airplan.style.transform = `translateX(${translateXValue}px)`;
-  });
-});
-
 const isMobileIMG = window.innerWidth <= 500;
 
 const PROJECTS = [
@@ -255,6 +243,28 @@ const PROJECTS = [
   // Project 4
   [
     [
+      "/assets/images/website-mock-3.webp",
+      "/assets/images/website-mock-3.webp",
+      "/assets/images/website-mock-3.webp",
+    ],
+    ["Medicine Market"],
+    ["Web Development", "HTML/Css", "JavaScript", "UI/UX", "Responsive Design"],
+    [
+      "Implemented responsive UI",
+      "Integrated payment gateway",
+      "Created visually appealing layout",
+      "Implementing user authentication",
+    ],
+    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
+
+    {
+      site: "https://hossam43.github.io/medicine-project/",
+      github: "https://github.com/hossam43/medicine-project",
+    },
+  ],
+
+  [
+    [
       `/assets/images/${
         isMobileIMG ? "website-mobile-ui-4.webp" : "website-ui-4.webp"
       }`,
@@ -288,26 +298,6 @@ const PROJECTS = [
       "Implement responsive design using HTML, CSS, and JavaScript.",
       "Optimize images and graphics for fast loading times.",
       "Incorporate user-friendly navigation elements for easy exploration.",
-    ],
-    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
-
-    { site: "https://example1.com", github: "https://github.com/example1" },
-  ],
-
-  // Project 6
-  [
-    [
-      "/assets/images/website-mock-3.webp",
-      "/assets/images/website-mock-3.webp",
-      "/assets/images/website-mock-3.webp",
-    ],
-    ["Medicine Market"],
-    ["Web Development", "HTML/Css", "JavaScript", "UI/UX", "Responsive Design"],
-    [
-      "Implemented responsive UI",
-      "Integrated payment gateway",
-      "Created visually appealing layout",
-      "Implementing user authentication",
     ],
     ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
 

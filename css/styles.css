@@ -408,17 +408,18 @@
   height: 8rem;
   background: url("../assets/images/clouds-shadow.svg");
   background-repeat: repeat-x;
+  animation: moveClouds 50s linear infinite;
 }
 
-.airplan {
-  position: absolute;
-  left: 30%;
-  bottom: 20%;
-  width: 30%;
-  height: 80px;
-  background: url("../assets/images/airplan.svg");
-  background-repeat: no-repeat;
+@keyframes moveClouds {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
+
 /* ************** */
 /* About section */
 /* ************** */
@@ -472,17 +473,6 @@
   justify-content: center;
   align-items: center;
 }
-
-/* Airplain SVG animation */
-/* .airplan-container-about {
-  position: absolute;
-  left: 0;
-  bottom: 21.4rem;
-} */
-
-/* .airplan-container-about svg {
-  width: 60rem;
-} */
 
 .hide-wheels {
   opacity: 0;

@@ -283,6 +283,10 @@ a .flex-col {
   padding-bottom: 8rem;
 }
 
+.btn-filter-active {
+  background: var(--secondaryColorWhite);
+  color: #000;
+}
 /* *********** */
 /* FOOTER */
 /* *********** */
