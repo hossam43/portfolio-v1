@@ -1,20 +1,22 @@
 "use strict";
+import { MagneticObject } from "./magnetic.js";
 
 const opacityOne = (...targetElements) => {
   targetElements.forEach((targetElm) => {
     targetElm.style.opacity = 1;
   });
-  // targetElement.style.opacity = 1;
 };
 
-// Preloader
+// *---------*
+//! 01 Preloader
+// *---------*
+let counterPre = 0;
 const page = document.getElementById("page-contet");
 const preloader = document.getElementById("preloader");
 const aside = document.getElementById("aside-element");
 const preloaderContent = document.querySelector(".preloader-wrapper");
-let counterPre = 0;
 const counterElement = document.getElementById("preloader-counter");
-// // !
+
 document.addEventListener("DOMContentLoaded", function () {
   // Simulate loading with a setTimeout
   // Hide the preloader and show the main content
@@ -100,9 +102,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update the counter during the loading process
 });
 opacityOne(aside, page);
-// !
 
-// Desktop and Mobile navigation
+// *---------*
+//! 00 Desktop & Mobile navigation
+// *---------*
 
 // work with navigation
 const asideIcon = document.querySelector(".aside-icon");
@@ -135,9 +138,8 @@ menuButtonMob.addEventListener("click", () => {
 });
 
 // *****************
-// Smooth scrolling
+//! 00 Smooth scrolling
 // *****************
-
 // Lenis
 const lenis = new Lenis();
 
@@ -145,7 +147,6 @@ function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
 }
-
 requestAnimationFrame(raf);
 
 const parentClass = document.querySelector(".nav-menu");
@@ -159,6 +160,9 @@ parentClass.addEventListener("click", (e) => {
   navHeader.style.transform = "translateX(-100%)";
 });
 
+// *-----------*
+//! 00 PROJECTS UI FACTOR
+// *-----------*
 const isMobileIMG = window.innerWidth <= 500;
 
 const PROJECTS = [
@@ -720,7 +724,7 @@ window.addEventListener("load", showFooterIcons);
 window.addEventListener("resize", showFooterIcons);
 
 // ***************************
-// Mouse following using the Web Animations API
+//! 00 Mouse following using the Web Animations API
 // ***************************
 let mouseCursor = document.querySelector(".custom-cursor");
 window.addEventListener("mousemove", customCursor);
@@ -752,7 +756,7 @@ cursorLink.forEach((link) => {
 });
 
 // **********************
-// Reveling contetn-section
+//! 00 Reveling contetn-section
 // **********************
 const allSectionsContent = document.querySelectorAll(".content-section");
 const revelContent = function (entries, observer) {
@@ -774,13 +778,12 @@ allSectionsContent.forEach((section) => {
 });
 
 // ********************
-// Marquee effect scroller
+//! 00 Marquee effect scroller
 // ********************
 const scrollers = document.querySelectorAll(".scroller");
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   addAnimation();
 }
-
 function addAnimation() {
   scrollers.forEach((scroller) => {
     scroller.setAttribute("data-animated", true);
@@ -796,7 +799,7 @@ function addAnimation() {
 }
 
 // *****************
-// TypeWriter Effect
+//! 00 TypeWriter Effect
 // *****************
 const words = ["GIS", "Javascript", "React.js", "Three.js"];
 
@@ -845,7 +848,7 @@ cursorTimeline
   });
 
 // ********************
-// The FadeOn Hover effect
+//! 00 The FadeOn Hover effect
 // ********************
 
 const listOfWorks = document.querySelector(".works-collection-list");
@@ -877,10 +880,42 @@ listOfWorks.addEventListener(
   }
 );
 
-// *******
-// about
-// *******
+// --------------
+//! 00 MAGNATIC EFFECT
+// --------------
+let screenCurrentSize;
+const getScreenSize = () => {
+  screenCurrentSize = window.innerHeight;
+  console.log(screenCurrentSize);
+};
 
+const magButton = document.querySelectorAll(".magnetic-btn");
+// screen size retrieved
+const applyMagneticEffect = () => {
+  magButton.forEach((button) => {
+    if (screenCurrentSize >= 700) {
+      console.log("Bigger than 700");
+      new MagneticObject(button, 80, 0.8);
+    } else if (screenCurrentSize >= 600) {
+      console.log("Bigger than 600");
+      new MagneticObject(button, 50, 0.8);
+    } else {
+      console.log("Less than 600");
+      new MagneticObject(button, 20, 0.8);
+    }
+  });
+};
+getScreenSize();
+applyMagneticEffect();
+
+window.addEventListener("resize", () => {
+  getScreenSize();
+  applyMagneticEffect(); // Apply magnetic effect based on the new screen size
+});
+
+// ************************************
+// PAGES
+// ************************************
 const aboutBtn = document.querySelector(".about-btn");
 aboutBtn.addEventListener("click", () => {
   window.location.href = "about.html";
