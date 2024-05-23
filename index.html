@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Omnifood is an AI-pwered food subscription that will make you eat healthy again, 365 days per year."
+      content="Hossam Ayman is a frontend developer spicailesed in Geographic Information System (GIS) development and 3D web rendering using Three.js and React to create preformenced engaging 3D web Expieernse and Geospatial applications."
     />
     <!-- FAV-ICON -->
     <link rel="icon" href="./assets/icons/favicon.png" />
     <link rel="apple-touch-icon" href="./assets/icons/favicon-192.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <title>Hossam Ayman &mdash; Portfoilo</title>
+    <title>Frontend Dev Portfoilo &mdash; Hossam Ayman</title>
+    <!-- Open Graph Tags -->
+    <meta property="og:title " content="Hossam Ayman Portfoilo" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://master--hossam-ayman.netlify.app/"
+    />
+    <meta property="og:image" content="./assets/images/hossam-photo.webp" />
     <!-- BOX-ICONS -->
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
@@ -38,8 +46,6 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <!-- SCRIPTS -->
-    <script defer src="./script.js"></script>
   </head>
   <body>
     <!-- Navgation contetn -->
@@ -160,7 +166,7 @@
               <img
                 src="./assets/images/web-logo.svg"
                 class="logo-side"
-                alt=""
+                alt="portfoilo logo"
               />
             </div>
             <div class="nav-icon-side">
@@ -171,22 +177,36 @@
             </div>
 
             <div class="aside-socials-box">
-              <a href="https://www.linkedin.com/in/hossam-ayman-">
+              <a
+                href="https://www.linkedin.com/in/hossam-ayman-"
+                class="magnetic-btn cursor"
+                style="color: #fff"
+              >
                 <ion-icon
                   name="logo-linkedin"
                   class="aside-socail-icon cursor"
                 ></ion-icon>
               </a>
-              <a href="mailto:hossamayman2399@gmail.com">
+
+              <a
+                href="mailto:hossamayman2399@gmail.com"
+                class="magnetic-btn cursor"
+                style="color: #fff"
+              >
                 <ion-icon
                   name="mail-outline"
-                  class="aside-socail-icon cursor"
+                  class="aside-socail-icon"
                 ></ion-icon>
               </a>
-              <a href="https://wa.me/1113210972">
+
+              <a
+                href="https://wa.me/1113210972"
+                class="magnetic-btn cursor"
+                style="color: #fff"
+              >
                 <ion-icon
                   name="logo-whatsapp"
-                  class="aside-socail-icon cursor"
+                  class="aside-socail-icon"
                 ></ion-icon>
               </a>
             </div>
@@ -205,7 +225,7 @@
               <img
                 src="./assets/images/web-logo.svg"
                 class="logo-side"
-                alt=""
+                alt="portfoilo logo for mobile"
               />
             </div>
 
@@ -254,11 +274,6 @@
             <div class="page-padding">
               <ul class="skills-list">
                 <li class="skill-list-item">
-                  <span> ARTIFICIAL INTELLIGENCE </span>
-                </li>
-
-                <li class="skill-list-item">
-                  <ion-icon name="add-outline"></ion-icon>
                   <span> WEB MAPPING </span>
                 </li>
 
@@ -269,15 +284,17 @@
 
                 <li class="skill-list-item">
                   <ion-icon name="add-outline"></ion-icon>
-                  <span> AUGMENTED REALITY</span>
-                </li>
-                <li class="skill-list-item">
-                  <ion-icon name="add-outline"></ion-icon>
                   <span> E-COMMERCE </span>
                 </li>
+
                 <li class="skill-list-item">
                   <ion-icon name="add-outline"></ion-icon>
-                  <span> 3D RENDERING </span>
+                  <span>UI/UX DESIGN</span>
+                </li>
+
+                <li class="skill-list-item">
+                  <ion-icon name="add-outline"></ion-icon>
+                  <span> 3D WEB DEVELOPMENT </span>
                 </li>
               </ul>
             </div>
@@ -371,7 +388,6 @@
         <div class="scroller" data-direction="right">
           <ul class="tag-list scroller__inner">
             <li>CARTOGRAPHY +</li>
-            <li>TYPOGRAPHY +</li>
             <li>ANIMATION +</li>
             <li>DESIGNING +</li>
             <li>PROBLEM SOLVING +</li>
@@ -431,7 +447,8 @@
             </div>
             <div class="copy-rights">
               <div class="copy-rights-inner">
-                Copyright © 2024 – Hossam Ayman. All Rights Reserved.
+                Copyright © 2024 Hossam Ayman. All rights reserved. Design &
+                Development by Hossam.Ayman
               </div>
             </div>
             <div class="empty-right"></div>
@@ -441,6 +458,8 @@
     </div>
 
     <!-- GSAP SCRIPT & ScrollTrigger-->
+    <!-- SCRIPTS -->
+    <script type="module" src="./script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
     <!-- text  -->
