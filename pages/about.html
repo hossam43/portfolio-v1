@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hossam Ayman — About Me</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<link rel="icon" href="./assets/icons/favicon.png"/>
+
+<link rel="stylesheet" href="../css/styles.css"/>
+<link rel="stylesheet" href="../css/styles-additions.css"/>
+
+
+<style>
+/* ── About Page Exclusive Styles ── */
+:root {
+  --about-gap: 12rem;
+}
+
+/* Back button */
+.about-back {
+  position: fixed;
+  top: 2rem; left: calc(var(--sidebar-w) + 2.4rem);
+  z-index: 4000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1.6rem;
+  background: rgba(33,33,33,0.9);
+  border: 1px solid var(--border-light);
+  backdrop-filter: blur(12px);
+  border-radius: 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  cursor: none;
+  transition: border-color 0.3s, color 0.3s;
+}
+.about-back:hover { border-color: var(--primary); color: var(--primary); }
+.about-back svg { width: 14px; height: 14px; }
+
+/* ── HERO ── */
+.ab-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 6rem;
+}
+.ab-hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(231,254,82,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(231,254,82,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.ab-hero-glow {
+  position: absolute;
+  top: -30%; right: -15%;
+  width: 70vw; height: 70vw;
+  background: radial-gradient(circle, rgba(231,254,82,0.05) 0%, transparent 65%);
+}
+.ab-hero-glow2 {
+  position: absolute;
+  bottom: -20%; left: 5%;
+  width: 45vw; height: 45vw;
+  background: radial-gradient(circle, rgba(0,120,212,0.06) 0%, transparent 65%);
+}
+
+/* Floating 3D identity card */
+.ab-identity {
+  position: absolute;
+  right: 6rem; top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  transition: transform 0.1s ease-out;
+}
+.ab-identity-card {
+  background: rgba(26,26,26,0.7);
+  border: 1px solid rgba(231,254,82,0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 3rem 2.4rem;
+  text-align: center;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  animation: ab-float 5s ease-in-out infinite;
+}
+@keyframes ab-float {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  33%      { transform: translateY(-12px) rotate(0.5deg); }
+  66%      { transform: translateY(-6px) rotate(-0.3deg); }
+}
+.ab-id-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  margin: 0 auto 1.6rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.4rem; font-weight: 700;
+  color: var(--bg-black);
+  position: relative;
+}
+.ab-id-avatar::before {
+  content: '';
+  position: absolute; inset: -3px;
+  border-radius: 50%;
+  border: 1px solid rgba(231,254,82,0.3);
+  animation: ring-pulse 3s ease-in-out infinite;
+}
+@keyframes ring-pulse {
+  0%,100% { transform: scale(1); opacity: 0.6; }
+  50%      { transform: scale(1.12); opacity: 0.1; }
+}
+.ab-id-name { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.4rem; }
+.ab-id-role { font-size: 1.1rem; color: var(--primary); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.6rem; }
+.ab-id-chips {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+  margin-bottom: 1.6rem;
+}
+.ab-id-chip {
+  font-size: 1rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(247,247,247,0.6);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.ab-id-ms {
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  padding: 0.8rem 1.2rem;
+  background: rgba(0,120,212,0.12);
+  border: 1px solid rgba(0,120,212,0.3);
+  border-radius: 6px;
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #4fc3f7;
+}
+.ab-id-ms svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* Hero text */
+.ab-hero-content { position: relative; z-index: 2; max-width: 640px; }
+.ab-hero-tag {
+  font-size: 1.1rem; font-weight: 600; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 2.4rem;
+  display: flex; align-items: center; gap: 1rem;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.8s var(--ease-premium) 0.3s forwards;
+}
+.ab-hero-tag::before { content:''; width: 24px; height: 1px; background: var(--accent); display: block; }
+.ab-hero-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(6rem, 10vw, 14rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 2.4rem;
+  opacity: 0; transform: translateY(30px);
+  animation: fadeUp 1s var(--ease-premium) 0.5s forwards;
+}
+.ab-hero-headline .line-accent { color: var(--primary); }
+.ab-hero-sub {
+  font-size: clamp(1.5rem, 1.6vw, 1.9rem);
+  line-height: 1.75;
+  color: rgba(247,247,247,0.55);
+  max-width: 500px;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.9s var(--ease-premium) 0.8s forwards;
+}
+.ab-hero-sub strong { color: var(--primary); font-weight: 600; }
+
+/* Scroll hint */
+.ab-scroll-hint {
+  position: absolute;
+  bottom: 3rem; left: 6rem;
+  display: flex; align-items: center; gap: 1rem;
+  font-size: 1.1rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease-premium) 1.4s forwards;
+}
+.ab-scroll-hint::after {
+  content:'';
+  width: 40px; height: 1px;
+  background: var(--muted);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine { 0%,100%{width:40px} 50%{width:80px} }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── STORY SECTIONS ── */
+.ab-story { padding: 10rem 6rem; position: relative; overflow: hidden; }
+.ab-story + .ab-story { border-top: 1px solid var(--border-light); }
+
+.ab-story-tag {
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 1.6rem;
+}
+.ab-story-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(8rem,14vw,18rem);
+  line-height: 0.85;
+  color: rgba(255,255,255,0.03);
+  position: absolute;
+  right: 3rem; top: 4rem;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.02em;
+}
+.ab-story-title {
+  font-size: clamp(3.5rem, 5vw, 7rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 3.2rem;
+}
+.ab-story-title .accent { color: var(--primary); }
+.ab-story-title .accent2 { color: var(--accent); }
+.ab-story-body {
+  max-width: 680px;
+  font-size: 1.7rem;
+  line-height: 1.8;
+  color: rgba(247,247,247,0.6);
+  margin-bottom: 3.2rem;
+}
+.ab-story-body strong { color: var(--white); font-weight: 500; }
+
+/* Two-col layout for some sections */
+.ab-story.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  align-items: center;
+}
+.ab-story.two-col .ab-story-num { right: auto; left: auto; position: relative; top: auto; font-size: 20rem; opacity: 0.03; grid-column: 1/-1; display: none; }
+
+/* Floating tools (section 2) */
+.ab-tools-float {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+.ab-tool-pill {
+  padding: 1.4rem 1.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  display: flex; align-items: center; gap: 1rem;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  cursor: none;
+}
+.ab-tool-pill:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(231,254,82,0.08);
+}
+.ab-tool-pill img { width: 28px; height: 28px; }
+.ab-tool-pill span { font-size: 1.3rem; font-weight: 500; color: rgba(247,247,247,0.75); }
+
+/* Network nodes (section 3) */
+.ab-network {
+  position: relative;
+  height: 320px;
+}
+.ab-network canvas { width: 100%; height: 100%; }
+
+/* Cloud nodes (section 4) */
+.ab-cloud-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+}
+.ab-cloud-card {
+  padding: 2.4rem;
+  background: rgba(0,120,212,0.06);
+  border: 1px solid rgba(0,120,212,0.2);
+  border-radius: 8px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.ab-cloud-card:hover {
+  border-color: rgba(0,120,212,0.5);
+  background: rgba(0,120,212,0.1);
+}
+.ab-cloud-card h4 { font-size: 1.4rem; font-weight: 700; color: #4fc3f7; margin-bottom: 0.6rem; letter-spacing: 0.05em; }
+.ab-cloud-card p { font-size: 1.4rem; color: rgba(247,247,247,0.5); line-height: 1.6; }
+
+/* Achievements (section 3) */
+.ab-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.ab-ach-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+.ab-ach-item:hover { border-color: rgba(231,254,82,0.3); }
+.ab-ach-icon {
+  width: 40px; height: 40px;
+  background: rgba(231,254,82,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+.ab-ach-text h4 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.ab-ach-text p { font-size: 1.3rem; color: rgba(247,247,247,0.5); line-height: 1.5; }
+
+/* TODAY section */
+.ab-today {
+  background: var(--bg-dark);
+  text-align: center;
+  padding: 14rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.ab-today-glow {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 80vw; height: 80vw;
+  background: radial-gradient(circle, rgba(231,254,82,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.ab-today-eyebrow {
+  font-size: 1.1rem; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 2.4rem;
+}
+.ab-today-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(5rem, 9vw, 13rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 3.2rem;
+}
+.ab-today-headline .y { color: var(--primary); }
+.ab-today-sub {
+  font-size: clamp(1.5rem, 1.6vw, 1.9rem);
+  line-height: 1.75;
+  color: rgba(247,247,247,0.55);
+  max-width: 640px;
+  margin: 0 auto 4.8rem;
+}
+
+/* MS highlight block */
+.ab-ms-block {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.6rem;
+  background: rgba(0,120,212,0.08);
+  border: 1px solid rgba(0,120,212,0.3);
+  border-radius: 12px;
+  padding: 2rem 3.2rem;
+  margin: 0 auto 4.8rem;
+}
+.ab-ms-block svg { width: 28px; height: 28px; flex-shrink: 0; }
+.ab-ms-block-text { text-align: left; }
+.ab-ms-block-title { font-size: 1.6rem; font-weight: 700; color: #4fc3f7; margin-bottom: 0.2rem; }
+.ab-ms-block-sub { font-size: 1.2rem; color: rgba(247,247,247,0.45); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* Stats bar */
+.ab-stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border-light);
+  flex-wrap: wrap;
+}
+.ab-stat { text-align: center; }
+.ab-stat-num {
+  font-size: 5rem; font-weight: 700; color: var(--primary);
+  line-height: 1; margin-bottom: 0.4rem;
+}
+.ab-stat-label {
+  font-size: 1.1rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* FUTURE section */
+.ab-future {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10rem 6rem;
+  background: var(--bg-black);
+  position: relative;
+  overflow: hidden;
+}
+.ab-future-line {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  animation: horizonMove 4s ease-in-out infinite;
+}
+@keyframes horizonMove { 0%,100%{opacity:0.3} 50%{opacity:0.8} }
+.ab-future-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 7vw, 10rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: rgba(247,247,247,0.12);
+  margin-bottom: 3.2rem;
+}
+.ab-future-headline span { color: var(--primary); opacity: 1; }
+.ab-future-body {
+  max-width: 560px;
+  font-size: 1.7rem;
+  line-height: 1.8;
+  color: rgba(247,247,247,0.55);
+  margin-bottom: 4rem;
+}
+.ab-future-cta { display: flex; gap: 1.6rem; flex-wrap: wrap; }
+
+/* Languages section */
+.ab-langs {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2.4rem;
+  flex-wrap: wrap;
+}
+.ab-lang-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+}
+.ab-lang-flag { font-size: 1.8rem; }
+.ab-lang-name { font-size: 1.3rem; font-weight: 600; color: var(--white); }
+.ab-lang-level { font-size: 1rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+
+/* Parallax layers */
+.ab-parallax-bg,
+.ab-parallax-mid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Reveal on scroll */
+.ab-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.9s var(--ease-premium), transform 0.9s var(--ease-premium);
+}
+.ab-reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+.ab-reveal-delay-1 { transition-delay: 0.1s; }
+.ab-reveal-delay-2 { transition-delay: 0.2s; }
+.ab-reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── Cursor follow parallax ── */
+.ab-parallax-el {
+  will-change: transform;
+  transition: transform 0.08s linear;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px) {
+  .ab-story.two-col { grid-template-columns: 1fr; gap: 4rem; }
+  .ab-identity { display: none; }
+  .ab-hero { padding: 10rem 4rem 6rem; }
+  .ab-story { padding: 8rem 4rem; }
+}
+@media(max-width:768px) {
+  .about-back { left: 2rem; top: 5.6rem; }
+  .ab-hero { padding: 10rem 2.4rem 6rem; }
+  .ab-story { padding: 6rem 2.4rem; }
+  .ab-today { padding: 8rem 2.4rem; }
+  .ab-future { padding: 6rem 2.4rem; }
+  .ab-tools-float { grid-template-columns: 1fr 1fr; }
+  .ab-stats-bar { gap: 3rem; }
+  .ab-ms-block { flex-direction: column; text-align: center; }
+  .ab-ms-block-text { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- SIDEBAR (same as index) -->
+<aside id="sidebar">
+  <div class="sidebar-logo">HA</div>
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="index.html#section-home" data-section="home">
+      <div class="nav-dot"></div>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+      <span class="nav-tooltip">Home</span>
+    </a>
+    <a class="sidebar-nav-item active" href="about.html">
+      <div class="nav-dot"></div>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+      <span class="nav-tooltip">About</span>
+    </a>
+    <a class="sidebar-nav-item" href="index.html#section-projects">
+      <div class="nav-dot"></div>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"/></svg>
+      <span class="nav-tooltip">Projects</span>
+    </a>
+    <a class="sidebar-nav-item" href="index.html#section-contact">
+      <div class="nav-dot"></div>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+      <span class="nav-tooltip">Contact</span>
+    </a>
+  </nav>
+  <div class="sidebar-socials">
+    <a href="https://www.linkedin.com/in/hossam-ayman-" class="sidebar-social-link" target="_blank">
+      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://github.com/hossam43" class="sidebar-social-link" target="_blank">
+      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hossamayman2399@gmail.com" class="sidebar-social-link">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+    </a>
+  </div>
+</aside>
+
+<!-- MOBILE NAV -->
+<nav id="mobile-nav">
+  <div class="mob-logo">HA</div>
+  <button class="mob-menu-btn" id="mob-menu-btn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div id="mobile-menu">
+  <button class="mob-menu-close" id="mob-menu-close">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="index.html#section-projects">Projects</a>
+  <a href="index.html#section-contact">Contact</a>
+</div>
+
+<!-- LANG TOGGLE -->
+<button id="lang-toggle" aria-label="Switch language">
+  <span class="lang-flag">🇩🇪</span>
+  <span class="lang-label">DE</span>
+  <span class="lang-arrow">▾</span>
+</button>
+
+<!-- BACK BUTTON -->
+<a href="../index.html" class="about-back">
+  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
+  </svg>
+  Back
+</a>
+
+<!-- ── MAIN ── -->
+<div id="main-wrap">
+
+  <!-- ══════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════ -->
+  <section class="ab-hero">
+    <div class="ab-hero-grid"></div>
+    <div class="ab-hero-glow ab-parallax-el" data-speed="0.03"></div>
+    <div class="ab-hero-glow2 ab-parallax-el" data-speed="0.05"></div>
+
+    <div class="ab-hero-content">
+      <div class="ab-hero-tag">The Story of Hossam Ayman</div>
+      <h1 class="ab-hero-headline">
+        From<br><span class="line-accent">Curiosity</span><br>to Cloud
+      </h1>
+      <p class="ab-hero-sub">
+        A <strong>Technical Advisor at Microsoft</strong>, GIS developer, and frontend engineer —
+        this is not a CV. This is the story of how passion became profession.
+      </p>
+    </div>
+
+    <!-- Identity card -->
+    <div class="ab-identity ab-parallax-el" data-speed="-0.02">
+      <div class="ab-identity-card">
+        <div class="ab-id-avatar">HA</div>
+        <div class="ab-id-name">Hossam Ayman</div>
+        <div class="ab-id-role">Technical Advisor</div>
+        <div class="ab-id-chips">
+          <span class="ab-id-chip">Azure</span>
+          <span class="ab-id-chip">M365</span>
+          <span class="ab-id-chip">GIS</span>
+          <span class="ab-id-chip">React</span>
+          <span class="ab-id-chip">Frontend</span>
+        </div>
+        <div class="ab-id-ms">
+          <svg viewBox="0 0 23 23" fill="none"><rect x="1" y="1" width="10" height="10" fill="#F25022"/><rect x="12" y="1" width="10" height="10" fill="#7FBA00"/><rect x="1" y="12" width="10" height="10" fill="#00A4EF"/><rect x="12" y="12" width="10" height="10" fill="#FFB900"/></svg>
+          Technical Advisor · Microsoft
+        </div>
+      </div>
+    </div>
+
+    <div class="ab-scroll-hint">Scroll to explore</div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 1 — THE BEGINNING
+  ══════════════════════════════════════════════════ -->
+  <section class="ab-story" style="background:var(--bg-dark);">
+    <div class="ab-story-num">01</div>
+    <div class="ab-reveal">
+      <div class="ab-story-tag">Chapter 01 — The Beginning</div>
+      <h2 class="ab-story-title">Born From<br><span class="accent">Curiosity</span></h2>
+    </div>
+    <div class="ab-story-body ab-reveal ab-reveal-delay-1">
+      <p>It started the way it does for many — staring at a screen, wondering <strong>how things work</strong>. Not just using software, but needing to understand its bones. Alexandria, Egypt became the backdrop of an obsession that turned into a craft.</p>
+      <br>
+      <p>The early days were about breaking things apart — HTML pages, CSS layouts, asking why the browser behaves the way it does. Curiosity wasn't a hobby. It was a compass.</p>
+    </div>
+
+    <!-- Languages -->
+    <div class="ab-reveal ab-reveal-delay-2">
+      <p style="font-size:1.3rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;">Languages spoken</p>
+      <div class="ab-langs">
+        <div class="ab-lang-item">
+          <span class="ab-lang-flag">🇪🇬</span>
+          <div><div class="ab-lang-name">Arabic</div><div class="ab-lang-level">Native</div></div>
+        </div>
+        <div class="ab-lang-item">
+          <span class="ab-lang-flag">🇬🇧</span>
+          <div><div class="ab-lang-name">English</div><div class="ab-lang-level">B2 — Professional</div></div>
+        </div>
+        <div class="ab-lang-item">
+          <span class="ab-lang-flag">🇩🇪</span>
+          <div><div class="ab-lang-name">German</div><div class="ab-lang-level">B2 — Professional</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 2 — THE BUILDER
+  ══════════════════════════════════════════════════ -->
+  <section class="ab-story two-col" style="background:var(--bg-black);">
+    <div>
+      <div class="ab-story-num" style="position:relative;top:auto;right:auto;font-size:12rem;">02</div>
+      <div class="ab-reveal">
+        <div class="ab-story-tag">Chapter 02 — The Builder</div>
+        <h2 class="ab-story-title">Stacking<br>Skills<br><span class="accent2">Layer by Layer</span></h2>
+      </div>
+      <div class="ab-story-body ab-reveal ab-reveal-delay-1">
+        <p>Curiosity turned into construction. HTML became React. CSS became animation systems. JavaScript became WebGL and Three.js. Each tool added wasn't a resume line — it was a <strong>new dimension of what could be built</strong>.</p>
+        <br>
+        <p>GIS arrived as the bridge between the digital and the physical — mapping the real world with code. Graduated <strong>ranked 3rd</strong> in the university cohort. Not because of memorization, but because building was the way of learning.</p>
+      </div>
+    </div>
+
+    <div class="ab-reveal ab-reveal-delay-2">
+      <p style="font-size:1.1rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1.6rem;">The Toolbox</p>
+      <div class="ab-tools-float">
+        <div class="ab-tool-pill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"/>
+          <span>React</span>
+        </div>
+        <div class="ab-tool-pill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/>
+          <span>JS</span>
+        </div>
+        <div class="ab-tool-pill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" alt="Three.js"/>
+          <span>Three.js</span>
+        </div>
+        <div class="ab-tool-pill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"/>
+          <span>HTML5</span>
+        </div>
+        <div class="ab-tool-pill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"/>
+          <span>CSS3</span>
+        </div>
+        <div class="ab-tool-pill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"/>
+          <span>PostgreSQL</span>
+        </div>
+        <div class="ab-tool-pill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/>
+          <span>Python</span>
+        </div>
+        <div class="ab-tool-pill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/>
+          <span>Figma</span>
+        </div>
+        <div class="ab-tool-pill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/>
+          <span>Git</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 3 — THE PROBLEM SOLVER
+  ══════════════════════════════════════════════════ -->
+  <section class="ab-story two-col" style="background:var(--bg-dark);">
+    <div>
+      <div class="ab-reveal">
+        <div class="ab-story-tag">Chapter 03 — The Problem Solver</div>
+        <h2 class="ab-story-title">Real<br>World<br><span class="accent">Impact</span></h2>
+      </div>
+      <div class="ab-story-body ab-reveal ab-reveal-delay-1">
+        <p>Technology only matters if it solves real problems. GIS work at <strong>HERE Technologies</strong> turned spatial data into meaningful decisions. Not just maps — systems that helped people navigate, decide, and understand the world.</p>
+        <br>
+        <p>250,000+ contributions. Ranked <strong>Top 5 Map Creator globally</strong> at HERE. These aren't statistics — they're proof that consistency compounds.</p>
+      </div>
+    </div>
+
+    <div class="ab-achievements ab-reveal ab-reveal-delay-2">
+      <div class="ab-ach-item">
+        <div class="ab-ach-icon">🗺️</div>
+        <div class="ab-ach-text">
+          <h4>Top 5 Global Map Creator</h4>
+          <p>Ranked top 5 worldwide at HERE Technologies for map contributions and spatial data quality</p>
+        </div>
+      </div>
+      <div class="ab-ach-item">
+        <div class="ab-ach-icon">✦</div>
+        <div class="ab-ach-text">
+          <h4>250,000+ Contributions</h4>
+          <p>Quarter million data points contributed — accuracy, consistency, scale</p>
+        </div>
+      </div>
+      <div class="ab-ach-item">
+        <div class="ab-ach-icon">🎓</div>
+        <div class="ab-ach-text">
+          <h4>Ranked 3rd — University</h4>
+          <p>Top of cohort through project-based learning and applied engineering thinking</p>
+        </div>
+      </div>
+      <div class="ab-ach-item">
+        <div class="ab-ach-icon">🌐</div>
+        <div class="ab-ach-text">
+          <h4>GIS Developer</h4>
+          <p>Built interactive geospatial applications, custom map layers, and spatial analysis pipelines</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 4 — THE CLOUD MINDSET
+  ══════════════════════════════════════════════════ -->
+  <section class="ab-story" style="background:var(--bg-black);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-10%;right:-10%;width:50vw;height:50vw;background:radial-gradient(circle,rgba(0,120,212,0.06) 0%,transparent 65%);pointer-events:none;"></div>
+    <div class="ab-story-num">04</div>
+
+    <div class="ab-reveal">
+      <div class="ab-story-tag">Chapter 04 — The Cloud Mindset</div>
+      <h2 class="ab-story-title">From Local<br>to <span class="accent">Global</span><br>Scale</h2>
+    </div>
+    <div class="ab-story-body ab-reveal ab-reveal-delay-1">
+      <p>The leap into cloud wasn't a pivot — it was an evolution. Understanding systems at scale means thinking differently: not just "does this work on my machine," but <strong>"does this work for a million users at 3 AM?"</strong></p>
+      <br>
+      <p>Now advising organizations on <strong>Azure</strong> and <strong>Microsoft 365</strong> — translating technical complexity into business value. It's not about tools, it's about transformation.</p>
+    </div>
+
+    <div class="ab-cloud-grid ab-reveal ab-reveal-delay-2" style="max-width:680px;">
+      <div class="ab-cloud-card">
+        <h4>Azure Infrastructure</h4>
+        <p>Cloud architecture consulting, resource optimization, and scalable deployment strategies</p>
+      </div>
+      <div class="ab-cloud-card">
+        <h4>Microsoft 365</h4>
+        <p>Enterprise M365 advisory — identity, productivity, security, and collaboration at scale</p>
+      </div>
+      <div class="ab-cloud-card">
+        <h4>Technical Advisory</h4>
+        <p>Bridging the gap between business requirements and technical implementation for SMEs and enterprise</p>
+      </div>
+      <div class="ab-cloud-card">
+        <h4>Systems Thinking</h4>
+        <p>Designing solutions that scale — from database architecture to distributed cloud infrastructure</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 5 — TODAY
+  ══════════════════════════════════════════════════ -->
+  <section class="ab-today">
+    <div class="ab-today-glow"></div>
+
+    <div class="ab-reveal">
+      <div class="ab-today-eyebrow">Chapter 05 — Today</div>
+      <h2 class="ab-today-headline">
+        I Am<br><span class="y">Hossam</span><br>Ayman
+      </h2>
+    </div>
+
+    <p class="ab-today-sub ab-reveal ab-reveal-delay-1">
+      Technical Advisor. Builder. Problem solver. A person who started with curiosity and never stopped building.
+      Based in Alexandria — working globally.
+    </p>
+
+    <!-- MS Block -->
+    <div class="ab-ms-block ab-reveal ab-reveal-delay-2">
+      <svg viewBox="0 0 23 23" fill="none"><rect x="1" y="1" width="10" height="10" fill="#F25022"/><rect x="12" y="1" width="10" height="10" fill="#7FBA00"/><rect x="1" y="12" width="10" height="10" fill="#00A4EF"/><rect x="12" y="12" width="10" height="10" fill="#FFB900"/></svg>
+      <div class="ab-ms-block-text">
+        <div class="ab-ms-block-title">Technical Advisor · Microsoft Technologies</div>
+        <div class="ab-ms-block-sub">Azure · Microsoft 365 · Cloud Infrastructure</div>
+      </div>
+    </div>
+
+    <div class="ab-stats-bar ab-reveal ab-reveal-delay-3">
+      <div class="ab-stat">
+        <div class="ab-stat-num">3+</div>
+        <div class="ab-stat-label">Years Experience</div>
+      </div>
+      <div class="ab-stat">
+        <div class="ab-stat-num">250K+</div>
+        <div class="ab-stat-label">GIS Contributions</div>
+      </div>
+      <div class="ab-stat">
+        <div class="ab-stat-num">10+</div>
+        <div class="ab-stat-label">Projects Delivered</div>
+      </div>
+      <div class="ab-stat">
+        <div class="ab-stat-num">Top 5</div>
+        <div class="ab-stat-label">HERE Technologies</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 6 — FUTURE
+  ══════════════════════════════════════════════════ -->
+  <section class="ab-future">
+    <div class="ab-future-line"></div>
+    <div class="ab-reveal">
+      <div class="ab-story-tag">Chapter 06 — Future</div>
+      <h2 class="ab-future-headline">
+        The Best<br>Work Is<br><span>Still Ahead</span>
+      </h2>
+    </div>
+    <p class="ab-future-body ab-reveal ab-reveal-delay-1">
+      The mission: build digital products that genuinely change how people interact with technology.
+      Cloud-native. Geospatially aware. Beautifully engineered. Always pushing the frontier of what's possible on the web.
+    </p>
+    <div class="ab-future-cta ab-reveal ab-reveal-delay-2">
+      <a href="index.html#section-contact" class="btn-primary">
+        <span>Start a Conversation</span>
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:16px;height:16px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+      <a href="https://drive.google.com/uc?export=download&id=1CBSXgMphhHq02Fsm0yIoubw9f337O6oC" class="btn-outline">
+        <span>Download CV</span>
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:16px;height:16px;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-copy">© 2024 Hossam Ayman. All rights reserved.</p>
+    <p class="footer-credit">Design & Development by <span>Hossam.Ayman</span></p>
+  </footer>
+
+
+</div><!-- end main-wrap -->
+
+<script>
+// ── CURSOR ──
+const dot = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+animRing();
+document.querySelectorAll('a,button,.ab-tool-pill,.ab-ach-item,.ab-cloud-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+});
+
+// ── SCROLL REVEAL ──
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});
+},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.ab-reveal').forEach(el=>ro.observe(el));
+
+// ── MOUSE PARALLAX ──
+document.addEventListener('mousemove',e=>{
+  const cx=window.innerWidth/2, cy=window.innerHeight/2;
+  const dx=(e.clientX-cx)/cx, dy=(e.clientY-cy)/cy;
+  document.querySelectorAll('.ab-parallax-el').forEach(el=>{
+    const s = parseFloat(el.dataset.speed)||0.04;
+    el.style.transform = `translate(${dx*s*80}px, ${dy*s*80}px)`;
+  });
+  // identity card subtle rotation
+  const card = document.querySelector('.ab-identity-card');
+  if(card){
+    const rotX = dy * -6;
+    const rotY = dx * 6;
+    card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+  }
+});
+
+// ── MOBILE MENU ──
+document.getElementById('mob-menu-btn').addEventListener('click',()=>document.getElementById('mobile-menu').classList.add('open'));
+document.getElementById('mob-menu-close').addEventListener('click',()=>document.getElementById('mobile-menu').classList.remove('open'));
+document.querySelectorAll('#mobile-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobile-menu').classList.remove('open')));
+
+// ── LANG TOGGLE (same as main site) ──
+(function(){
+  const toggle=document.getElementById('lang-toggle');
+  if(!toggle)return;
+  let lang='en';
+  const flip={en:'de',de:'en'};
+  const flags={en:'🇬🇧',de:'🇩🇪'};
+
+  const DE={
+    '.ab-hero-tag':'Die Geschichte von Hossam Ayman',
+    '.ab-hero-sub':'Ein <strong>Technischer Berater bei Microsoft</strong>, GIS-Entwickler und Frontend-Engineer — das ist kein Lebenslauf. Das ist die Geschichte, wie Leidenschaft zum Beruf wurde.',
+  };
+
+  toggle.addEventListener('click',()=>{
+    lang=flip[lang];
+    toggle.querySelector('.lang-flag').textContent=flags[flip[lang]]; // show OTHER flag
+    toggle.querySelector('.lang-label').textContent=lang==='en'?'DE':'EN';
+    document.documentElement.lang=lang;
+    if(lang==='de'){
+      Object.entries(DE).forEach(([sel,html])=>{const el=document.querySelector(sel);if(el)el.innerHTML=html;});
+    }
+  });
+})();
+</script>
+
+<script defer src="../js/script-additions.js"></script>
+
+</body>
+</html>

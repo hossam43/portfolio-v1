@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Case Study — Hossam Ayman</title>
+<meta name="description" content="Project case study — Hossam Ayman, Technical Advisor & Frontend Engineer"/>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+
+<!-- Favicons (reuse from portfolio) -->
+<link rel="icon" href="./assets/icons/favicon.png"/>
+
+<!-- Portfolio base styles -->
+<link rel="stylesheet" href="./css/styles.css"/>
+<!-- Case study design system -->
+<link rel="stylesheet" href="./css/case-study.css"/>
+
+<style>
+  /* Page-level override: no sidebar offset on case study (full bleed hero) */
+  body { overflow-x: hidden; cursor: none; }
+  #cs-root { margin-left: var(--sidebar-w); }
+  @media(max-width: 768px) { #cs-root { margin-left: 0; padding-top: 72px; } }
+</style>
+</head>
+<body>
+
+<!-- Portfolio cursor (reused) -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- Portfolio Sidebar (reused) -->
+<aside id="sidebar">
+  <div class="sidebar-logo">HA</div>
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="index.html#section-home">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+      <span class="nav-tooltip">Home</span>
+    </a>
+    <a class="sidebar-nav-item" href="about.html">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+      <span class="nav-tooltip">About</span>
+    </a>
+    <a class="sidebar-nav-item active" href="index.html#section-projects">
+      <div class="nav-dot"></div>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"/></svg>
+      <span class="nav-tooltip">Projects</span>
+    </a>
+    <a class="sidebar-nav-item" href="index.html#section-contact">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+      <span class="nav-tooltip">Contact</span>
+    </a>
+  </nav>
+  <div class="sidebar-socials">
+    <a href="https://www.linkedin.com/in/hossam-ayman-" class="sidebar-social-link" target="_blank">
+      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://github.com/hossam43" class="sidebar-social-link" target="_blank">
+      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hossamayman2399@gmail.com" class="sidebar-social-link">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+    </a>
+  </div>
+</aside>
+
+<!-- Mobile nav -->
+<nav id="mobile-nav">
+  <div class="mob-logo">HA</div>
+  <button class="mob-menu-btn" id="mob-menu-btn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div id="mobile-menu">
+  <button class="mob-menu-close" id="mob-menu-close">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="index.html#section-projects">Projects</a>
+  <a href="index.html#section-contact">Contact</a>
+</div>
+
+<!-- ── CASE STUDY MOUNT POINT ── -->
+<div id="cs-root"></div>
+
+<!-- ────────────────────────────────────────────────────────────
+     INLINE SCRIPT — Embeds data + engine directly for zero build-step use.
+     For a build tool setup, replace with:
+       import { autoInit } from './case-study.js';
+       import { GIS_CITY_VIEWER, CLOUD_DASHBOARD } from './data/projects.js';
+       autoInit({ 'gis-city-viewer': GIS_CITY_VIEWER, 'cloud-dashboard': CLOUD_DASHBOARD });
+──────────────────────────────────────────────────────────────── -->
+<script>
+'use strict';
+
+/* ═══════════ EMBEDDED DATA ═══════════ */
+const PROJECTS_MAP = {
+
+  'gis-city-viewer': {
+    id:'gis-city-viewer',slug:'gis-city-viewer',year:'2024',duration:'3 months',
+    role:'GIS Developer · Frontend Engineer',status:'In Progress',category:'Geospatial',
+    hero:{
+      eyebrow:'Case Study — Geospatial',
+      title:'GIS City Viewer',
+      subtitle:'The city had the data. Nobody could read it.',
+      tags:['Mapbox GL','React','Three.js','GeoJSON','PostgreSQL'],
+      coverImage:'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1600&q=80&fit=crop',
+    },
+    context:{
+      label:'01 — Context',heading:'Why this existed',
+      body:['A regional municipality was sitting on 12 years of urban planning data — zoning records, infrastructure reports, demographic overlays — stored across disconnected spreadsheets and legacy GIS software that required specialist operators to even open.','The data existed. The insight didn\'t. Decisions were being made in meetings, not from evidence.'],
+      stat:{value:'12',unit:' yrs',label:'of trapped urban data'},
+    },
+    problem:{
+      label:'02 — The Problem',
+      heading:'Clarity was the missing product.',
+      body:'The challenge wasn\'t a lack of information — it was information locked in formats no decision-maker could act on. Planning committees needed to see impact areas visually. Engineers needed layer-switchable technical overlays.',
+      challenges:[
+        {icon:'⬡',title:'Fragmented data sources',desc:'7 incompatible data formats across departments, zero unified API'},
+        {icon:'◎',title:'No real-time rendering',desc:'Legacy tools re-rendered full maps on every interaction — 8–12 second delays'},
+        {icon:'⬜',title:'Zero accessibility',desc:'Existing tools required ArcGIS licenses ($3,200/year per seat)'},
+        {icon:'△',title:'3D blind spot',desc:'No ability to visualize vertical urban density or elevation data'},
+      ],
+    },
+    thinking:{
+      label:'03 — Thinking',heading:'The decisions that shaped the architecture.',
+      decisions:[
+        {question:'Vector tiles or raster?',answer:'Vector. The rendering speed difference at high zoom was non-negotiable. Mapbox GL\'s vector pipeline gave us sub-100ms tile loads vs. 2–4 seconds on raster.',outcome:'Performance-first architecture'},
+        {question:'Full 3D or 2.5D?',answer:'2.5D with Three.js overlays. Full 3D was seductive but added 40% bundle weight for 10% use cases. We kept the base map flat and elevated only the density layer.',outcome:'Pragmatic scoping'},
+        {question:'PostGIS or flat GeoJSON?',answer:'PostGIS. The spatial query capability — radius searches, intersection checks, area calculations — would have been impossible to replicate client-side without killing mobile performance.',outcome:'Server-side spatial intelligence'},
+      ],
+    },
+    process:{
+      label:'04 — Process',heading:'How the work actually happened.',
+      steps:[
+        {number:'01',title:'Data Archaeology',body:'Audited all 7 data sources. Mapped schema inconsistencies. Built an ETL pipeline to normalize everything into PostGIS-compatible GeoJSON.',tag:'Weeks 1–2'},
+        {number:'02',title:'Spatial API Design',body:'Designed a RESTful spatial API with PostGIS backing — bounding box queries, layer filters, zoom-level-aware data density.',tag:'Weeks 3–4'},
+        {number:'03',title:'Map Engine Build',body:'Implemented Mapbox GL with custom vector tile styling. Wrote GLSL shaders for the heatmap overlays. Built a layer management system that preserved state across sessions.',tag:'Weeks 5–7'},
+        {number:'04',title:'3D Density Layer',body:'Integrated Three.js for the vertical density visualization — extruded building footprints colored by population density. Runs parallel to the 2D base, toggled by the user.',tag:'Week 8'},
+        {number:'05',title:'UI System & Filtering',body:'Built the filter panel — date range, zone type, infrastructure category. All state persisted in URL params so any view could be shared with a single link.',tag:'Weeks 9–10'},
+        {number:'06',title:'Performance Hardening',body:'Implemented tile caching, lazy loading, and WebWorker-based geometry processing. Cut initial load from 6.2s to 1.1s.',tag:'Weeks 11–12'},
+      ],
+    },
+    solution:{
+      label:'05 — Solution',
+      heading:'What was actually built.',
+      body:'An open, browser-native urban intelligence platform. No license required. Any stakeholder — planner, engineer, or resident — opens a URL and immediately reads 12 years of city data.',
+      features:[
+        {icon:'⬡',title:'Layer Control',desc:'Toggle 14 data layers independently with sub-50ms response'},
+        {icon:'◎',title:'Spatial Queries',desc:'Draw any polygon to instantly query all data within'},
+        {icon:'△',title:'3D Density View',desc:'Extruded building visualization with elevation encoding'},
+        {icon:'⬜',title:'Shareable Views',desc:'Any filtered state becomes a permanent URL'},
+        {icon:'⬡',title:'Export Pipeline',desc:'Filtered datasets exported as GeoJSON, CSV, or PDF report'},
+        {icon:'◎',title:'Mobile Ready',desc:'Full functionality on tablet — designed for field use'},
+      ],
+      images:[
+        {src:'https://images.unsplash.com/photo-1529928520614-7877dd3a2f3a?w=900&q=80&fit=crop',caption:'Layer control panel — 14 toggleable data overlays'},
+        {src:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&q=80&fit=crop',caption:'3D density visualization — extruded building footprints'},
+      ],
+    },
+    impact:{
+      label:'06 — Impact',heading:'Numbers that justify the build.',
+      metrics:[
+        {value:'94%',label:'reduction in time-to-insight',sub:'from 3 days to 4 hours'},
+        {value:'1.1s',label:'initial load time',sub:'down from 6.2 seconds'},
+        {value:'0',label:'licenses required',sub:'fully browser-native'},
+        {value:'7→1',label:'data sources unified',sub:'single PostGIS API'},
+      ],
+      quote:{text:'For the first time, our planning committee could point at the data instead of arguing about it.',author:'Municipality Project Lead'},
+    },
+    reflection:{
+      label:'07 — Reflection',heading:'What I\'d do differently.',
+      lessons:[
+        {tag:'What worked',body:'The URL-state persistence was the single most praised feature. Users could share exact filtered views in meeting invites. Zero onboarding required.'},
+        {tag:'What I\'d change',body:'The ETL pipeline was hand-rolled. I\'d replace it with Apache Airflow from day one — the custom pipeline became a maintenance burden after the first schema change.'},
+        {tag:'What I learned',body:'Performance is a feature. The jump from 6.2s to 1.1s load time was felt before anyone read a single data point. Speed built trust before the product even spoke.'},
+      ],
+    },
+    navigation:{prev:null,next:{title:'Cloud Dashboard',slug:'cloud-dashboard'}},
+  },
+
+  'cloud-dashboard': {
+    id:'cloud-dashboard',slug:'cloud-dashboard',year:'2024',duration:'6 weeks',
+    role:'Frontend Engineer · Azure Consultant',status:'In Progress',category:'Cloud',
+    hero:{
+      eyebrow:'Case Study — Cloud Infrastructure',
+      title:'Cloud Dashboard',
+      subtitle:'You can\'t optimize what you can\'t see.',
+      tags:['React','D3.js','Azure SDK','Chart.js'],
+      coverImage:'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80&fit=crop',
+    },
+    context:{
+      label:'01 — Context',heading:'Why this existed',
+      body:['A SaaS company running across three Azure regions had no unified visibility into their infrastructure. Costs were climbing. Engineers were firefighting instead of building.','Their cloud bills were a mystery. Their architecture was tribal knowledge.'],
+      stat:{value:'3',unit:' rgns',label:'with zero unified visibility'},
+    },
+    problem:{
+      label:'02 — The Problem',
+      heading:'Invisible infrastructure is expensive infrastructure.',
+      body:'Without a single pane of glass, the engineering team spent 2–3 hours per incident just establishing what was affected. Every slowdown was a detective story.',
+      challenges:[
+        {icon:'⬡',title:'No unified monitoring',desc:'Metrics scattered across 4 separate Azure dashboards'},
+        {icon:'◎',title:'Cost visibility gap',desc:'Monthly Azure bill arrived as a surprise, not a forecast'},
+        {icon:'⬜',title:'Alert fatigue',desc:'150+ raw alerts per day, no priority ranking'},
+        {icon:'△',title:'No historical baseline',desc:'No way to compare current state vs. 30/60/90 day trends'},
+      ],
+    },
+    thinking:{
+      label:'03 — Thinking',heading:'Architecture decisions under time pressure.',
+      decisions:[
+        {question:'Custom charts or library?',answer:'D3.js for the complex multi-region topology view. Chart.js for standard time-series. Mixing was intentional — use the right tool per data shape.',outcome:'Right tool per problem'},
+        {question:'Real-time or polling?',answer:'Polling at 30s intervals with local optimistic state. WebSockets were evaluated but added infra cost with marginal UX gain for this use case.',outcome:'Cost-conscious architecture'},
+        {question:'Role-based access?',answer:'Yes, from day one. Engineers see granular metrics. Finance sees cost dashboards. Executives see health summaries. Same data, different lenses.',outcome:'Audience-aware information design'},
+      ],
+    },
+    process:{
+      label:'04 — Process',heading:'Six weeks, tight scope.',
+      steps:[
+        {number:'01',title:'Azure SDK Integration',body:'Connected to Azure Monitor, Cost Management, and Resource Graph APIs. Built a thin abstraction layer so swapping providers later costs days, not weeks.',tag:'Week 1'},
+        {number:'02',title:'Data Normalization',body:'Normalized heterogeneous metric schemas into a unified time-series format. The hardest week — Azure\'s APIs are not consistent across services.',tag:'Week 2'},
+        {number:'03',title:'Topology View',body:'Built the multi-region network graph in D3.js — nodes represent services, edges show dependencies, color encodes health state.',tag:'Week 3'},
+        {number:'04',title:'Cost Analytics',body:'Built the forecasting model using 90-day rolling averages with burn-rate projections. Finance team\'s first reaction: "We\'ve never seen this before."',tag:'Week 4'},
+        {number:'05',title:'Alert Intelligence',body:'Built alert grouping by impact surface — one affected service, one alert. Cut 150 daily alerts to ~12 actionable ones.',tag:'Week 5'},
+        {number:'06',title:'Export & Reporting',body:'Weekly automated PDF reports for exec summaries. Built in 2 days using a headless Chrome render pipeline.',tag:'Week 6'},
+      ],
+    },
+    solution:{
+      label:'05 — Solution',
+      heading:'One screen. Every signal.',
+      body:'A role-aware cloud operations dashboard giving every stakeholder — engineer, finance, executive — exactly the signal they need, at the resolution they need it.',
+      features:[
+        {icon:'⬡',title:'Multi-region Topology',desc:'Live D3.js network graph of all Azure resources and dependencies'},
+        {icon:'◎',title:'Cost Forecasting',desc:'90-day rolling burn rate with month-end projections'},
+        {icon:'△',title:'Smart Alerts',desc:'150 raw signals → 12 prioritized, grouped, actionable alerts'},
+        {icon:'⬜',title:'Role-based Views',desc:'Engineer, Finance, and Executive lenses on the same data'},
+        {icon:'⬡',title:'Historical Baselines',desc:'30/60/90-day trend comparison for any metric'},
+        {icon:'◎',title:'Auto Reports',desc:'Weekly executive PDF, auto-generated every Monday at 8am'},
+      ],
+      images:[
+        {src:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=80&fit=crop',caption:'Multi-region topology — live dependency graph'},
+        {src:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=900&q=80&fit=crop',caption:'Cost analytics — 90-day burn rate with forecast'},
+      ],
+    },
+    impact:{
+      label:'06 — Impact',heading:'Measurable results.',
+      metrics:[
+        {value:'78%',label:'reduction in alert noise',sub:'150 → 12 daily actionable alerts'},
+        {value:'2.5hr',label:'saved per incident',sub:'faster blast-radius identification'},
+        {value:'23%',label:'cost reduction',sub:'first month after deployment'},
+        {value:'3→1',label:'dashboards replaced',sub:'single source of operational truth'},
+      ],
+      quote:{text:'We found $40K in unused reserved instances in the first week of using this.',author:'Head of Engineering'},
+    },
+    reflection:{
+      label:'07 — Reflection',heading:'Honest assessment.',
+      lessons:[
+        {tag:'What worked',body:'The alert grouping algorithm was the highest-impact feature by far. Solving the signal/noise problem unlocked everything else.'},
+        {tag:'What I\'d change',body:'I\'d push harder for WebSockets on the topology view. The 30s polling creates a visible blink during incident response that erodes trust at the worst moment.'},
+        {tag:'What I learned',body:'Finance and engineering don\'t speak the same language. The role-based view wasn\'t a nice-to-have — it was the feature that got executive buy-in for the whole project.'},
+      ],
+    },
+    navigation:{prev:{title:'GIS City Viewer',slug:'gis-city-viewer'},next:null},
+  },
+};
+
+/* ═══════════ RENDERER ═══════════ */
+const SECTION_IDS = [
+  {id:'cs-context',label:'Context'},
+  {id:'cs-problem',label:'Problem'},
+  {id:'cs-thinking',label:'Thinking'},
+  {id:'cs-process',label:'Process'},
+  {id:'cs-solution',label:'Solution'},
+  {id:'cs-impact',label:'Impact'},
+  {id:'cs-reflection',label:'Reflection'},
+];
+
+function h(tag, attrs, ...children) {
+  return `<${tag} ${attrs||''}>${children.join('')}</${tag}>`;
+}
+
+function buildPage(d) {
+  return `
+    <div class="cs-reading-bar" id="cs-reading-bar"></div>
+    <a href="index.html" class="cs-back-btn">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+      Portfolio
+    </a>
+    <nav class="cs-progress-nav" id="cs-progress-nav">
+      ${SECTION_IDS.map(s=>`<div class="cs-progress-nav__item" data-target="${s.id}"><div class="cs-progress-nav__dot"></div><span class="cs-progress-nav__label">${s.label}</span></div>`).join('')}
+    </nav>
+    <main class="cs-page">
+      ${buildHero(d)}
+      ${buildContext(d)}
+      ${buildProblem(d)}
+      ${buildThinking(d)}
+      ${buildProcess(d)}
+      ${buildSolution(d)}
+      ${buildImpact(d)}
+      ${buildReflection(d)}
+      ${buildNav(d)}
+    </main>`;
+}
+
+function buildHero(d) {
+  return `
+  <section class="cs-hero" id="cs-hero">
+    <div class="cs-hero__cover">
+      <img src="${d.hero.coverImage}" alt="${d.hero.title}"/>
+      <div class="cs-hero__cover-overlay"></div>
+      <div class="cs-hero__cover-grain"></div>
+    </div>
+    <div class="cs-hero__content">
+      <div class="cs-hero__eyebrow"><span>${d.hero.eyebrow}</span></div>
+      <h1 class="cs-hero__title">${d.hero.title}</h1>
+      <p class="cs-hero__subtitle"><em>${d.hero.subtitle}</em></p>
+      <div class="cs-hero__meta">
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-item-label">Year</span>
+          <span class="cs-hero__meta-item-val">${d.year}</span>
+        </div>
+        <div class="cs-hero__meta-divider"></div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-item-label">Duration</span>
+          <span class="cs-hero__meta-item-val">${d.duration}</span>
+        </div>
+        <div class="cs-hero__meta-divider"></div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-item-label">Role</span>
+          <span class="cs-hero__meta-item-val">${d.role}</span>
+        </div>
+        <div class="cs-hero__meta-divider"></div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-item-label">Status</span>
+          <span class="cs-hero__meta-item-val">${d.status}</span>
+        </div>
+      </div>
+      <div class="cs-hero__tags">
+        ${d.hero.tags.map(t=>`<span class="cs-hero__tag">${t}</span>`).join('')}
+      </div>
+    </div>
+    <div class="cs-hero__scroll"><div class="cs-hero__scroll-line"></div>Scroll</div>
+  </section>`;
+}
+
+function buildContext(d) {
+  const c = d.context;
+  return `
+  <section class="cs-section" id="cs-context">
+    <div class="cs-container">
+      <div class="cs-section-label cs-reveal"><span>${c.label}</span></div>
+      <h2 class="cs-h2 cs-reveal" style="margin-bottom:4rem;">${c.heading}</h2>
+      <div class="cs-context__body-wrap">
+        <div>${c.body.map((p,i)=>`<p class="cs-body cs-reveal cs-reveal-d${i+1}" style="margin-bottom:2rem;">${p}</p>`).join('')}</div>
+        <div class="cs-context__stat cs-reveal cs-reveal--right cs-reveal-d2">
+          <span class="cs-context__stat-val">${c.stat.value}<span class="cs-context__stat-unit">${c.stat.unit}</span></span>
+          <p class="cs-context__stat-label">${c.stat.label}</p>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function buildProblem(d) {
+  const p = d.problem;
+  return `
+  <section class="cs-section" id="cs-problem" style="background:var(--cs-bg-2)">
+    <div class="cs-container--wide">
+      <div class="cs-section-label cs-reveal"><span>${p.label}</span></div>
+      <p class="cs-problem__statement cs-reveal cs-reveal-d1">${p.heading}</p>
+      <div class="cs-challenges cs-reveal cs-reveal-d2">
+        ${p.challenges.map(ch=>`
+          <div class="cs-challenge">
+            <span class="cs-challenge__icon">${ch.icon}</span>
+            <h3 class="cs-challenge__title">${ch.title}</h3>
+            <p class="cs-challenge__desc">${ch.desc}</p>
+          </div>`).join('')}
+      </div>
+      <p class="cs-body cs-reveal cs-reveal-d3" style="margin-top:4rem;max-width:700px;">${p.body}</p>
+    </div>
+  </section>`;
+}
+
+function buildThinking(d) {
+  const t = d.thinking;
+  return `
+  <section class="cs-section cs-thinking" id="cs-thinking">
+    <div class="cs-container--wide">
+      <div class="cs-section-label cs-reveal"><span>${t.label}</span></div>
+      <h2 class="cs-h2 cs-reveal cs-reveal-d1" style="margin-bottom:5rem;">${t.heading}</h2>
+      <div class="cs-decisions cs-reveal cs-reveal-d2">
+        ${t.decisions.map(dec=>`
+          <div class="cs-decision">
+            <div>
+              <p class="cs-decision__q">The question</p>
+              <h3 class="cs-decision__question">${dec.question}</h3>
+            </div>
+            <div>
+              <p class="cs-decision__answer">${dec.answer}</p>
+              <span class="cs-decision__outcome">${dec.outcome}</span>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>
+  </section>`;
+}
+
+function buildProcess(d) {
+  const p = d.process;
+  return `
+  <section class="cs-section" id="cs-process">
+    <div class="cs-container">
+      <div class="cs-section-label cs-reveal"><span>${p.label}</span></div>
+      <h2 class="cs-h2 cs-reveal cs-reveal-d1" style="margin-bottom:5rem;">${p.heading}</h2>
+      <div class="cs-process-steps">
+        ${p.steps.map((s,i)=>`
+          <div class="cs-step" data-step-index="${i}">
+            <div class="cs-step__left">
+              <span class="cs-step__number">${s.number}</span>
+              <span class="cs-step__tag">${s.tag}</span>
+            </div>
+            <div class="cs-step__right">
+              <h3 class="cs-step__title">${s.title}</h3>
+              <p class="cs-step__body">${s.body}</p>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>
+  </section>`;
+}
+
+function buildSolution(d) {
+  const s = d.solution;
+  return `
+  <section class="cs-section cs-solution" id="cs-solution">
+    <div class="cs-container--wide">
+      <div class="cs-section-label cs-reveal"><span>${s.label}</span></div>
+      <p class="cs-solution__intro cs-reveal cs-reveal-d1">${s.body}</p>
+      <div class="cs-features cs-reveal cs-reveal-d2">
+        ${s.features.map(f=>`
+          <div class="cs-feature">
+            <span class="cs-feature__icon">${f.icon}</span>
+            <h4 class="cs-feature__title">${f.title}</h4>
+            <p class="cs-feature__desc">${f.desc}</p>
+          </div>`).join('')}
+      </div>
+      <div class="cs-solution__images cs-reveal cs-reveal-d3">
+        ${s.images.map(img=>`
+          <div class="cs-solution__img-wrap">
+            <img src="${img.src}" alt="${img.caption}" loading="lazy"/>
+            <div class="cs-solution__img-caption">${img.caption}</div>
+          </div>`).join('')}
+      </div>
+    </div>
+  </section>`;
+}
+
+function buildImpact(d) {
+  const imp = d.impact;
+  return `
+  <section class="cs-section" id="cs-impact">
+    <div class="cs-container--wide">
+      <div class="cs-section-label cs-reveal"><span>${imp.label}</span></div>
+      <h2 class="cs-h2 cs-reveal cs-reveal-d1" style="margin-bottom:5rem;">${imp.heading}</h2>
+      <div class="cs-metrics cs-reveal cs-reveal-d2">
+        ${imp.metrics.map(m=>`
+          <div class="cs-metric">
+            <span class="cs-metric__value">${m.value}</span>
+            <p class="cs-metric__label">${m.label}</p>
+            <p class="cs-metric__sub">${m.sub}</p>
+          </div>`).join('')}
+      </div>
+      <blockquote class="cs-impact__quote cs-reveal cs-reveal-d3">
+        <p class="cs-impact__quote-text">${imp.quote.text}</p>
+        <cite class="cs-impact__quote-author">— ${imp.quote.author}</cite>
+      </blockquote>
+    </div>
+  </section>`;
+}
+
+function buildReflection(d) {
+  const r = d.reflection;
+  return `
+  <section class="cs-section cs-reflection" id="cs-reflection">
+    <div class="cs-container">
+      <div class="cs-section-label cs-reveal"><span>${r.label}</span></div>
+      <h2 class="cs-h2 cs-reveal cs-reveal-d1" style="margin-bottom:5rem;">${r.heading}</h2>
+      <div class="cs-lessons cs-reveal cs-reveal-d2">
+        ${r.lessons.map(l=>`
+          <div class="cs-lesson">
+            <span class="cs-lesson__tag">${l.tag}</span>
+            <p class="cs-lesson__body">${l.body}</p>
+          </div>`).join('')}
+      </div>
+    </div>
+  </section>`;
+}
+
+function buildNav(d) {
+  const nav = d.navigation;
+  const prev = nav.prev ? `<a href="case-study.html?project=${nav.prev.slug}" class="cs-nav__item"><span class="cs-nav__dir">← Previous</span><span class="cs-nav__title">${nav.prev.title}</span></a>` : `<div class="cs-nav__item" style="opacity:0.2;pointer-events:none;"><span class="cs-nav__dir">←</span><span class="cs-nav__title">—</span></div>`;
+  const next = nav.next ? `<a href="case-study.html?project=${nav.next.slug}" class="cs-nav__item"><span class="cs-nav__dir">Next →</span><span class="cs-nav__title">${nav.next.title}</span></a>` : `<div class="cs-nav__item" style="opacity:0.2;pointer-events:none;"><span class="cs-nav__dir">→</span><span class="cs-nav__title">—</span></div>`;
+  return `<nav class="cs-nav">${prev}${next}</nav>`;
+}
+
+/* ═══════════ ANIMATIONS ═══════════ */
+function initAnims() {
+  // Scroll reveal
+  const ro = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});
+  },{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.cs-reveal').forEach(el=>ro.observe(el));
+
+  // Staggered process steps
+  const stepObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const i=parseInt(e.target.dataset.stepIndex)||0;
+        setTimeout(()=>e.target.classList.add('visible'), i*140);
+        stepObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.cs-step').forEach(el=>stepObs.observe(el));
+
+  // Progress nav spy
+  const nav = document.getElementById('cs-progress-nav');
+  const hero = document.getElementById('cs-hero');
+  const navItems = document.querySelectorAll('.cs-progress-nav__item');
+
+  const heroObs = new IntersectionObserver(entries=>{
+    nav.classList.toggle('visible',!entries[0].isIntersecting);
+  },{threshold:0.1});
+  if(hero) heroObs.observe(hero);
+
+  const secObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navItems.forEach(item=>item.classList.toggle('active',item.dataset.target===e.target.id));
+      }
+    });
+  },{threshold:0.4});
+  SECTION_IDS.forEach(s=>{const el=document.getElementById(s.id);if(el)secObs.observe(el);});
+
+  navItems.forEach(item=>{
+    item.addEventListener('click',()=>{
+      const t=document.getElementById(item.dataset.target);
+      if(t) t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  // Reading bar
+  const bar = document.getElementById('cs-reading-bar');
+  window.addEventListener('scroll',()=>{
+    const d=document.documentElement;
+    bar.style.width=((d.scrollTop/(d.scrollHeight-d.clientHeight))*100)+'%';
+  },{passive:true});
+
+  // Hero parallax on scroll
+  const heroImg = document.querySelector('.cs-hero__cover img');
+  if(heroImg){
+    window.addEventListener('scroll',()=>{
+      const p=Math.min(window.scrollY/window.innerHeight,1);
+      heroImg.style.transform=`scale(${1.04+p*0.06})`;
+    },{passive:true});
+  }
+
+  // Card lift on hover
+  document.querySelectorAll('.cs-challenge,.cs-feature,.cs-metric,.cs-decision,.cs-lesson').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{el.style.transition='background .4s,transform .4s cubic-bezier(.165,.84,.44,1)';el.style.transform='translateY(-3px)';});
+    el.addEventListener('mouseleave',()=>{el.style.transform='translateY(0)';});
+  });
+
+  // Portfolio cursor integration
+  document.querySelectorAll('a,button,.cs-challenge,.cs-feature,.cs-decision,.cs-lesson,.cs-nav__item').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+  });
+}
+
+/* ═══════════ BOOT ═══════════ */
+document.addEventListener('DOMContentLoaded',()=>{
+  const slug = new URLSearchParams(window.location.search).get('project') || 'gis-city-viewer';
+  const data = PROJECTS_MAP[slug] || Object.values(PROJECTS_MAP)[0];
+
+  document.title = `${data.hero.title} — Case Study · Hossam Ayman`;
+
+  const root = document.getElementById('cs-root');
+  root.innerHTML = buildPage(data);
+
+  requestAnimationFrame(initAnims);
+});
+
+/* ═══════════ PORTFOLIO CURSOR (reused) ═══════════ */
+(function(){
+  const dot=document.getElementById('cursor-dot');
+  const ring=document.getElementById('cursor-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);}
+  loop();
+})();
+
+/* ═══════════ MOBILE MENU ═══════════ */
+document.getElementById('mob-menu-btn')?.addEventListener('click',()=>document.getElementById('mobile-menu').classList.add('open'));
+document.getElementById('mob-menu-close')?.addEventListener('click',()=>document.getElementById('mobile-menu').classList.remove('open'));
+</script>
+<script defer src="./js/projects.js"></script>
+</body>
+</html>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <meta
       name="description"
       content="Hossam Ayman is a front-end developer specializing in Geographic Information System (GIS) development (e.g., visualization tools, interactive maps) and 3D web rendering. employs Three.js and React to create high-performance, engaging 3D web experiences and geospatial applications."
     />
-    <!-- FAV-ICON -->
-    <link rel="icon" href="./assets/icons/favicon.png" />
-    <link rel="apple-touch-icon" href="./assets/icons/favicon-192.png" />
-    <link rel="manifest" href="./manifest.webmanifest" />
-    <title>Frontend Dev Portfoilo &mdash; Hossam Ayman</title>
-    <!-- Open Graph Tags -->
+<title>Hossam Ayman — Frontend Developer & GIS Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Open Graph Tags -->
     <meta property="og:title " content="Hossam Ayman Portfoilo" />
     <meta property="og:type" content="website" />
     <meta
@@ -25,24 +25,30 @@
       content="https://master--hossam-ayman.netlify.app/"
     />
     <meta property="og:image" content="./assets/images/hossam-photo.webp" />
+
+     <!-- FAV-ICON -->
+    <link rel="icon" href="./assets/icons/favicon.png" />
+    <link rel="apple-touch-icon" href="./assets/icons/favicon-192.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
     <!-- BOX-ICONS -->
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
     <!-- GOOGLE FONTS -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"/>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- STYLES -->
-    <link rel="stylesheet" href="./css/general.css" />
-    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/queries.css" />
-    <!-- ION-ICONS -->
+    
+<!-- STYLES -->
+<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+<link rel="stylesheet" href="./css/styles-additions.css"/>
+
+ <!-- ION-ICONS -->
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -51,425 +57,469 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-  </head>
-  <body>
-    <!-- Navgation contetn -->
 
-    <header class="nav-header">
-      <button class="nav-btn cursor">
-        <ion-icon name="close-outline" class="nav-icon"></ion-icon>
+</head>
+<body>
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- ===================== PRELOADER ===================== -->
+<div id="preloader">
+  <div class="pl-progress-bar" id="pl-bar"></div>
+  <div class="pl-line-sweep" id="pl-line"></div>
+
+  <!-- Background images (B&W, premium feel) -->
+  <div class="pl-images-strip">
+    <img class="pl-img" src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=1400&q=60&fit=crop" alt=""/>
+    <img class="pl-img" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1400&q=60&fit=crop" alt=""/>
+    <img class="pl-img" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1400&q=60&fit=crop" alt=""/>
+  </div>
+  <div class="pl-overlay"></div>
+
+  <!-- Kinetic Typography -->
+  <div class="pl-kinetic">
+    <div class="pl-strip">
+      <span class="pl-strip-text" id="pl-t1">HOSSAM</span>
+      <span class="pl-strip-text muted" id="pl-t2">DEVELOPER</span>
+    </div>
+    <div class="pl-strip">
+      <span class="pl-strip-text accent" id="pl-t3">AYMAN</span>
+      <span class="pl-strip-text muted" id="pl-t4">GIS · CLOUD</span>
+    </div>
+    <div class="pl-strip">
+      <span class="pl-strip-text" id="pl-t5">PORTFOLIO</span>
+      <span class="pl-strip-text accent2 muted" id="pl-t6">ALEXANDRIA · EGYPT</span>
+    </div>
+  </div>
+
+  <!-- Born date counter -->
+  <div class="pl-born-date" id="pl-born">
+    <span class="pl-born-label">Date of birth</span>
+    <span class="pl-born-val">23 / 09 / <span id="pl-year">0000</span></span>
+  </div>
+
+  <!-- Progress counter -->
+  <div class="pl-counter-block">
+    <span class="pl-counter-label">Loading</span>
+    <span class="pl-counter-val" id="pl-counter">0</span>
+  </div>
+</div>
+
+<!-- ===================== SIDEBAR ===================== -->
+<aside id="sidebar">
+  <div class="sidebar-logo">HA</div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item active" href="#section-home" data-section="home">
+      <div class="nav-dot"></div>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+      <span class="nav-tooltip">Home</span>
+    </a>
+    <a class="sidebar-nav-item" href="#section-about" data-section="about">
+      <div class="nav-dot"></div>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+      <span class="nav-tooltip">About</span>
+    </a>
+    <a class="sidebar-nav-item" href="#section-projects" data-section="projects">
+      <div class="nav-dot"></div>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"/></svg>
+      <span class="nav-tooltip">Projects</span>
+    </a>
+    <a class="sidebar-nav-item" href="#section-services" data-section="services">
+      <div class="nav-dot"></div>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+      <span class="nav-tooltip">Services</span>
+    </a>
+    <a class="sidebar-nav-item" href="#section-contact" data-section="contact">
+      <div class="nav-dot"></div>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+      <span class="nav-tooltip">Contact</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-socials">
+    <a href="https://www.linkedin.com/in/hossam-ayman-" class="sidebar-social-link" target="_blank" title="LinkedIn">
+      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://github.com/hossam43" class="sidebar-social-link" target="_blank" title="GitHub">
+      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hossamayman2399@gmail.com" class="sidebar-social-link" title="Email">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+    </a>
+  </div>
+</aside>
+
+<!-- MOBILE NAV -->
+<nav id="mobile-nav">
+  <div class="mob-logo">HA</div>
+  <button class="mob-menu-btn" id="mob-menu-btn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="mobile-menu">
+  <button class="mob-menu-close" id="mob-menu-close">✕</button>
+  <a href="#section-home">Home</a>
+  <a href="#section-about">About</a>
+  <a href="#section-projects">Projects</a>
+  <a href="#section-services">Services</a>
+  <a href="#section-contact">Contact</a>
+</div>
+
+<!-- ===================== MAIN CONTENT ===================== -->
+<div id="main-wrap">
+
+  <!-- HERO -->
+  <section id="section-home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-bg-glow"></div>
+    <div class="hero-bg-glow2"></div>
+
+    <div class="hero-content" style="padding:0 6rem;">
+      <div class="hero-eyebrow" id="h-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        <span>Available for projects</span>
+      </div>
+
+      <h1 class="hero-name" id="h-name">
+        <span class="hero-name-inner">HOSSAM AYMAN</span>
+      </h1>
+
+      <div class="hero-role-line" id="h-role">
+        <span class="hero-role">Software Developer</span>
+        <span class="hero-role-sep"></span>
+        <span class="hero-role-highlight">GIS Specialist</span>
+        <span class="hero-role-sep"></span>
+        <span class="hero-role-highlight">Cloud Consultant</span>
+      </div>
+
+      <p class="hero-desc" id="h-desc">
+        Building premium digital experiences at the intersection of frontend engineering, geospatial intelligence, and cloud architecture.
+      </p>
+
+      <div class="hero-cta" id="h-cta">
+        <a href="https://drive.google.com/uc?export=download&id=1CBSXgMphhHq02Fsm0yIoubw9f337O6oC" class="btn-primary">
+          <span>Download CV</span>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+        </a>
+        <a href="#section-contact" class="btn-outline">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+          <span>Get in Touch</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="skills-ticker">
+      <div class="skills-ticker-inner" id="ticker-inner">
+        <div class="skill-tick-item">Web Mapping</div>
+        <div class="skill-tick-item">3D Web Development</div>
+        <div class="skill-tick-item">GIS Solutions</div>
+        <div class="skill-tick-item">React.js</div>
+        <div class="skill-tick-item">Three.js</div>
+        <div class="skill-tick-item">Cloud Consulting</div>
+        <div class="skill-tick-item">UI/UX Design</div>
+        <div class="skill-tick-item">Animation</div>
+        <div class="skill-tick-item">Geospatial Apps</div>
+        <div class="skill-tick-item">Frontend Engineering</div>
+        <div class="skill-tick-item">Web Mapping</div>
+        <div class="skill-tick-item">3D Web Development</div>
+        <div class="skill-tick-item">GIS Solutions</div>
+        <div class="skill-tick-item">React.js</div>
+        <div class="skill-tick-item">Three.js</div>
+        <div class="skill-tick-item">Cloud Consulting</div>
+        <div class="skill-tick-item">UI/UX Design</div>
+        <div class="skill-tick-item">Animation</div>
+        <div class="skill-tick-item">Geospatial Apps</div>
+        <div class="skill-tick-item">Frontend Engineering</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="section-about">
+    <div class="about-text-col reveal">
+      <div class="section-tag">About Me</div>
+      <h2 class="about-title">Building the<br><span>Next-Level</span><br>Digital World</h2>
+      <p class="about-para">Passionate <strong>Frontend Developer</strong> with a deep background in <strong>Geographic Information Systems (GIS)</strong>, I craft seamless, user-centric web experiences that blend technical depth with design precision.</p>
+      <p class="about-para">Specializing in immersive 3D experiences with Three.js, interactive geospatial visualizations, and enterprise cloud architecture. My work sits at the intersection of design and engineering.</p>
+      <p class="about-para" style="color:var(--primary);font-weight:500;">✦ Available for immediate calls and project consultations</p>
+
+      <div class="about-stats">
+        <div>
+          <div class="about-stat-num">3+</div>
+          <div class="about-stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="about-stat-num">50+</div>
+          <div class="about-stat-label">Projects Delivered</div>
+        </div>
+        <div>
+          <div class="about-stat-num">3</div>
+          <div class="about-stat-label">Core Specialties</div>
+        </div>
+      </div>
+<!-- 
+      <a href="#section-contact" class="btn-primary" style="align-self:flex-start;">
+        <span>Learn More / Connect</span>
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a> -->
+
+
+      <a href="./pages/about.html" class="btn-about-page" style="align-self:flex-start;margin-right:1.6rem;">
+  <span>Learn More</span>
+  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+  </svg>
+</a>
+<a href="#section-contact" class="btn-outline" style="align-self:flex-start;">
+  <span>Contact Me</span>
+  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:16px;height:16px;">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.269 20.876L5.999 12zm0 0h7.5"/>
+  </svg>
+</a>
+ 
+    </div>
+
+    <div class="about-visual-col">
+      <canvas id="about-canvas"></canvas>
+      <div class="about-visual-tag">Frontend Dev</div>
+      <div class="about-visual-tag">GIS / Geospatial</div>
+      <div class="about-visual-tag">Cloud Consulting</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="section-projects">
+    <div class="section-header">
+      <div>
+        <div class="section-tag">Recent Work</div>
+        <h2 class="section-title reveal">Selected<br>Projects</h2>
+      </div>
+      <button class="btn-outline" id="more-projects-btn">
+        <span>All Projects</span>
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:16px;height:16px;"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
       </button>
-      <div class="nav-top">
-        <p class="p-small-nav">Navigation</p>
-        <div class="line" style="width: 86.8381%"></div>
-        <!-- NAV AirPlain -->
-        <div class="container-nav-airPlain">
-          <div class="stroke"></div>
+    </div>
+
+    <div class="projects-list reveal" id="main-projects-list">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="section-services">
+    <div class="section-tag">What I Do</div>
+    <h2 class="section-title reveal" style="margin-bottom:0;">My<br>Services</h2>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+        <h3 class="service-title">Frontend Development</h3>
+        <p class="service-desc">Building high-performance, pixel-perfect web applications with modern frameworks. Specializing in complex animations, 3D experiences, and interactive interfaces.</p>
+        <div class="service-tags">
+          <span class="service-tag-item">React.js</span>
+          <span class="service-tag-item">Three.js</span>
+          <span class="service-tag-item">GSAP</span>
+          <span class="service-tag-item">WebGL</span>
         </div>
       </div>
 
-      <div class="nav-container">
-        <nav class="nav-menu">
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a href="#section--1" class="nav-link link cursor">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="#section--2" class="nav-link link cursor">About</a>
-            </li>
-            <li class="nav-item">
-              <a href="#section--3" class="nav-link link cursor">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a href="#section--4" class="nav-link link cursor">Contact</a>
-            </li>
-          </ul>
-        </nav>
+      <div class="service-card reveal">
+        <div class="service-num">02</div>
+        <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/></svg>
+        <h3 class="service-title">GIS Solutions</h3>
+        <p class="service-desc">Transforming complex geospatial data into stunning interactive map experiences. Custom web mapping, spatial analysis, and geospatial application development.</p>
+        <div class="service-tags">
+          <span class="service-tag-item">Mapbox</span>
+          <span class="service-tag-item">Leaflet</span>
+          <span class="service-tag-item">ArcGIS</span>
+          <span class="service-tag-item">QGIS</span>
+        </div>
       </div>
 
-      <div class="socials nav-container">
-        <div class="nav-bottom">
-          <p class="p-small-nav">Socials</p>
-        </div>
-        <ul class="social-nav-links">
-          <li class="social-nav-link">
-            <a
-              href="https://wa.me/1113210972"
-              target="_blank"
-              class="link cursor"
-            >
-              Whatsapp
-            </a>
-          </li>
-
-          <li class="social-nav-link">
-            <a
-              href="https://www.linkedin.com/in/hossam-ayman-"
-              target="_blank"
-              class="link cursor"
-            >
-              LinkedIn
-            </a>
-          </li>
-          <li class="social-nav-link">
-            <a
-              href="mailto:hossamayman2399@gmail.com"
-              target="_blank"
-              class="link cursor"
-            >
-              Mail
-            </a>
-          </li>
-          <li class="social-nav-link">
-            <a
-              href="https://github.com/hossam43"
-              target="_blank"
-              class="link cursor"
-            >
-              Github
-            </a>
-          </li>
-        </ul>
-      </div>
-    </header>
-    <!-- PRELOADER -->
-    <div class="preloader" id="preloader">
-      <div class="preloader-wrapper">
-        <div class="preloader_top">
-          <div class="preloader_label">
-            <div class="preloader-text orange-accent">DEVELOPER</div>
-          </div>
-          <div class="preloader_label">
-            <div class="preloader-text">Geospsitalest</div>
-          </div>
-        </div>
-        <div class="preloader_counter_container">
-          <div class="preloader-counter" id="preloader-counter">
-            23 / 09 / 0
-          </div>
-        </div>
-
-        <div class="preloader_bottom">
-          <div class="preloader_label">
-            <div class="preloader-text">Egypt</div>
-          </div>
-          <div class="preloader_label">
-            <div class="preloader-text orange-accent">Alexandria</div>
-          </div>
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>
+        <h3 class="service-title">Cloud Consulting</h3>
+        <p class="service-desc">Strategic cloud architecture consulting for scalable, resilient applications. From infrastructure design to deployment optimization and performance tuning.</p>
+        <div class="service-tags">
+          <span class="service-tag-item">AWS</span>
+          <span class="service-tag-item">Azure</span>
+          <span class="service-tag-item">DevOps</span>
+          <span class="service-tag-item">CI/CD</span>
         </div>
       </div>
     </div>
-    <!-- ! -->
-    <div class="custom-cursor"></div>
+  </section>
 
-    <!-- ASIDE NAV -->
-    <aside id="aside-element">
-      <div class="yellow-sticky">
-        <div class="full-content-container">
-          <div class="flex-social-content-container">
-            <div class="logo-box">
-              <img
-                src="./assets/images/web-logo.svg"
-                class="logo-side"
-                alt="portfoilo logo"
-              />
-            </div>
-            <div class="nav-icon-side">
-              <ion-icon
-                name="menu-outline"
-                class="aside-icon cursor"
-              ></ion-icon>
-            </div>
+  <!-- CONTACT -->
+  <section id="section-contact">
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <div class="section-tag">Get In Touch</div>
+        <h2 class="contact-tagline">Ready to<br><span>Start</span><br>Something?</h2>
+        <p style="font-size:1.6rem;line-height:1.7;color:rgba(247,247,247,0.55);max-width:380px;">Let's collaborate on your next project. Whether it's a complex web application, a geospatial solution, or cloud architecture.</p>
 
-            <div class="aside-socials-box">
-              <a
-                href="https://www.linkedin.com/in/hossam-ayman-"
-                class="magnetic-btn cursor"
-                style="color: #fff"
-              >
-                <ion-icon
-                  name="logo-linkedin"
-                  class="aside-socail-icon cursor"
-                ></ion-icon>
-              </a>
-
-              <a
-                href="mailto:hossamayman2399@gmail.com"
-                class="magnetic-btn cursor"
-                style="color: #fff"
-              >
-                <ion-icon
-                  name="mail-outline"
-                  class="aside-socail-icon"
-                ></ion-icon>
-              </a>
-
-              <a
-                href="https://wa.me/1113210972"
-                class="magnetic-btn cursor"
-                style="color: #fff"
-              >
-                <ion-icon
-                  name="logo-whatsapp"
-                  class="aside-socail-icon"
-                ></ion-icon>
-              </a>
-            </div>
+        <div class="contact-info-items">
+          <div class="contact-info-item">
+            <div class="cinfo-label">Phone</div>
+            <div class="cinfo-val"><a href="tel:+20111321972">(+20) 111 321 972</a></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="cinfo-label">Email</div>
+            <div class="cinfo-val"><a href="mailto:hossamayman2399@gmail.com">hossamayman2399@gmail.com</a></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="cinfo-label">Location</div>
+            <div class="cinfo-val">Alexandria, Egypt · Remote Available</div>
           </div>
         </div>
       </div>
-    </aside>
-    <!-- PAGE CONTENT -->
-    <div id="page-contet">
-      <!-- MAIN CONTENT -->
-      <div id="wrapper">
-        <main id="main-content">
-          <!-- Mobile nav -->
-          <nav class="mobile-nav-header">
-            <div class="logo-box-mobile">
-              <img
-                src="./assets/images/web-logo.svg"
-                class="logo-side"
-                alt="portfoilo logo for mobile"
-              />
+
+      <div class="contact-form-wrap reveal">
+        <div id="contact-form-wrap">
+          <div class="form-row-2">
+            <div class="form-group" id="fg-name">
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-input" id="f-name" placeholder="John Doe"/>
+              <span class="form-error">Please enter your name</span>
             </div>
-
-            <button class="nav-icon-side cursor" id="menu-button">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </nav>
-          <!-- HERO SECTION -->
-          <section class="hero-section" id="section--1">
-            <!-- Hero Text Content -->
-            <div class="home-header">
-              <h1 class="home-header-heading">HOSSAM AYMAN</h1>
-              <p class="home-header_subheading-3">
-                <strong class="bold-text-6"
-                  >Frontend Developer, skilled in <span id="typewriter"></span
-                  ><span id="typewriter-cursor">|</span></strong
-                ><br />
-              </p>
-              <p class="home-header_subheading-5">
-                Let's build your unique online presence and bring your ideas to
-                life together.
-              </p>
-              <!-- Hero Buttons -->
-              <div class="home-header-btn">
-                <a
-                  class="btn contact-btn cursor"
-                  href="https://drive.google.com/uc?export=download&id=1CBSXgMphhHq02Fsm0yIoubw9f337O6oC"
-                >
-                  <span>Download CV</span>
-
-                  <ion-icon name="cloud-download-outline"></ion-icon>
-                </a>
-
-                <a href="#section--4" class="btn contact-btn cursor">
-                  <span>Contact me</span>
-                  <ion-icon name="call-outline"></ion-icon>
-                </a>
-              </div>
-            </div>
-            <div class="skyline-box"></div>
-          </section>
-          <!-- SKILLES LIST -->
-          <div class="skills-section">
-            <div class="page-padding">
-              <ul class="skills-list">
-                <li class="skill-list-item">
-                  <span> WEB MAPPING </span>
-                </li>
-
-                <li class="skill-list-item">
-                  <ion-icon name="add-outline"></ion-icon>
-                  <span> ANIMATION </span>
-                </li>
-
-                <li class="skill-list-item">
-                  <ion-icon name="add-outline"></ion-icon>
-                  <span> E-COMMERCE </span>
-                </li>
-
-                <li class="skill-list-item">
-                  <ion-icon name="add-outline"></ion-icon>
-                  <span>UI/UX DESIGN</span>
-                </li>
-
-                <li class="skill-list-item">
-                  <ion-icon name="add-outline"></ion-icon>
-                  <span> 3D WEB DEVELOPMENT </span>
-                </li>
-              </ul>
+            <div class="form-group" id="fg-email">
+              <label class="form-label">Email *</label>
+              <input type="email" class="form-input" id="f-email" placeholder="john@company.com"/>
+              <span class="form-error">Please enter a valid email</span>
             </div>
           </div>
-          <!-- ABOUT SECTION -->
-          <section class="about-section" id="section--2">
-            <div class="container margin-bottom-md">
-              <span class="sub-heading">/about me</span>
-              <div class="separator-border"></div>
-            </div>
-            <!-- btn start animation -->
-            <!-- <button class="btn" id="start-about">Start</button> -->
-            <div class="container grid about-box">
-              <div
-                class="container grid grid--2--cols grid-center-v content-section"
-              >
-                <div class="about-text-content">
-                  <h3 class="about-text-title">
-                    Let's build your
-                    <span class="about-text-span">Next fun project</span>
-                  </h3>
-                  <p class="about-me">
-                    Passionate FrontEnd developer with a background in GIS, I am
-                    dedicated to creating seamless, user-centric web
-                    experiences.
-                    <br />
-                    <br />
-                    Leveraging a solid foundation in HTML5, JavaScript, CSS, and
-                    React.js, I specialize crafting immersive 3D experiences.
-                    <br />
-                    <br />
-                    <span>Available for immediate calls</span>
-                  </p>
-                  <!-- refer to email -->
-                  <button class="btn btn--full about-btn cursor">
-                    Learn more
-                  </button>
-                </div>
-                <div class="about-image-box">
-                  <picture>
-                    <source
-                      srcset="./assets/images/hossam-photo.webp"
-                      type="image/webp"
-                    />
-                    <source
-                      srcset="./assets/images/hossam-photo.png"
-                      type="image/png"
-                    />
 
-                    <img
-                      class="about-image"
-                      src="./assets/images/hossam-photo.webp"
-                      alt="Hossam Ayman Photo"
-                    />
-                  </picture>
-                </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">Company</label>
+              <input type="text" class="form-input" id="f-company" placeholder="Your Company"/>
+            </div>
+            <div class="form-group" id="fg-service">
+              <label class="form-label">Service Needed *</label>
+              <select class="form-select" id="f-service">
+                <option value="">Select a service</option>
+                <option>Web Development</option>
+                <option>GIS Request</option>
+                <option>Cloud Consultation</option>
+                <option>Other</option>
+              </select>
+              <span class="form-error">Please select a service</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Project Type</label>
+              <select class="form-select" id="f-type">
+                <option value="">Select project type</option>
+                <option>New Website / App</option>
+                <option>Redesign / Rebuild</option>
+                <option>GIS / Mapping Project</option>
+                <option>Cloud Migration</option>
+                <option>Consultation Only</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Project Budget</label>
+              <div class="form-budget-grid">
+                <div class="budget-option" data-val="&lt;$2K">Under $1K</div>
+                <div class="budget-option" data-val="$2K-$5K">$1K – $5K</div>
+                <div class="budget-option" data-val="$5K-$10K">$5K – $10K</div>
+                <div class="budget-option" data-val="$10K-$20K">$10K – $20K</div>
+                <div class="budget-option" data-val="$20K+">$20K+</div>
+                <div class="budget-option" data-val="TBD">To Discuss</div>
               </div>
             </div>
-          </section>
-          <!-- PROJECTS SECTION -->
-          <section class="projects-section" id="section--3">
-            <!-- Projects contaienr -->
-            <section class="projects-section">
-              <div class="container margin-bottom-md">
-                <span class="sub-heading">/ recent work </span>
-                <div class="separator-border"></div>
-              </div>
+          </div>
 
-              <div
-                role="list"
-                class="works-collection-list w-dyn-items content-section"
-                id="projectContainer"
-              >
-                <!-- 1- listItem -->
-                <!-- 2- proejct -->
-              </div>
-            </section>
-
-            <div class="container flex-h-center">
-              <button class="btn btn--full project-btn cursor">
-                More Work
-                <span>
-                  <sup class="work-number">10</sup>
-                </span>
-              </button>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">Timeline</label>
+              <select class="form-select" id="f-timeline">
+                <option value="">Select timeline</option>
+                <option>ASAP (under 2 weeks)</option>
+                <option>1 Month</option>
+                <option>2-3 Months</option>
+                <option>3-6 Months</option>
+                <option>Flexible</option>
+              </select>
             </div>
-          </section>
-        </main>
+            <div style="display:flex;align-items:flex-end;">
+              <p style="font-size:1.3rem;color:var(--muted);line-height:1.6;">I typically respond within <strong style="color:var(--primary);">24 hours</strong> of receiving your message.</p>
+            </div>
+          </div>
 
-        <!-- MARQUEE EFFECT -->
-        <div class="scroller" data-direction="right">
-          <ul class="tag-list scroller__inner">
-            <li>CARTOGRAPHY +</li>
-            <li>ANIMATION +</li>
-            <li>DESIGNING +</li>
-            <li>PROBLEM SOLVING +</li>
-            <li>TRAVELING +</li>
-            <li>LEARNING LANGAUGES +</li>
-            <li>GAMMING +</li>
-            <li>READING +</li>
-          </ul>
+          <div class="form-row">
+            <div class="form-group" id="fg-msg">
+              <label class="form-label">Message / Request Details *</label>
+              <textarea class="form-textarea" id="f-msg" placeholder="Tell me about your project, goals, and any specific requirements..."></textarea>
+              <span class="form-error">Please describe your project</span>
+            </div>
+          </div>
+
+          <button class="btn-primary form-submit" id="form-submit-btn">
+            <span>Send Message</span>
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:16px;height:16px;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.269 20.876L5.999 12zm0 0h7.5"/></svg>
+          </button>
         </div>
-        <!-- FOOTER SECTION -->
-        <footer id="section--4">
-          <div class="container grid--footer">
-            <div class="container contact-section">
-              <span class="sub-heading">/Contact Section</span>
-              <div class="separator-border"></div>
-            </div>
-            <div class="ready-text">Ready to Get Started?</div>
-            <div class="meeting-box">
-              <div class="meeting-link-box">
-                <div class="meeting-link-c cursor">
-                  <!-- ZOOM MEETING SCAULA -->
-                  <a href="" class="meeting-link"></a>
-                </div>
-              </div>
-            </div>
-            <div class="mob-social-container">
-              <!-- here when it is in small screen -->
-            </div>
-            <div class="footer-logo">
-              <span class="wave">👋</span>
-            </div>
-            <div class="footer-phone">
-              <div class="phone-flex-container">
-                <div class="phone-title-box">
-                  <p class="phone-title">/PHONE</p>
-                </div>
-                <div class="phone-link-box">
-                  <a href="tel:+20111321972" class="phone cursor"
-                    >(+20)111 321 972</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="footer-email">
-              <div class="email-flex-container">
-                <div class="email-title-box">
-                  <p class="email-title">/EMAIL</p>
-                </div>
-                <div class="email-link-box">
-                  <a
-                    href="mailto:hossamayman2399@gmail.com"
-                    class="email cursor"
-                    >hossamayman2399@gmail.com</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="copy-rights">
-              <div class="copy-rights-inner">
-                Copyright © 2024 Hossam Ayman. All rights reserved. Design &
-                Development by Hossam.Ayman
-              </div>
-            </div>
-            <div class="empty-right"></div>
-          </div>
-        </footer>
+
+        <div class="form-success" id="form-success">
+          <div class="form-success-icon">✦</div>
+          <h3>Message Sent!</h3>
+          <p>Thank you for reaching out. I'll get back to you within 24 hours.</p>
+        </div>
       </div>
     </div>
 
-    <!-- GSAP SCRIPT & ScrollTrigger-->
-    <!-- SCRIPTS -->
-    <script type="module" src="./script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
-    <!-- text  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+    <div class="contact-big-text">LET'S BUILD</div>
+  </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
-  </body>
+  <footer>
+    <p class="footer-copy">© 2024 Hossam Ayman. All rights reserved.</p>
+    <p class="footer-credit">Design & Development by <span>Hossam.Ayman</span></p>
+  </footer>
+</div>
+
+<!-- ===================== PROJECTS PAGE ===================== -->
+<div id="projects-page">
+  <div class="pp-header">
+    <div>
+      <div class="section-tag">All Work</div>
+      <h1 class="pp-title">Projects</h1>
+    </div>
+    <button class="pp-close" id="pp-close-btn">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="width:20px;height:20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="pp-filters">
+    <button class="pp-filter-btn active" data-filter="all">All</button>
+    <button class="pp-filter-btn" data-filter="Design">Design</button>
+    <button class="pp-filter-btn" data-filter="Development">Development</button>
+    <button class="pp-filter-btn" data-filter="3D Experience">3D Experience</button>
+    <button class="pp-filter-btn" data-filter="Geospatial">Geospatial</button>
+    <button class="pp-filter-btn" data-filter="Cloud">Cloud</button>
+  </div>
+
+  <div class="pp-grid" id="pp-grid">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<!-- Image hover reveal for pp -->
+<div class="pp-card-img-reveal" id="img-reveal">
+  <img id="img-reveal-img" src="" alt=""/>
+</div>
+<script defer src="./script.js"></script>
+<script defer src="./js/script-additions.js"></script>
+
+</body>
 </html>

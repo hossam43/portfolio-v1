@@ -1,928 +1,561 @@
-"use strict";
-import { MagneticObject } from "./magnetic.js";
+// ===================== CURSOR =====================
+const dot = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+animRing();
+document.querySelectorAll('a,button,.sidebar-nav-item,.budget-option,.pp-card,.proj-row-header,.project-row-header').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+});
+ 
+//! ===================== PRELOADER =====================
+const BORN_YEAR = 1999;
+(function(){
+  const preloader = document.getElementById('preloader');
+  const bar = document.getElementById('pl-bar');
+  const counter = document.getElementById('pl-counter');
+  const yearEl = document.getElementById('pl-year');
+  const plBorn = document.getElementById('pl-born');
+  const plLine = document.getElementById('pl-line');
+  const texts = ['pl-t1','pl-t2','pl-t3','pl-t4','pl-t5','pl-t6'];
+  const imgs = document.querySelectorAll('.pl-img');
+ 
+  let progress = 0;
+  let imgIdx = 0;
+  imgs[0].classList.add('active');
+  const imgInterval = setInterval(()=>{
+    imgs[imgIdx].classList.remove('active');
+    imgIdx = (imgIdx+1)%imgs.length;
+    imgs[imgIdx].classList.add('active');
+  },600);
+ 
+  // Animate texts in
+  setTimeout(()=>{
+    texts.forEach((id,i)=>{
+      setTimeout(()=>{
+        const el = document.getElementById(id);
+        if(el) el.style.transform='translateY(0)';
+        el.style.transition=`transform 0.8s cubic-bezier(0.165,0.84,0.44,1) ${i*0.05}s`;
+      },i*100);
+    });
+  },200);
+ 
+  // Line sweep
+  setTimeout(()=>{
+    plLine.style.opacity='1';
+    plLine.style.transition='left 1.2s linear';
+    plLine.style.left='100%';
+  },400);
+ 
+  // Counter & born date
+  setTimeout(()=>{
+    document.getElementById('pl-counter').style.opacity='1';
+    document.getElementById('pl-counter').style.transition='opacity 0.4s';
+    plBorn.style.opacity='1';
+    plBorn.style.transition='opacity 0.4s';
+    yearEl.textContent = '0';
+    const target = BORN_YEAR;
+    const dur = 2000;
+    const start = Date.now();
+    function tick(){
+      const t = Math.min(1,(Date.now()-start)/dur);
+      const eased = 1-Math.pow(1-t,3);
+      const val = Math.round(eased * target);
+      yearEl.textContent = val;
+      counter.textContent = Math.round(t*100);
+      bar.style.width = (t*100)+'%';
+      if(t<1) requestAnimationFrame(tick);
+      else finish();
+    }
+    requestAnimationFrame(tick);
+  },600);
+ 
+  function finish(){
+    clearInterval(imgInterval);
+    setTimeout(()=>{
+      texts.forEach((id,i)=>{
+        setTimeout(()=>{
+          const el = document.getElementById(id);
+          if(el){el.style.transform='translateY(-110%)';el.style.transition=`transform 0.6s cubic-bezier(0.55,0,1,0.45) ${i*0.04}s`;}
+        },i*60);
+      });
+    },400);
+    setTimeout(()=>{
+      preloader.style.transition='opacity 0.8s ease';
+      preloader.style.opacity='0';
+      setTimeout(()=>{preloader.style.display='none';startHeroAnim();},800);
+    },1200);
+  }
+})();
+ 
+//! ===================== HERO ANIMATIONS =====================
+function startHeroAnim() {
+  const eyebrow  = document.getElementById('h-eyebrow');
+  const name     = document.getElementById('h-name');
+  const nameInner= name.querySelector('.hero-name-inner');
+  const role     = document.getElementById('h-role');
+  const desc     = document.getElementById('h-desc');
+  const cta      = document.getElementById('h-cta');
+  const msBadge  = document.getElementById('ms-hero-badge');
+ 
+  function anim(el, delay, props) {
+    if (!el) return;
+    setTimeout(() => {
+      el.style.transition = `opacity 0.9s cubic-bezier(0.165,0.84,0.44,1),transform 0.9s cubic-bezier(0.165,0.84,0.44,1)`;
+      Object.assign(el.style, props);
+    }, delay);
+  }
+ 
+  const OFFSET = 500; // ← 0.5 s delay after preloader exits
+ 
+  if (msBadge) anim(msBadge, OFFSET + 0,   { opacity: '1', transform: 'translateY(0)' });
+  anim(eyebrow,              OFFSET + 120,  { opacity: '1', transform: 'translateY(0)' });
+  setTimeout(() => {
+    name.style.opacity = '1';
+    nameInner.style.transition = 'transform 1s cubic-bezier(0.165,0.84,0.44,1)';
+    nameInner.style.transform  = 'translateY(0)';
+  }, OFFSET + 320);
+  anim(role, OFFSET + 620,  { opacity: '1', transform: 'translateY(0)' });
+  anim(desc, OFFSET + 820,  { opacity: '1', transform: 'translateY(0)' });
+  anim(cta,  OFFSET + 1020, { opacity: '1', transform: 'translateY(0)' });
+}
+ 
 
-const opacityOne = (...targetElements) => {
-  targetElements.forEach((targetElm) => {
-    targetElm.style.opacity = 1;
-  });
-};
 
-// *---------*
-//! 01 Preloader
-// *---------*
-let counterPre = 0;
-const page = document.getElementById("page-contet");
-const preloader = document.getElementById("preloader");
-const aside = document.getElementById("aside-element");
-const preloaderContent = document.querySelector(".preloader-wrapper");
-const counterElement = document.getElementById("preloader-counter");
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Simulate loading with a setTimeout
-  // Hide the preloader and show the main content
-
-  // STAGE ONE
-  // Show the preloader initially without the text content
-  preloader.style.display = "block";
-
-  // STAGE TWO
-  // Fade in the Preloader text content
-  setTimeout(function () {
-    preloaderContent.style.opacity = 1;
-  }, 400); // Adjust the time as needed
-
-  // STAGE THREE
-  //! start the counter animation
-  setTimeout(function () {
-    // Simulate progress updates
-    const progressInterval = setInterval(function () {
-      if (counterPre < 1999) {
-        updateCounter();
-        counterPre++;
-      } else {
-        clearInterval(progressInterval);
+//! ===================== 3D ABOUT CANVAS =====================
+(function(){
+  const canvas = document.getElementById('about-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+ 
+  function resize(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;}
+  resize();
+  new ResizeObserver(resize).observe(canvas);
+ 
+  const nodes = [];
+  const count = 60;
+  const PRIMARY = '#e7fe52';
+  const ACCENT = '#fe7b52';
+ 
+  // GIS grid + orbiting particles
+  for(let i=0;i<count;i++){
+    nodes.push({
+      x:Math.random(),y:Math.random(),z:Math.random(),
+      vx:(Math.random()-0.5)*0.002,vy:(Math.random()-0.5)*0.002,
+      r:Math.random()*2+0.5,
+      color:Math.random()>0.7?ACCENT:PRIMARY,
+      opacity:Math.random()*0.6+0.2
+    });
+  }
+ 
+  // Globe wireframe params
+  let rot=0;
+  const R = 0;// will use canvas relative
+ 
+  function draw(){
+    const W=canvas.width, H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    rot += 0.005;
+ 
+    const cx=W/2, cy=H/2;
+    const rad = Math.min(W,H)*0.32;
+ 
+    // Draw globe wireframe
+    ctx.save();
+    ctx.strokeStyle = 'rgba(231,254,82,0.15)';
+    ctx.lineWidth = 0.5;
+ 
+    // Latitude lines
+    for(let lat=-80;lat<=80;lat+=20){
+      const y = Math.sin(lat*Math.PI/180)*rad;
+      const r2 = Math.cos(lat*Math.PI/180)*rad;
+      ctx.beginPath();
+      for(let lng=0;lng<=360;lng+=5){
+        const a = (lng+rot*180/Math.PI)*Math.PI/180;
+        const x3d = Math.cos(a)*r2;
+        const z3d = Math.sin(a)*r2;
+        const persp = 1.2/(1.2-z3d/rad*0.3);
+        const px = cx + x3d*persp;
+        const py = cy + y*persp;
+        if(lng===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
       }
-    }, 40); // Adjust the interval as needed
-    function updateCounter() {
-      // Check if the counter has reached the final value
-      if (counterPre < 1999) {
-        // Use a cubic easing function for a smooth start and slow finish
-        const easedValue = customEasing(counterPre / 1999);
-        const displayValue = Math.ceil(easedValue * 1999);
-        counterElement.innerText = `23 / 09 / ${displayValue}`;
-        console.log("display", displayValue);
-        // Check if the displayValue has reached 1999
-        if (displayValue >= 1999) {
-          // STAGE FOUR
-          // add bluer effect to the Preloader text content
-          setTimeout(function () {
-            ["preloader-counter", "preloader_bottom", "preloader_top"].forEach(
-              (value) => {
-                document.querySelector(`.${value}`).style.filter =
-                  "blur(60rem)";
-              }
-            );
-          }, 500);
-          // STAGE FIVE
-          // remove the preloader
-          setTimeout(function () {
-            preloader.style.transform = "translateY(-100%)";
-            // preloader.style.display = "none";
-
-            console.log("end");
-          }, 1300);
-
-          clearInterval(progressInterval); // Stop the interval
+      ctx.stroke();
+    }
+ 
+    // Longitude lines
+    for(let lng=0;lng<360;lng+=30){
+      const a = (lng+rot*180/Math.PI)*Math.PI/180;
+      ctx.beginPath();
+      for(let lat=-90;lat<=90;lat+=5){
+        const y2 = Math.sin(lat*Math.PI/180)*rad;
+        const r2 = Math.cos(lat*Math.PI/180)*rad;
+        const x3d = Math.cos(a)*r2;
+        const z3d = Math.sin(a)*r2;
+        const persp = 1.2/(1.2-z3d/rad*0.3);
+        const px = cx + x3d*persp;
+        const py = cy + y2*persp;
+        if(lat===-90) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+ 
+    // Grid overlay (GIS feel)
+    ctx.save();
+    ctx.strokeStyle='rgba(231,254,82,0.04)';
+    ctx.lineWidth=0.5;
+    const gStep=40;
+    for(let x=0;x<W;x+=gStep){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<H;y+=gStep){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    ctx.restore();
+ 
+    // Particles
+    nodes.forEach(n=>{
+      n.x += n.vx; n.y += n.vy;
+      if(n.x<0||n.x>1) n.vx*=-1;
+      if(n.y<0||n.y>1) n.vy*=-1;
+    });
+ 
+    // Connections
+    ctx.save();
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx=(nodes[i].x-nodes[j].x)*W;
+        const dy=(nodes[i].y-nodes[j].y)*H;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<100){
+          ctx.strokeStyle=`rgba(231,254,82,${(1-dist/100)*0.15})`;
+          ctx.lineWidth=0.5;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x*W,nodes[i].y*H);
+          ctx.lineTo(nodes[j].x*W,nodes[j].y*H);
+          ctx.stroke();
         }
       }
     }
-    // Custom easing function for initial fast start and gradual slowdown
-    function customEasing(t) {
-      console.log(t);
-      console.log(counterPre);
-      // Stop evaluating when t reaches or exceeds 1
-      if (t >= 0.1) {
-        return 1;
-      }
-      return 1 - Math.pow(1 - t, 300);
-    }
-
-    // preloader.style.display = "none";
-
-    // show aside, page
-    // preloader.style.display = "none";
-  }, 1500); // Adjust the time as needed
-
-  setTimeout(() => {
-    // STAGE Six
-    // display the page content
-    opacityOne(aside, page);
-  }, 2400);
-
-  // Update the counter during the loading process
-});
-opacityOne(aside, page);
-
-// *---------*
-//! 00 Desktop & Mobile navigation
-// *---------*
-
-// work with navigation
-const asideIcon = document.querySelector(".aside-icon");
-const navDesktopBtn = document.querySelector(".nav-btn");
-const navHeader = document.querySelector(".nav-header");
-// create the root element and the mobile nav
-const menuButtonMob = document.getElementById("menu-button");
-const rootElement = document.documentElement;
-
-asideIcon.addEventListener("click", () => {
-  rootElement.classList.add("is-open");
-  navHeader.style.transform = "translateX(0)";
-});
-
-navDesktopBtn.addEventListener("click", () => {
-  rootElement.classList.remove("is-open");
-  navHeader.style.transform = "translateX(-100%)";
-});
-
-// Mobile navbtn
-menuButtonMob.addEventListener("click", () => {
-  rootElement.toggleAttribute("menu-open");
-  if (rootElement.classList.contains("is-open")) {
-    rootElement.classList.remove("is-open");
-    navHeader.style.transform = "translateX(-100%)";
-  } else {
-    rootElement.classList.add("is-open");
-    navHeader.style.transform = "translateX(0)";
+    ctx.restore();
+ 
+    nodes.forEach(n=>{
+      ctx.save();
+      ctx.fillStyle=n.color;
+      ctx.globalAlpha=n.opacity;
+      ctx.beginPath();
+      ctx.arc(n.x*W,n.y*H,n.r,0,Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+    });
+ 
+    // Center glow
+    const grd = ctx.createRadialGradient(cx,cy,0,cx,cy,rad*0.8);
+    grd.addColorStop(0,'rgba(231,254,82,0.04)');
+    grd.addColorStop(1,'transparent');
+    ctx.fillStyle=grd;
+    ctx.fillRect(0,0,W,H);
+ 
+    requestAnimationFrame(draw);
   }
-});
+  draw();
+})();
+ 
+//! ===================== PROJECTS DATA =====================
+const PROJECTS_DATA = [
+  {title:'ASL Academy',cat:'Development',year:'2023',status:'completed',
+   contrib:'Full frontend build, animated preloader, responsive design, SEO optimization, deployment',
+   problem:'Needed a fast, modern online presence for a language academy serving students across Egypt',
+   tools:['HTML5','CSS3','JavaScript','Figma','GitHub'],
+   site:'https://aslacademy.online',github:'https://github.com/hossam43/Asl-academy.git',
+   img:'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=60&fit=crop',
+   filters:['all','Development']},
+  {title:'CryptoPrecision',cat:'Design',year:'2023',status:'completed',
+   contrib:'Landing page design, UI/UX, frontend development, Figma prototyping',
+   problem:'Required a visually compelling crypto trading platform landing page that converts visitors',
+   tools:['HTML5','CSS3','Adobe Photoshop','Figma'],
+   site:'https://hossam43.github.io/crybtobrecison-project/',github:'https://github.com/hossam43/crybtobrecison-project',
+   img:'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=60&fit=crop',
+   filters:['all','Design']},
 
-// *****************
-//! 00 Smooth scrolling
-// *****************
-// Lenis
-const lenis = new Lenis();
+{title: 'NestFinder',
+  cat: 'Frontend Development',
+  year: '2025',
+  status: 'completed',
+  contrib: 'Full frontend architecture, interactive map integration (Leaflet), apartment designer system (Konva.js), advanced filtering system, comparison feature, saved properties system, responsive UI design, UX optimization, modular JavaScript architecture',
+  problem: 'Needed a modern rental platform concept that combines property search, map-based exploration, and interactive design tools for users to visualize and compare living spaces',
+  tools: ['HTML5', 'CSS3', 'JavaScript', 'Leaflet.js', 'Konva.js', 'Lucide Icons', 'Google Fonts'],
+  site: '',
+  github: 'https://github.com/hossam43/nest-finder',
+  filters: ['all', 'Development']
+},
 
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-
-const parentClass = document.querySelector(".nav-menu");
-parentClass.addEventListener("click", (e) => {
-  e.preventDefault();
-  const id = e.target.getAttribute("href");
-  // Matching
-  if (!e.target.classList.contains("nav-link")) return;
-  document.querySelector(id).scrollIntoView({ behavior: "smooth" });
-  rootElement.classList.remove("is-open");
-  navHeader.style.transform = "translateX(-100%)";
-});
-
-// *-----------*
-//! 00 PROJECTS UI FACTOR
-// *-----------*
-const isMobileIMG = window.innerWidth <= 500;
-
-const PROJECTS = [
-  // Project 1
-  [
-    [
-      `/assets/images/${
-        isMobileIMG ? "website-mobile-ui-1.webp" : "website-ui-1.webp"
-      }`,
-      "/assets/images/website-mock-1.webp",
-
-      `/assets/images/${isMobileIMG ? "w-m-color1.webp" : "w-color1.webp"}`,
-    ],
-
-    ["ASL-Academy"],
-    ["Mobile App", "React Native", "iOS", "Android"],
-    [
-      "Design website UI/UX and add animated preloader.",
-      "Optimize images for web use and ensure fast loading times.",
-      "Code frontend using HTML, CSS, and JavaScript.",
-      "Ensure cross-device compatibility with responsive design.",
-      "Deploy website to a hosting server.",
-      "Register a domain name relevant to the website's purpose.",
-      "Optimize website for search engine visibility (SEO).",
-    ],
-    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
-    {
-      site: "https://aslacademy.online",
-      github: "https://github.com/hossam43/Asl-academy.git",
-    },
-  ],
-  // Project 2
-  [
-    [
-      `/assets/images/${
-        isMobileIMG ? "website-mobile-ui-2.webp" : "website-ui-2.webp"
-      }`,
-      "/assets/images/website-mock-2.webp",
-
-      `/assets/images/${isMobileIMG ? "w-m-color2.webp" : "w-color2.webp"}`,
-    ],
-
-    ["Crybtobrecison"],
-    ["HTML/Css", "Adobe Photoshop", "Figma", "UI/UX"],
-    [
-      "Created visually appealing landing page",
-      "Code frontend using HTML, CSS, and JavaScript.",
-      "Ensure cross-device compatibility with responsive design.",
-      "Deploy website to a hosting server.",
-    ],
-    ["logo-html5", "logo-css3", "logo-figma", "logo-github"],
-    {
-      site: "https://hossam43.github.io/crybtobrecison-project/",
-      github: "https://github.com/example3",
-    },
-  ],
-  // Project 3
-  [
-    [
-      `/assets/images/${
-        isMobileIMG ? "website-mobile-ui-5.webp" : "website-ui-5.webp"
-      }`,
-      "/assets/images/website-mock-5.webp",
-      `/assets/images/${isMobileIMG ? "w-m-color5.webp" : "w-color5.webp"}`,
-    ],
-    ["Omnifood"],
-    ["Html/Css", "Responsiveness", "SEO", "Image Optimization"],
-    [
-      "Develop and deploy a sophisticated landing page website",
-      "Design the UI/UX for the website.",
-      "Create quality mockups and prototypes.",
-      "Create a brand guide style sheet for easy customization",
-      "Image Optimization using Adobe Photoshop and Squoosh",
-    ],
-    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
-    {
-      site: "https://hossam43.github.io/Omnifood-Project/",
-      github: "https://github.com/hossam43/Omnifood-Project",
-    },
-  ],
-
-  // Project 4
-  [
-    [
-      "/assets/images/website-mock-3.webp",
-      "/assets/images/website-mock-3.webp",
-      "/assets/images/website-mock-3.webp",
-    ],
-    ["Medicine Market"],
-    ["Web Development", "HTML/Css", "JavaScript", "UI/UX", "Responsive Design"],
-    [
-      "Implemented responsive UI",
-      "Integrated payment gateway",
-      "Created visually appealing layout",
-      "Implementing user authentication",
-    ],
-    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
-
-    {
-      site: "https://hossam43.github.io/medicine-project/",
-      github: "https://github.com/hossam43/medicine-project",
-    },
-  ],
-
-  [
-    [
-      `/assets/images/${
-        isMobileIMG ? "website-mobile-ui-4.webp" : "website-ui-4.webp"
-      }`,
-      "/assets/images/website-mock-4.webp",
-      `/assets/images/${isMobileIMG ? "w-m-color4.webp" : "w-color4.webp"}`,
-    ],
-
-    ["Red Builder"],
-    ["Html/Css", "Javascript", "Responsiveness", "Image Optimization"],
-    [
-      "Develop and deploy a real estate landing page website",
-      "Design the UI/UX for the website.",
-      "Create a brand guide style sheet for easy customization",
-      "Image Optimization using Adobe Photoshop and Squoosh",
-    ],
-    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
-
-    { site: "https://example4.com", github: "https://github.com/example4" },
-  ],
-
-  // Project 5
-  [
-    [
-      "/assets/images/website-ui-6.webp",
-      "/assets/images/website-ui-6.webp",
-      "/assets/images/website-ui-6.webp",
-    ],
-    ["FitFlex Gym"],
-    ["Web Development", "HTML/Css", "JavaScript", "UI/UX", "Responsive Design"],
-    [
-      "Implement responsive design using HTML, CSS, and JavaScript.",
-      "Optimize images and graphics for fast loading times.",
-      "Incorporate user-friendly navigation elements for easy exploration.",
-    ],
-    ["logo-html5", "logo-css3", "logo-javascript", "logo-figma", "logo-github"],
-
-    { site: "https://example1.com", github: "https://github.com/example1" },
-  ],
+  {title:'Omnifood',cat:'Development',year:'2022',status:'completed',
+   contrib:'Responsive landing page, image optimization, SEO, cross-device compatibility',
+   problem:'Sophisticated landing page for a food delivery service requiring strong visual impact',
+   tools:['HTML5','CSS3','JavaScript','Figma','Squoosh'],
+   site:'https://hossam43.github.io/Omnifood-Project/',github:'https://github.com/hossam43/Omnifood-Project',
+   img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=60&fit=crop',
+   filters:['all','Design','Development']},
+  {title:'Medicine Market',cat:'Development',year:'2023',status:'completed',
+   contrib:'E-commerce UI, payment gateway integration, user authentication, responsive design',
+   problem:'Online marketplace for medical products requiring secure payment and smooth UX',
+   tools:['HTML5','CSS3','JavaScript','Figma'],
+   site:'https://hossam43.github.io/medicine-project/',github:'https://github.com/hossam43/medicine-project',
+   img:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=60&fit=crop',
+   filters:['all','Development']},
+  {title:'GIS City Viewer',cat:'Geospatial',year:'2024',status:'in-progress',
+   contrib:'Interactive 3D city map, geospatial data visualization, custom map layers',
+   problem:'Municipality needed an interactive platform to visualize urban planning data spatially',
+   tools:['Mapbox GL','React','Three.js','GeoJSON'],
+   site:'#',github:'#',
+   img:'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&q=60&fit=crop',
+   filters:['all','Geospatial','3D Experience']},
+  {title:'Cloud Dashboard',cat:'Cloud',year:'2024',status:'in-progress',
+   contrib:'Infrastructure visualization, real-time monitoring UI, cost optimization analysis',
+   problem:'SaaS company needed visual overview of their multi-cloud architecture',
+   tools:['React','D3.js','AWS SDK','Chart.js'],
+   site:'#',github:'#',
+   img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=60&fit=crop',
+   filters:['all','Cloud','Development']},
+  {title:'Red Builder',cat:'Design',year:'2023',status:'completed',
+   contrib:'Real estate landing page, brand identity, image optimization, UI/UX design',
+   problem:'Real estate firm needed a premium online presence to attract high-end clients',
+   tools:['HTML5','CSS3','JavaScript','Adobe Photoshop'],
+   site:'#',github:'#',
+   img:'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=60&fit=crop',
+   filters:['all','Design']},
+  {title:'FitFlex Gym',cat:'Development',year:'2022',status:'completed',
+   contrib:'Responsive website, user-friendly navigation, fast loading, modern aesthetic',
+   problem:'Fitness center needed a digital platform to attract new members and showcase services',
+   tools:['HTML5','CSS3','JavaScript'],
+   site:'#',github:'#',
+   img:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=60&fit=crop',
+   filters:['all','Development']},
+  {title:'3D Portfolio Viz',cat:'3D Experience',year:'2024',status:'in-progress',
+   contrib:'Custom WebGL scene, Three.js particle systems, GSAP scroll animations',
+   problem:'Showcase immersive 3D capabilities for premium clients in creative industries',
+   tools:['Three.js','WebGL','GSAP','GLSL'],
+   site:'#',github:'#',
+   img:'https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=600&q=60&fit=crop',
+   filters:['all','3D Experience']},
+  {title:'Geospatial Analytics',cat:'Geospatial',year:'2024',status:'in-progress',
+   contrib:'Spatial data pipeline, interactive choropleth maps, filtering system, data storytelling',
+   problem:'NGO needed accessible visualization of demographic & environmental data across regions',
+   tools:['Leaflet','Python','GeoJSON','D3.js'],
+   site:'#',github:'#',
+   img:'https://images.unsplash.com/photo-1446776858070-70c3d5ed6758?w=600&q=60&fit=crop',
+   filters:['all','Geospatial']},
 ];
-//! create a staragey for each header in a p tag and append it individually
-
-// Container element in HTML to append project elements
-const projectContainer = document.getElementById("projectContainer");
-
-// Loop through each project
-PROJECTS.forEach((project, projectIndex) => {
-  const projectItemList = document.createElement("div");
-  projectItemList.classList.add(
-    "works-collection-item",
-    "w-dyn-item",
-    "container"
-  );
-
-  // Create a project element header (a like with title and a tag ) for each project
-  const projectElemenHeader = document.createElement("a");
-  projectElemenHeader.classList.add("work-collection-link", "cursor");
-  // Create a project element (Warrpe Slides and Text content Projects) for each project
-  const openState = projectIndex === 0 ? "opened" : "closed";
-  const projectElementBox = document.createElement("div");
-
-  projectElementBox.classList.add(
-    "grid",
-    "grid--2--cols",
-    "small-col-gap",
-    "padding-zero",
-    "project-warrper",
-    openState
-  );
-
-  // Create a project element Slider for each project
-  const projectElementSlider = document.createElement("div");
-  projectElementSlider.classList.add("slider");
-
-  // Loop through images and create slides HTML elements
-  const projectElementSlides = document.createElement("div");
-  projectElementSlides.classList.add("slides");
-  projectElementSlider.appendChild(projectElementSlides);
-  // ! Maby loop with a condation on PROJECT ARRAY
-  const sliderControloer = `
-  ${project[0]
-    .map(
-      (imageSrc, imageIndex) =>
-        `<img src="${imageSrc}" class="imageSlider${projectIndex + 1} ${
-          imageIndex === 0 ? "active" : ""
-        }" alt="" />`
-    )
-    .join("")}`;
-  projectElementSlides.innerHTML += sliderControloer;
-  // Add the Next and Prev buttons
-  const sliderBtn = `
-  <div class="button">
-    <span class="next${projectIndex + 1}">&#10095;</span>
-    <span class="prev${projectIndex + 1}">&#10094;</span>
-  </div>`;
-  projectElementSlides.innerHTML += sliderBtn;
-
-  // Create a project element (Text content) for each project
-  const projectElementText = document.createElement("div");
-  projectElementText.classList.add("project-text-content");
-
-  // Loop through titles and create tag elements
-
-  const titlesElement = document.createElement("div");
-  titlesElement.classList.add("titles");
-
-  project[1].forEach((title) => {
-    const titleElement = document.createElement("p");
-    titleElement.classList.add("title");
-    titleElement.textContent = title;
-    titlesElement.appendChild(titleElement);
-    // Element for the header element a
-    const titleElementHeader = document.createElement("h2");
-    titleElementHeader.classList.add("works-list-title");
-    titleElementHeader.textContent = title;
-    projectElemenHeader.appendChild(titleElementHeader);
-
-    const ionIconElement = document.createElement("ion-icon");
-    ionIconElement.setAttribute("name", "chevron-down-sharp");
-
-    projectElemenHeader.appendChild(ionIconElement);
-  });
-  projectElementText.appendChild(titlesElement); //! it is just one title (s) to keep it consistent
-
-  // Loop through tags and create tag elements
-  const tagsElement = document.createElement("div");
-  tagsElement.classList.add("tags");
-  const tagsBgColor = ["#9b5de5", "#f15bb5", "#fee440", "#00bbf9", "#00f5d4"];
-  project[2].forEach((tag, colorIndex) => {
-    const tagElement = document.createElement("span");
-    tagElement.classList.add("tag");
-    tagElement.style.backgroundColor = tagsBgColor[colorIndex];
-    tagElement.textContent = tag;
-    tagsElement.appendChild(tagElement);
-  });
-  projectElementText.appendChild(tagsElement);
-
-  // Loop through deliverables and create deliverables elements
-  const deliverablesBox = document.createElement("div");
-  deliverablesBox.classList.add("deliverables-box");
-  const deliverablesTitleStatic = document.createElement("p");
-  deliverablesTitleStatic.classList.add("projects-titles");
-  deliverablesTitleStatic.textContent = "Deliverables:";
-  const deliverablesElement = document.createElement("ul");
-  deliverablesElement.classList.add("deliverables", "list");
-  project[3].forEach((deliverable) => {
-    const deliverableElement = document.createElement("li");
-    deliverableElement.classList.add("deliverable", "list-item");
-    const deliverableElmText = document.createElement("span");
-    deliverableElmText.textContent = deliverable;
-    const deliverableElmIcon = document.createElement("ion-icon");
-    deliverableElmIcon.setAttribute("name", "checkmark-circle-outline");
-
-    deliverableElement.appendChild(deliverableElmIcon);
-    deliverableElement.appendChild(deliverableElmText);
-    deliverablesElement.appendChild(deliverableElement);
-  });
-
-  deliverablesBox.appendChild(deliverablesTitleStatic);
-  deliverablesBox.appendChild(deliverablesElement);
-  projectElementText.appendChild(deliverablesBox);
-
-  // Loop through skills and create skills elements
-  const skillsBox = document.createElement("div");
-  skillsBox.classList.add("skills-box");
-  const skillsTitleStatic = document.createElement("p");
-  skillsTitleStatic.classList.add("projects-titles");
-  skillsTitleStatic.textContent = "Used Techs:";
-  const skillsElement = document.createElement("ul");
-  skillsElement.classList.add("skills");
-  project[4].forEach((skill) => {
-    const skillElement = document.createElement("li");
-    const skillElmSpan = document.createElement("span");
-    const skillElmIcon = document.createElement("ion-icon");
-    skillElmIcon.classList.add("skill-icon");
-    skillElmIcon.setAttribute("name", skill);
-
-    skillElmSpan.appendChild(skillElmIcon);
-    skillElement.appendChild(skillElmSpan);
-    skillsElement.appendChild(skillElement);
-  });
-  skillsBox.appendChild(skillsTitleStatic);
-  skillsBox.appendChild(skillsElement);
-  projectElementText.appendChild(skillsBox);
-
-  // Create links elements
-  const linksElement = document.createElement("div");
-  linksElement.classList.add("links");
-  const elementBtnSite = document.createElement("button");
-  elementBtnSite.classList.add("btn", "project-btn-box", "cursor");
-  const siteLinkElement = document.createElement("a");
-  siteLinkElement.classList.add("link", "demo-link");
-  siteLinkElement.href = project[5].site;
-  siteLinkElement.textContent = "Visit Site";
-  const htmlStructure = `
-    <div class="digital-ball">
-        <div class="overlay"></div>
-        <div class="globe" style="transform: translate(-50%, -50%)">
-            <div class="globe-wrap">
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle-hor"></div>
-                <div class="circle-hor-middle"></div>
-            </div>
-        </div>
+ 
+// ===================== MAIN PROJECTS LIST =====================
+const mainList = document.getElementById('main-projects-list');
+PROJECTS_DATA.slice(0,6).forEach((p,i)=>{
+  const row = document.createElement('div');
+  row.className = 'project-row';
+  row.innerHTML = `
+    <div class="project-row-header" data-idx="${i}">
+      <span class="proj-num">0${i+1}</span>
+      <h3 class="proj-title">${p.title}</h3>
+      <div class="proj-tags">
+        ${p.filters.filter(f=>f!=='all').map(f=>`<span class="proj-tag">${f}</span>`).join('')}
+      </div>
+      <span class="proj-year">${p.year}</span>
+      <svg class="proj-arrow" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
     </div>
-`;
-
-  elementBtnSite.appendChild(siteLinkElement);
-  elementBtnSite.insertAdjacentHTML("beforeend", htmlStructure);
-  linksElement.appendChild(elementBtnSite);
-
-  const elementBtnGit = document.createElement("button");
-  elementBtnGit.classList.add("btn", "project-btn-box", "cursor");
-  const githubElmIcon = document.createElement("ion-icon");
-  githubElmIcon.classList.add("code-icon");
-  githubElmIcon.setAttribute("name", "logo-github");
-  const githubLinkElement = document.createElement("a");
-  githubLinkElement.classList.add("link", "code-link");
-  githubLinkElement.href = project[5].github;
-  githubLinkElement.textContent = "Show Code";
-
-  elementBtnGit.appendChild(githubLinkElement);
-  elementBtnGit.appendChild(githubElmIcon);
-  linksElement.appendChild(elementBtnGit);
-
-  projectElementText.appendChild(linksElement);
-
-  // Append the project text element to the project box element
-  projectElementBox.appendChild(projectElementText);
-
-  // Append the project slide element to the project box element
-  projectElementBox.appendChild(projectElementSlider);
-
-  // Append the project header element to the project item list
-  projectItemList.appendChild(projectElemenHeader);
-  // Append the project box element to the project item list
-  projectItemList.appendChild(projectElementBox);
-
-  // Append the project element to the container
-  projectContainer.appendChild(projectItemList);
+    <div class="project-row-body" id="prb-${i}">
+      <div class="project-row-inner">
+        <div class="proj-details">
+          <div class="proj-detail-row">
+            <span class="proj-detail-label">My Contribution</span>
+            <span class="proj-detail-val">${p.contrib}</span>
+          </div>
+          <div class="proj-detail-row">
+            <span class="proj-detail-label">Business Problem Solved</span>
+            <span class="proj-detail-val">${p.problem}</span>
+          </div>
+          <div class="proj-detail-row">
+            <span class="proj-detail-label">Tools Used</span>
+            <div class="proj-tools">${p.tools.map(t=>`<span class="proj-tool">${t}</span>`).join('')}</div>
+          </div>
+          <div class="proj-links">
+            <a href="${p.site}" class="proj-link" target="_blank">↗ Live Demo</a>
+            <a href="${p.github}" class="proj-link" target="_blank">⌥ GitHub</a>
+          </div>
+        </div>
+        <div class="proj-image-box">
+          <div class="proj-image-placeholder">
+            <img src="${p.img}" style="width:100%;height:100%;object-fit:cover;opacity:0.7;" alt="${p.title}"/>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  mainList.appendChild(row);
+ 
+  row.querySelector('.project-row-header').addEventListener('click',()=>{
+    const body = document.getElementById(`prb-${i}`);
+    const isOpen = body.classList.contains('open');
+    document.querySelectorAll('.project-row-body').forEach(b=>b.classList.remove('open'));
+    if(!isOpen) body.classList.add('open');
+  });
 });
-
-// The slider active
-// Access the Images
-
-// let slideImages = document.querySelectorAll("img");
-let slideImagesOne = document.querySelectorAll(".imageSlider1");
-let slideImagesTwo = document.querySelectorAll(".imageSlider2");
-let slideImagesThree = document.querySelectorAll(".imageSlider3");
-let slideImagesFour = document.querySelectorAll(".imageSlider4");
-console.log(slideImagesOne, slideImagesTwo, slideImagesThree, slideImagesFour);
-let deleteInterval; // Corrected the variable name
-let counter = 0;
-
-// Access the next and prev buttons
-let next1 = document.querySelector(".next1");
-let next2 = document.querySelector(".next2");
-let next3 = document.querySelector(".next3");
-let next4 = document.querySelector(".next4");
-// prev btns
-let prev1 = document.querySelector(".prev1");
-let prev2 = document.querySelector(".prev2");
-let prev3 = document.querySelector(".prev3");
-let prev4 = document.querySelector(".prev4");
-// Access the indicators
-// let dots = document.querySelectorAll(".dot");
-
-next1.addEventListener("click", slideNext1);
-next2.addEventListener("click", slideNext2);
-next3.addEventListener("click", slideNext3);
-next4.addEventListener("click", slideNext4);
-
-function slideNext1() {
-  slideImagesOne[counter].style.animation = "nextA 0.5s ease-in forwards";
-  if (counter >= slideImagesOne.length - 1) {
-    counter = 0;
-  } else {
-    counter++;
-  }
-  slideImagesOne[counter].style.animation = "prevA 0.5s ease-in forwards";
-  //   indicators();
-}
-
-function slideNext2() {
-  slideImagesTwo[counter].style.animation = "nextA 0.5s ease-in forwards";
-  if (counter >= slideImagesTwo.length - 1) {
-    counter = 0;
-  } else {
-    counter++;
-  }
-  slideImagesTwo[counter].style.animation = "prevA 0.5s ease-in forwards";
-  //   indicators();
-}
-
-function slideNext3() {
-  slideImagesThree[counter].style.animation = "nextA 0.5s ease-in forwards";
-  if (counter >= slideImagesThree.length - 1) {
-    counter = 0;
-  } else {
-    counter++;
-  }
-  slideImagesThree[counter].style.animation = "prevA 0.5s ease-in forwards";
-  //   indicators();
-}
-
-function slideNext4() {
-  slideImagesFour[counter].style.animation = "nextA 0.5s ease-in forwards";
-  if (counter >= slideImagesFour.length - 1) {
-    counter = 0;
-  } else {
-    counter++;
-  }
-  slideImagesFour[counter].style.animation = "prevA 0.5s ease-in forwards";
-  //   indicators();
-}
-
-// Code for prev button
-prev1.addEventListener("click", slidePrev1);
-prev2.addEventListener("click", slidePrev2);
-prev3.addEventListener("click", slidePrev3);
-prev4.addEventListener("click", slidePrev4);
-
-function slidePrev1() {
-  slideImagesOne[counter].style.animation = "nextB 0.5s ease-in forwards";
-  if (counter == 0) {
-    counter = slideImagesOne.length - 1;
-  } else {
-    counter--;
-  }
-  slideImagesOne[counter].style.animation = "prevB 0.5s ease-in forwards";
-  //   indicators();
-}
-
-function slidePrev2() {
-  slideImagesTwo[counter].style.animation = "nextB 0.5s ease-in forwards";
-  if (counter == 0) {
-    counter = slideImagesTwo.length - 1;
-  } else {
-    counter--;
-  }
-  slideImagesTwo[counter].style.animation = "prevB 0.5s ease-in forwards";
-  //   indicators();
-}
-
-function slidePrev3() {
-  slideImagesThree[counter].style.animation = "nextB 0.5s ease-in forwards";
-  if (counter == 0) {
-    counter = slideImagesThree.length - 1;
-  } else {
-    counter--;
-  }
-  slideImagesThree[counter].style.animation = "prevB 0.5s ease-in forwards";
-  //   indicators();
-}
-
-function slidePrev4() {
-  slideImagesFour[counter].style.animation = "nextB 0.5s ease-in forwards";
-  if (counter == 0) {
-    counter = slideImagesFour.length - 1;
-  } else {
-    counter--;
-  }
-  slideImagesFour[counter].style.animation = "prevB 0.5s ease-in forwards";
-  //   indicators();
-}
-
-// Auto slideing
-// function autoSliding() {
-//   deleteInterval = setInterval(timer, 3000);
-//   function timer() {
-//     slideNext();
-//     // indicators();
-//   }
-// }
-// autoSliding();
-
-// // // Stop auto sliding when mouse is over
-// const containers = document.querySelectorAll(".slider");
-
-// containers.forEach((sliderContainer) => {
-//   sliderContainer.addEventListener("mouseover", function () {
-//     clearInterval(deleteInterval);
-//   });
-
-//   sliderContainer.addEventListener("mouseout", autoSliding);
-// });
-
-// // Resume sliding when mouse is out
-
-const ProjectsLink = document.querySelectorAll(".work-collection-link");
-const projectsWarp = document.querySelectorAll(".project-warrper");
-
-ProjectsLink.forEach((projectItem, projectIndex) => {
-  projectItem.addEventListener("click", () => {
-    // Remove the "opened" class from all projects
-    projectsWarp.forEach((project, index) => {
-      project.classList.remove("opened");
-
-      // Add the "opened" class for the clicked project
-      if (projectIndex === index) {
-        project.classList.add("opened");
+ 
+// ===================== PROJECTS PAGE =====================
+const ppGrid = document.getElementById('pp-grid');
+PROJECTS_DATA.forEach((p,i)=>{
+  const card = document.createElement('div');
+  card.className = 'pp-card';
+  card.dataset.filters = JSON.stringify(p.filters);
+  card.dataset.img = p.img;
+  card.dataset.title = p.title;
+  const statClass = p.status==='completed'?'completed':'in-progress';
+  const statLabel = p.status==='completed'?'Completed':'In Progress';
+  card.innerHTML = `
+    <div class="pp-card-cat">${p.cat}</div>
+    <h3 class="pp-card-title">${p.title}</h3>
+    <div class="pp-card-date">${p.year}</div>
+    <div class="pp-card-status ${statClass}">${statLabel}</div>
+    <p class="pp-card-contrib">${p.contrib}</p>
+    <div class="pp-card-tools">${p.tools.map(t=>`<span class="pp-card-tool">${t}</span>`).join('')}</div>
+    <div class="pp-card-links">
+      <a href="${p.site}" class="pp-card-link" target="_blank">Live Demo ↗</a>
+      <a href="${p.github}" class="pp-card-link" target="_blank">GitHub ↗</a>
+    </div>`;
+  ppGrid.appendChild(card);
+});
+ 
+// Filter
+document.querySelectorAll('.pp-filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.pp-filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.pp-card').forEach(card=>{
+      const filters = JSON.parse(card.dataset.filters);
+      if(filter==='all'||filters.includes(filter)){
+        card.classList.remove('hidden');
+        card.style.animation='none';
+        card.offsetHeight;
+        card.style.animation='fadeIn 0.4s ease forwards';
+      } else {
+        card.classList.add('hidden');
       }
     });
   });
 });
-
-// slider project
-let sliderCounter = 1;
-
-// setInterval(() => {
-//   document.getElementById("radio" + sliderCounter).checked = true;
-//   sliderCounter++;
-
-//   if (sliderCounter > 3) sliderCounter = 1;
-// }, 5000);
-
-// ! move the icons using javascript
-
-const footerMobileSocial = document.querySelector(".mob-social-container");
-let isMobile = false;
-
-function showFooterIcons() {
-  const clientWidth =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
-  isMobile = clientWidth <= 776;
-
-  const footerSocial = `<div class="footer-socials-box">
-<a href="https://www.linkedin.com/in/hossam-ayman-">
-  <ion-icon name="logo-linkedin" class="aside-socail-icon cursor md hydrated" role="img"></ion-icon>
-</a>
-<a href="mailto:hossamayman2399@gmail.com">
-  <ion-icon name="mail-outline" class="aside-socail-icon cursor md hydrated" role="img"></ion-icon>
-</a>
-<a href="https://wa.me/1015882767">
-  <ion-icon name="logo-whatsapp" class="aside-socail-icon cursor md hydrated" role="img"></ion-icon>
-</a>
-</div>`;
-
-  if (isMobile) {
-    footerMobileSocial.innerHTML = footerSocial;
-    mouseCursor.classList.remove("custom-cursor");
-    isMobile = false;
+ 
+// Image reveal on hover
+const imgReveal = document.getElementById('img-reveal');
+const imgRevealImg = document.getElementById('img-reveal-img');
+ppGrid.addEventListener('mousemove',e=>{
+  const card = e.target.closest('.pp-card');
+  if(card && card.dataset.img){
+    imgReveal.classList.add('visible');
+    imgRevealImg.src = card.dataset.img;
+    imgReveal.style.left = e.clientX+'px';
+    imgReveal.style.top = e.clientY+'px';
   } else {
-    footerMobileSocial.innerHTML = "";
+    imgReveal.classList.remove('visible');
   }
-}
-
-// Call the function on page load and on window resize
-window.addEventListener("load", showFooterIcons);
-window.addEventListener("resize", showFooterIcons);
-
-// ***************************
-//! 00 Mouse following using the Web Animations API
-// ***************************
-let mouseCursor = document.querySelector(".custom-cursor");
-window.addEventListener("mousemove", customCursor);
-function customCursor(e) {
-  const posX = e.pageX;
-  const posY = e.pageY;
-
-  mouseCursor.animate(
-    {
-      left: `${posX}px`,
-      top: `${posY}px`,
-    },
-    {
-      duration: 1200,
-      fill: "forwards",
-    }
-  );
-}
-
-// shrink the cursor on links
-const cursorLink = document.querySelectorAll(".cursor");
-cursorLink.forEach((link) => {
-  link.addEventListener("mouseleave", () => {
-    mouseCursor.classList.remove("cursorShrink");
-  });
-  link.addEventListener("mouseover", () => {
-    mouseCursor.classList.add("cursorShrink");
-  });
 });
-
-// **********************
-//! 00 Reveling contetn-section
-// **********************
-const allSectionsContent = document.querySelectorAll(".content-section");
-const revelContent = function (entries, observer) {
-  const [entry] = entries;
-  console.log(entry);
-  if (!entry.isIntersecting) return;
-  entry.target.classList.remove("content-hidden");
-  // unobseriing
-  observer.unobserve(entry.target);
-};
-const sectionObserver = new IntersectionObserver(revelContent, {
-  root: null,
-  threshold: 0.15,
+ppGrid.addEventListener('mouseleave',()=>imgReveal.classList.remove('visible'));
+ 
+// Open/close projects page
+document.getElementById('more-projects-btn').addEventListener('click',()=>{
+  document.getElementById('projects-page').classList.add('open');
+  document.body.style.overflow='hidden';
 });
-// observe the two sections
-allSectionsContent.forEach((section) => {
-  sectionObserver.observe(section);
-  section.classList.add("content-hidden");
+document.getElementById('pp-close-btn').addEventListener('click',()=>{
+  document.getElementById('projects-page').classList.remove('open');
+  document.body.style.overflow='';
 });
-
-// ********************
-//! 00 Marquee effect scroller
-// ********************
-const scrollers = document.querySelectorAll(".scroller");
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  addAnimation();
-}
-function addAnimation() {
-  scrollers.forEach((scroller) => {
-    scroller.setAttribute("data-animated", true);
-    const scrollerInner = scroller.querySelector(".scroller__inner");
-    const scrollerContent = Array.from(scrollerInner.children);
-    scrollerContent.forEach((item) => {
-      const duplicatedItem = item.cloneNode(true);
-      // screen reader
-      duplicatedItem.setAttribute("aria-hidden", true);
-      scrollerInner.appendChild(duplicatedItem);
-    });
-  });
-}
-
-// *****************
-//! 00 TypeWriter Effect
-// *****************
-const words = ["GIS", "Javascript", "React.js", "Three.js"];
-
-// main timeline
-let mainTimeLine = gsap.timeline({
-  repeat: -1,
-});
-// For each word create a new timeline use the Text plugin, then append that to the thimeline to the main one
-
-words.forEach((word) => {
-  let textTimeline = gsap.timeline({
-    repeat: 1,
-    yoyo: true,
-    repeatDelay: 4,
-  });
-
-  textTimeline.to("#typewriter", {
-    text: word,
-    duration: 1,
-    onUpdate: () => {
-      cursorTimeline.restart();
-      cursorTimeline.pause();
-    },
-    onComplete: () => {
-      cursorTimeline.play();
-    },
-  });
-  mainTimeLine.add(textTimeline);
-});
-
-// Blinking Cursor
-let cursorTimeline = gsap.timeline({
-  repeat: -1,
-  repeatDelay: 0.8,
-});
-
-cursorTimeline
-  .to("#typewriter-cursor", {
-    opacity: 1,
-    duration: 0,
-  })
-  .to("#typewriter-cursor", {
-    opacity: 0,
-    duration: 0,
-    delay: 0.8,
-  });
-
-// ********************
-//! 00 The FadeOn Hover effect
-// ********************
-
-const listOfWorks = document.querySelector(".works-collection-list");
-
-const handleProjectHover = function (e, opacity) {
-  const targetLink = e.target.closest(".work-collection-link");
-  if (targetLink) {
-    const link = targetLink;
-    const siblings = link
-      .closest(".works-collection-list")
-      .querySelectorAll(".work-collection-link");
-
-    siblings.forEach((el) => {
-      if (el !== link) el.style.opacity = opacity;
-    });
-  }
-};
-
-// passing argument and e
-listOfWorks.addEventListener("mouseover", (e) => {
-  handleProjectHover(e, 0.5);
-});
-
-listOfWorks.addEventListener(
-  "mouseout",
-
-  (e) => {
-    handleProjectHover(e, 1);
-  }
-);
-
-// --------------
-//! 00 MAGNATIC EFFECT
-// --------------
-let screenCurrentSize;
-const getScreenSize = () => {
-  screenCurrentSize = window.innerHeight;
-  console.log(screenCurrentSize);
-};
-
-const magButton = document.querySelectorAll(".magnetic-btn");
-// screen size retrieved
-const applyMagneticEffect = () => {
-  magButton.forEach((button) => {
-    if (screenCurrentSize >= 700) {
-      console.log("Bigger than 700");
-      new MagneticObject(button, 80, 0.8);
-    } else if (screenCurrentSize >= 600) {
-      console.log("Bigger than 600");
-      new MagneticObject(button, 50, 0.8);
-    } else {
-      console.log("Less than 600");
-      new MagneticObject(button, 20, 0.8);
+ 
+// ===================== SIDEBAR SCROLL SPY =====================
+const sections = ['home','about','projects','services','contact'];
+const sectionEls = sections.map(s=>document.getElementById('section-'+s));
+const navItems = document.querySelectorAll('.sidebar-nav-item');
+ 
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const id = entry.target.id.replace('section-','');
+      navItems.forEach(ni=>{
+        ni.classList.toggle('active', ni.dataset.section===id);
+      });
     }
   });
-};
-getScreenSize();
-applyMagneticEffect();
-
-window.addEventListener("resize", () => {
-  getScreenSize();
-  applyMagneticEffect(); // Apply magnetic effect based on the new screen size
+},{threshold:0.3});
+sectionEls.forEach(s=>{if(s)observer.observe(s);});
+ 
+// Smooth scroll sidebar links
+document.querySelectorAll('[href^="#section-"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target) target.scrollIntoView({behavior:'smooth'});
+  });
 });
-
-// ************************************
-// PAGES
-// ************************************
-const aboutBtn = document.querySelector(".about-btn");
-aboutBtn.addEventListener("click", () => {
-  window.location.href = "about.html";
+ 
+// ===================== MOBILE MENU =====================
+document.getElementById('mob-menu-btn').addEventListener('click',()=>{
+  document.getElementById('mobile-menu').classList.add('open');
 });
-
-const workBtn = document.querySelector(".project-btn");
-workBtn.addEventListener("click", () => {
-  console.log("he");
-  window.location.href = "project.html";
+document.getElementById('mob-menu-close').addEventListener('click',()=>{
+  document.getElementById('mobile-menu').classList.remove('open');
 });
+document.querySelectorAll('#mobile-menu a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('mobile-menu').classList.remove('open'));
+});
+ 
+// ===================== SCROLL REVEAL =====================
+const revealObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+ 
+// ===================== BUDGET SELECTOR =====================
+let selectedBudget = '';
+document.querySelectorAll('.budget-option').forEach(opt=>{
+  opt.addEventListener('click',()=>{
+    document.querySelectorAll('.budget-option').forEach(o=>o.classList.remove('selected'));
+    opt.classList.add('selected');
+    selectedBudget = opt.dataset.val;
+  });
+});
+ 
+// ===================== CONTACT FORM =====================
+document.getElementById('form-submit-btn').addEventListener('click',()=>{
+  let valid = true;
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const service = document.getElementById('f-service').value;
+  const msg = document.getElementById('f-msg').value.trim();
+ 
+  ['fg-name','fg-email','fg-service','fg-msg'].forEach(id=>{
+    document.getElementById(id).classList.remove('has-error');
+  });
+ 
+  if(!name){document.getElementById('fg-name').classList.add('has-error');valid=false;}
+  if(!email||!/\S+@\S+\.\S+/.test(email)){document.getElementById('fg-email').classList.add('has-error');valid=false;}
+  if(!service){document.getElementById('fg-service').classList.add('has-error');valid=false;}
+  if(!msg){document.getElementById('fg-msg').classList.add('has-error');valid=false;}
+ 
+  if(valid){
+    document.getElementById('contact-form-wrap').style.display='none';
+    document.getElementById('form-success').classList.add('show');
+  }
+});
+ 
+// Style fadeIn animation for filter
+const style = document.createElement('style');
+style.textContent = `@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}`;
+document.head.appendChild(style);
+
+
+
+
+// -------------------------------------------------------------------------------------
+
