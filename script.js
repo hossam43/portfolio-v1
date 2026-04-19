@@ -261,6 +261,25 @@ function startHeroAnim() {
  
 //! ===================== PROJECTS DATA =====================
 const PROJECTS_DATA = [
+  {title: 'NestFinder',
+  cat: 'Frontend Development',
+  year: '2025',
+  status: 'completed',
+  contrib: 'Full frontend architecture, interactive map integration (Leaflet), apartment designer system (Konva.js), advanced filtering system, comparison feature, saved properties system, responsive UI design, UX optimization, modular JavaScript architecture',
+  problem: 'Needed a modern rental platform concept that combines property search, map-based exploration, and interactive design tools for users to visualize and compare living spaces',
+  tools: ['HTML5', 'CSS3', 'JavaScript', 'Leaflet.js', 'Konva.js', 'Lucide Icons', 'Google Fonts'],
+  site: 'case-study.html?project=nestfinder',
+  github: 'https://github.com/hossam43/nest-finder',
+  filters: ['all', 'Development']}
+  ,
+  {title:'CryptoPrecision',cat:'Design',year:'2023',status:'completed',
+   contrib:'Landing page design, UI/UX, frontend development, Figma prototyping',
+   problem:'Required a visually compelling crypto trading platform landing page that converts visitors',
+   tools:['HTML5','CSS3','Adobe Photoshop','Figma'],
+   site:'case-study.html?project=crypto-precision',github:'https://github.com/hossam43/crybtobrecison-project', caseStudy: true,
+   img:'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=60&fit=crop',
+   filters:['all','Design']},
+
   {title:'ASL Academy',cat:'Development',year:'2023',status:'completed',
    contrib:'Full frontend build, animated preloader, responsive design, SEO optimization, deployment',
    problem:'Needed a fast, modern online presence for a language academy serving students across Egypt',
@@ -268,25 +287,6 @@ const PROJECTS_DATA = [
    site:'https://aslacademy.online',github:'https://github.com/hossam43/Asl-academy.git',
    img:'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=60&fit=crop',
    filters:['all','Development']},
-  {title:'CryptoPrecision',cat:'Design',year:'2023',status:'completed',
-   contrib:'Landing page design, UI/UX, frontend development, Figma prototyping',
-   problem:'Required a visually compelling crypto trading platform landing page that converts visitors',
-   tools:['HTML5','CSS3','Adobe Photoshop','Figma'],
-   site:'https://hossam43.github.io/crybtobrecison-project/',github:'https://github.com/hossam43/crybtobrecison-project',
-   img:'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=60&fit=crop',
-   filters:['all','Design']},
-
-{title: 'NestFinder',
-  cat: 'Frontend Development',
-  year: '2025',
-  status: 'completed',
-  contrib: 'Full frontend architecture, interactive map integration (Leaflet), apartment designer system (Konva.js), advanced filtering system, comparison feature, saved properties system, responsive UI design, UX optimization, modular JavaScript architecture',
-  problem: 'Needed a modern rental platform concept that combines property search, map-based exploration, and interactive design tools for users to visualize and compare living spaces',
-  tools: ['HTML5', 'CSS3', 'JavaScript', 'Leaflet.js', 'Konva.js', 'Lucide Icons', 'Google Fonts'],
-  site: '',
-  github: 'https://github.com/hossam43/nest-finder',
-  filters: ['all', 'Development']
-},
 
   {title:'Omnifood',cat:'Development',year:'2022',status:'completed',
    contrib:'Responsive landing page, image optimization, SEO, cross-device compatibility',
@@ -295,20 +295,23 @@ const PROJECTS_DATA = [
    site:'https://hossam43.github.io/Omnifood-Project/',github:'https://github.com/hossam43/Omnifood-Project',
    img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=60&fit=crop',
    filters:['all','Design','Development']},
+
   {title:'Medicine Market',cat:'Development',year:'2023',status:'completed',
    contrib:'E-commerce UI, payment gateway integration, user authentication, responsive design',
    problem:'Online marketplace for medical products requiring secure payment and smooth UX',
    tools:['HTML5','CSS3','JavaScript','Figma'],
-   site:'https://hossam43.github.io/medicine-project/',github:'https://github.com/hossam43/medicine-project',
+   site:'case-study.html?project=medicine-market',github:'https://github.com/hossam43/medicine-project',
    img:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=60&fit=crop',
    filters:['all','Development']},
+
   {title:'GIS City Viewer',cat:'Geospatial',year:'2024',status:'in-progress',
    contrib:'Interactive 3D city map, geospatial data visualization, custom map layers',
    problem:'Municipality needed an interactive platform to visualize urban planning data spatially',
    tools:['Mapbox GL','React','Three.js','GeoJSON'],
-   site:'#',github:'#',
+   site:'case-study.html?project=gis-city-viewer',github:'#',
    img:'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&q=60&fit=crop',
    filters:['all','Geospatial','3D Experience']},
+
   {title:'Cloud Dashboard',cat:'Cloud',year:'2024',status:'in-progress',
    contrib:'Infrastructure visualization, real-time monitoring UI, cost optimization analysis',
    problem:'SaaS company needed visual overview of their multi-cloud architecture',
@@ -316,6 +319,7 @@ const PROJECTS_DATA = [
    site:'#',github:'#',
    img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=60&fit=crop',
    filters:['all','Cloud','Development']},
+
   {title:'Red Builder',cat:'Design',year:'2023',status:'completed',
    contrib:'Real estate landing page, brand identity, image optimization, UI/UX design',
    problem:'Real estate firm needed a premium online presence to attract high-end clients',
@@ -323,6 +327,7 @@ const PROJECTS_DATA = [
    site:'#',github:'#',
    img:'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=60&fit=crop',
    filters:['all','Design']},
+
   {title:'FitFlex Gym',cat:'Development',year:'2022',status:'completed',
    contrib:'Responsive website, user-friendly navigation, fast loading, modern aesthetic',
    problem:'Fitness center needed a digital platform to attract new members and showcase services',
@@ -330,6 +335,7 @@ const PROJECTS_DATA = [
    site:'#',github:'#',
    img:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=60&fit=crop',
    filters:['all','Development']},
+
   {title:'3D Portfolio Viz',cat:'3D Experience',year:'2024',status:'in-progress',
    contrib:'Custom WebGL scene, Three.js particle systems, GSAP scroll animations',
    problem:'Showcase immersive 3D capabilities for premium clients in creative industries',
@@ -337,6 +343,7 @@ const PROJECTS_DATA = [
    site:'#',github:'#',
    img:'https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=600&q=60&fit=crop',
    filters:['all','3D Experience']},
+
   {title:'Geospatial Analytics',cat:'Geospatial',year:'2024',status:'in-progress',
    contrib:'Spatial data pipeline, interactive choropleth maps, filtering system, data storytelling',
    problem:'NGO needed accessible visualization of demographic & environmental data across regions',
@@ -377,7 +384,10 @@ PROJECTS_DATA.slice(0,6).forEach((p,i)=>{
             <div class="proj-tools">${p.tools.map(t=>`<span class="proj-tool">${t}</span>`).join('')}</div>
           </div>
           <div class="proj-links">
-            <a href="${p.site}" class="proj-link" target="_blank">↗ Live Demo</a>
+          // If case study link is provided, show "Case Study" instead of "Live Demo"
+            <a href="${p.site}" class="proj-link" ${p.caseStudy ? '' : 'target="_blank"'}>
+            ${p.caseStudy ? '↗ Case Study' : '↗ Live Demo'}
+            </a>
             <a href="${p.github}" class="proj-link" target="_blank">⌥ GitHub</a>
           </div>
         </div>
@@ -416,7 +426,9 @@ PROJECTS_DATA.forEach((p,i)=>{
     <p class="pp-card-contrib">${p.contrib}</p>
     <div class="pp-card-tools">${p.tools.map(t=>`<span class="pp-card-tool">${t}</span>`).join('')}</div>
     <div class="pp-card-links">
-      <a href="${p.site}" class="pp-card-link" target="_blank">Live Demo ↗</a>
+      <a href="${p.site}" class="pp-card-link" ${p.caseStudy ? '' : 'target="_blank"'}>
+      ${p.caseStudy ? 'Case Study ↗' : 'Live Demo ↗'}
+    </a>
       <a href="${p.github}" class="pp-card-link" target="_blank">GitHub ↗</a>
     </div>`;
   ppGrid.appendChild(card);
