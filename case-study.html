@@ -98,6 +98,243 @@
 /*═══════════ EMBEDDED DATA ═══════════ */
 const PROJECTS_MAP = {
 
+
+"mallnav" : {
+
+  id: "mallnav",
+  slug: "mallnav-3d-indoor-navigation-system",
+  year: "2026",
+  duration: "6–8 weeks",
+  role: "Frontend Engineer · GIS Developer · 3D Interaction Designer",
+  status: "Completed",
+  category: "Web Application · Indoor GIS · 3D Navigation",
+
+  // ── HERO ──────────────────────────────────────────────────
+  hero: {
+    eyebrow: "Case Study — Indoor Navigation System",
+    title: "MallNav 3D",
+    subtitle:
+      "A real-time indoor navigation system combining 3D visualization, routing algorithms, and live user tracking.",
+    tags: ["Three.js", "JavaScript", "A* Pathfinding", "GIS", "3D UX"],
+    coverImage:
+      "https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=1600&q=80&fit=crop",
+    accentColor: "#7C5CFC",
+    secondaryColor: "#2DD4BF",
+  },
+
+  // ── CONTEXT ───────────────────────────────────────────────
+  context: {
+    label: "01 — Context",
+    heading: "Indoor navigation is still a fragmented experience",
+    body: [
+      "Unlike outdoor navigation, indoor environments such as malls lack intuitive, real-time navigation systems that help users move efficiently between floors and locations.",
+      "Most malls rely on static maps or 2D directories, forcing users to mentally reconstruct paths without spatial clarity.",
+      "MallNav 3D was created to simulate a fully interactive indoor navigation system, combining GIS logic with immersive 3D visualization.",
+    ],
+    stat: { value: "3", unit: "", label: "floors simulated in 3D space" },
+  },
+
+  // ── PROBLEM ───────────────────────────────────────────────
+  problem: {
+    label: "02 — The Problem",
+    heading: "Indoor spaces are difficult to navigate digitally",
+    body:
+      "Traditional indoor maps fail to provide real-time interaction, spatial awareness, and intelligent routing, making navigation inefficient and confusing.",
+    challenges: [
+      {
+        icon: "🗺️",
+        title: "Static maps",
+        desc: "No real interaction or live navigation capabilities",
+      },
+      {
+        icon: "🏢",
+        title: "Multi-floor complexity",
+        desc: "Difficult to understand vertical navigation between floors",
+      },
+      {
+        icon: "🧠",
+        title: "Cognitive overload",
+        desc: "Users must mentally calculate routes and directions",
+      },
+      {
+        icon: "📡",
+        title: "Lack of real-time tracking",
+        desc: "No dynamic positioning or live feedback",
+      },
+    ],
+  },
+
+  // ── THINKING ──────────────────────────────────────────────
+  thinking: {
+    label: "03 — Thinking",
+    heading: "Bringing GIS logic into an interactive 3D environment",
+    decisions: [
+      {
+        question: "2D map or 3D experience?",
+        answer:
+          "A 3D environment was chosen to better represent spatial relationships and floor transitions.",
+        outcome: "Improved spatial understanding",
+      },
+      {
+        question: "How to handle navigation logic?",
+        answer:
+          "Implemented A* pathfinding using graph nodes and edges to simulate real indoor routing.",
+        outcome: "Efficient route calculation",
+      },
+      {
+        question: "How to simulate real-time movement?",
+        answer:
+          "Built a live navigation system with manual, GPS, and simulation modes.",
+        outcome: "Dynamic user tracking",
+      },
+      {
+        question: "How to enhance usability?",
+        answer:
+          "Designed layered UI panels for routing, POIs, and navigation controls.",
+        outcome: "Non-blocking, intuitive UX",
+      },
+    ],
+  },
+
+  // ── PROCESS ───────────────────────────────────────────────
+  process: {
+    label: "04 — Process",
+    heading: "From 3D rendering to live navigation",
+    steps: [
+      {
+        number: "01",
+        title: "3D environment setup",
+        body: "Built mall structure using Three.js with multiple floors and units.",
+        tag: "Rendering",
+      },
+      {
+        number: "02",
+        title: "Data modeling",
+        body: "Defined shops, POIs, nodes, and edges for spatial logic.",
+        tag: "GIS Layer",
+      },
+      {
+        number: "03",
+        title: "Routing engine",
+        body: "Implemented A* algorithm for shortest path calculation.",
+        tag: "Algorithm",
+      },
+      {
+        number: "04",
+        title: "UI system",
+        body: "Developed panels for search, routing, and information display.",
+        tag: "UX",
+      },
+      {
+        number: "05",
+        title: "Live navigation",
+        body: "Added real-time user tracking, simulation, and GPS integration.",
+        tag: "Phase 3",
+      },
+      {
+        number: "06",
+        title: "Optimization & polish",
+        body: "Improved performance, animations, and interaction feedback.",
+        tag: "Refinement",
+      },
+    ],
+  },
+
+  // ── SOLUTION ──────────────────────────────────────────────
+  solution: {
+    label: "05 — Solution",
+    heading: "A complete indoor navigation system",
+    body:
+      "MallNav 3D delivers a full navigation experience where users can explore, search, and navigate indoor spaces in real time.",
+    features: [
+      {
+        icon: "🏬",
+        title: "3D mall visualization",
+        desc: "Interactive multi-floor environment with camera controls",
+      },
+      {
+        icon: "🧭",
+        title: "A* routing system",
+        desc: "Shortest path calculation between shops and POIs",
+      },
+      {
+        icon: "📡",
+        title: "Live navigation",
+        desc: "Real-time tracking with ETA, speed, and distance",
+      },
+      {
+        icon: "🔍",
+        title: "Search & directory",
+        desc: "Instant filtering and shop lookup",
+      },
+      {
+        icon: "📍",
+        title: "User positioning",
+        desc: "Manual, GPS, and simulated location modes",
+      },
+      {
+        icon: "🗺️",
+        title: "Minimap & POI system",
+        desc: "Context-aware navigation with nearby suggestions",
+      },
+    ],
+    images: [
+      {
+        src: "https://images.unsplash.com/photo-1555529771-35a5a3e7c1b9?w=900&q=80&fit=crop",
+        caption: "3D mall navigation environment",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1529429617124-aee711bcb5c9?w=900&q=80&fit=crop",
+        caption: "Routing and live navigation interface",
+      },
+    ],
+  },
+
+  // ── IMPACT ────────────────────────────────────────────────
+  impact: {
+    label: "06 — Impact",
+    heading: "What this project proves",
+    metrics: [
+      { value: "3", label: "system layers", sub: "3D, routing, live nav" },
+      { value: "100+", label: "nodes simulated", sub: "graph-based routing" },
+      { value: "1", label: "real-time system", sub: "continuous navigation" },
+      { value: "0", label: "backend required", sub: "fully frontend simulation" },
+    ],
+    quote: {
+      text: "This feels like Google Maps, but inside a building.",
+      author: "UX insight",
+    },
+  },
+
+  // ── REFLECTION ────────────────────────────────────────────
+  reflection: {
+    label: "07 — Reflection",
+    heading: "What I'd improve next",
+    lessons: [
+      {
+        tag: "What worked",
+        body: "Combining GIS logic with 3D rendering created a powerful and intuitive navigation experience.",
+      },
+      {
+        tag: "What I'd change",
+        body: "Integrate real indoor positioning systems (IPS) for accurate real-world tracking.",
+      },
+      {
+        tag: "What I learned",
+        body: "Spatial UX is about guiding movement, not just displaying information.",
+      },
+    ],
+  },
+
+  // ── NAVIGATION ────────────────────────────────────────────
+  navigation: {
+    prev: { title: "NestFinder", slug: "nestfinder-real-estate-platform" },
+    next: { title: "MediShop", slug: "medishop-online-pharmacy" },
+  },
+}
+
+,
+
 "nestfinder" : {
 
  id: "nestfinder",
@@ -1263,6 +1500,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 document.getElementById('mob-menu-btn')?.addEventListener('click',()=>document.getElementById('mobile-menu').classList.add('open'));
 document.getElementById('mob-menu-close')?.addEventListener('click',()=>document.getElementById('mobile-menu').classList.remove('open'));
 </script>
+<script src="./js/case-study.js" defer></script>
 <script defer src="./js/projects.js"></script>
 </body>
 </html>
